@@ -1,0 +1,10 @@
+/**
+|============================
+| include css partials with
+| default @import url()
+|============================
+*/
+@import url('./general.css');
+@import url('./reset.css');
+@import url('./fonts.css');
+
