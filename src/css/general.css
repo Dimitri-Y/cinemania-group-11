@@ -6,19 +6,8 @@
   
     color: #242424;
     background-color: rgba(255, 255, 255, 0.87);
-    --timing-function: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-    --fon-lemon: #fffdee;
-    --akzent-yellow: #f3c653;
-    --fon-dark-lemon: #f0ecd6;
-    --brown: #c79002;
-    --color-footer: #0e0c07;
-    --black: #000000;
-    --logo-gray: #494848;
-    --text-gray: #7A7A7A;
-    --white: #ffffff;
-    --placeholder: #808080;
-  
+
+    
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
