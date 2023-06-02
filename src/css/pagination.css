@@ -55,3 +55,31 @@
 .pagination-list__link.selected {
   background-color: #ffc226;
 }
+
+@media screen and (min-width: 768px) {
+  .pagination-list__link {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .pagination-list__item:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  .pagination .arrow {
+    width: 28px;
+    height: 28px;
+    background-size: 8px;
+  }
+
+  .pagination__back {
+    margin-right: 12px;
+    background-image: url(../images/Vector1.svg);
+  }
+
+  .pagination__forward {
+    margin-left: 12px;
+    background-image: url(../images/Vector2.svg);
+  }
+}
