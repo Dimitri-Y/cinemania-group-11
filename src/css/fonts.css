@@ -6,10 +6,9 @@
   }
   
   @font-face {
-    font-family: 'Roboto Medium';
-    src: local("Roboto Medium"), 
-         url('../fonts/Montserrat-Bold.ttf');
-         font-weight: 600;
+     font-family: 'Roboto Medium';
+     src: local('Roboto Medium'), url('../fonts/Roboto-Medium.ttf');
+     font-weight: 600;
   }
   
   @font-face {
