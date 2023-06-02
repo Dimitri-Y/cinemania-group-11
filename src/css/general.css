@@ -22,21 +22,21 @@
   
   @media screen and (min-width: 320px) {
     .container {
-      width: 414px;
-      padding: 0 15px;
+      width: 320px;
+      padding: 0 20px;
     }
   }
   
   @media screen and (min-width: 768px) {
     .container {
-      width: 1024px;
-      padding: 0 47px;
+      width: 768px;
+      padding: 0 32px;
     }
   }
   
   @media screen and (min-width: 1280px) {
     .container {
       width: 1280px;
-      padding: 0 85px;
+      padding: 0 32px;
     }
   }
