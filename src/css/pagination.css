@@ -22,12 +22,12 @@
 
 .pagination__back {
   margin-right: 4px;
-  background-image: url(../img/Vector1.svg);
+  background-image: url(../images/Vector1.svg);
 }
 
 .pagination__forward {
   margin-left: 4px;
-  background-image: url(../img/Vector2.svg);
+  background-image: url(../images/Vector2.svg);
 }
 
 .pagination-list__item:not(:last-child) {
