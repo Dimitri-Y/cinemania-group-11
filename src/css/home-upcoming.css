@@ -1,0 +1,25 @@
+.upcoming__container {
+  display: flex;
+  gap: 16px;
+}
+.upcoming__info {
+  width: 390px;
+  color: #ffffff;
+}
+.upcoming__info-title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.19;
+}
+
+.upcoming__title {
+  margin-bottom: 28px;
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1.18;
+}
+.upcoming {
+  background-color: #282828;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
