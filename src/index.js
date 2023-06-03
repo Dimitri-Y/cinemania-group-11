@@ -3,4 +3,5 @@ import './js/api-key';
 import './js/home-upcoming';
 import './js/home-weekly';
 import './js/pagination';
-import './js/scrollUp'
+import './js/scrollUp';
+import './js/catalog';

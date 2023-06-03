@@ -1,7 +1,5 @@
 import axios from 'axios';
-import KEY from './api-key';
-import TREND_URL from './api-key';
-import IMG_BASE_URL from './api-key';
+import { KEY, TREND_URL, IMG_BASE_URL } from './api-key';
 
 // ======fetch=====
 async function fechMovieTrend(page) {
@@ -34,7 +32,7 @@ function createCards(movies) {
     })
     .join('');
 }
- 
+
 // =====GENRE====
 const genres = [
   { id: 28, name: 'Action' },
