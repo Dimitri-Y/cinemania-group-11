@@ -17,15 +17,12 @@ function fetchUpcomingMovies() {
   );
 }
 
-function onClickRemind(event) {
-  const movieId = event.target.dataset.movieid;
-  addMovieToLibrary(movieId);
-}
+// add function onClickRemind
 
 async function getFetchedMovies() {
   try {
     const data = await fetchUpcomingMovies();
-      const returnedResult = data.results;
+    const returnedResult = data.results;
     //   console.log(data.results);
     if (returnedResult.length >= 1) {
       const randomMovie =
@@ -57,55 +54,48 @@ async function renderMarkup({
 }) {
   const genreNames = await getGenresById(genre_ids);
 
-  return `
-    
- <div class="upcoming__card">
- <div class="upcoming__thumb">
-      
-      <picture class='upcoming__poster'>
-      <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 1200px)" class='upcoming__poster-desktop' loading="lazy"/>
-      <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 768px)" class='upcoming__poster-tablet' loading="lazy"/>
-      <source srcset="https://image.tmdb.org/t/p/original/${poster_path}" media="(min-width: 320px)" loading="lazy"/>
-      <img src="https://image.tmdb.org/t/p/original/${poster_path}" alt="Movie Poster" style='width: 805px' loading="lazy"/>
-    </picture>
-      </div>
-      </div>
 
-<div class="upcoming__info">
-            <h2 class="upcoming__info-title">${title}</h2>
-            <div class="upcoming__movie">
-                <div class="upcoming__info-left">
-                    <div class="upcoming__info-release">
-                        <p class="upcoming__text"> <span class ="upcoming__light-black">Release date</span> <span class="upcoming__info-release-date">${release_date}</span></p>
-                    </div>
-                    <div class="upcoming__info-vote">
-                        <p class="upcoming__text"><span class ="upcoming__light-black">Vote/Votes</span>
-                        <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span
-                                class="slash">/</span>
-                            <span class="upcoming__info-white">
-                               ${vote_count}</span>
-                        </div>
-                        </p>
-                    </div>
+    return `
+    <div class="upcoming__card">
+        <div class="upcoming__thumb">
+            <picture class='upcoming__poster'>
+            <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 1200px)" class='upcoming__poster-desktop'/>
+            <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 768px)" class='upcoming__poster-tablet'/>
+            <source srcset="https://image.tmdb.org/t/p/original/${poster_path}" media="(min-width: 320px)"/>
+            <img src="https://image.tmdb.org/t/p/original/${poster_path}" alt="Movie Poster" style='width: 805px'/>
+            </picture>
+        </div>
+    </div>
+    <div class="upcoming__info">
+        <h2 class="upcoming__info-title">${title}</h2>
+        <div class="upcoming__movie">
+            <div class="upcoming__info-left">
+                <div class="upcoming__info-release">
+                    <p class="upcoming__text"> <span class ="upcoming__light-black">Release date</span> </p>
+                    <div class="upcoming__info-release-date">${release_date}</div>
                 </div>
-                <div class="upcoming__info-right">
-                    <div class="upcoming__info-pop">
-                        <p class="upcoming__text"> <span class ="upcoming__light-black">Popularity</span> <span class="upcoming__info-pop-range">${popularity}</span> </p>
-                    </div>
-                    <div class="upcoming__info-genre">
-                        <p class="upcoming__text"><span class ="upcoming__light-black">Genre</span> <span class="upcoming__info-genre-kind">${genreNames}</span> </p>
-                    </div>
+                <div class="upcoming__info-vote">
+                    <p class="upcoming__text"><span class ="upcoming__light-black">Vote/Votes</span></p>
+                     <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span class="slash"> / </span><span class="upcoming__info-white"> ${vote_count}</span></div>                    </div>
+                <div class="upcoming__info-pop">
+                    <p class="upcoming__text"> <span class ="upcoming__light-black">Popularity</span> </p>
+                    <div class="upcoming__info-pop-range">${popularity}</div>
+                </div>
+                <div class="upcoming__info-genre">
+                    <p class="upcoming__text"><span class ="upcoming__light-black">Genre</span></p>
+                    <div class="upcoming__info-genre-kind">${genreNames}</div>
                 </div>
             </div>
-            <h2 class="upcoming__info-about">ABOUT</h2>
-
-            <p class="upcoming__info-description">${overview}</p>
-            <button class="upcoming__remindme-btn" data-movieid=${id}  type="button">Add to Library</button>
         </div>
+        <h2 class="upcoming__info-about">ABOUT</h2>
 
-   
+        <p class="upcoming__info-description">${overview}</p>
+        <button class="upcoming__remindme-btn" data-movieid=${id}  type="button">Add to Library</button>
+    </div>
      `;
 }
+
+
 
 async function getGenresById(genreIds) {
   const BASE_URL = `https://api.themoviedb.org/3/genre/movie/list`;
