@@ -1,5 +1,4 @@
 footer {
-  width: 100%;
   background: #000;
   margin-left: auto;
   margin-right: auto;
@@ -7,17 +6,16 @@ footer {
   justify-content: center;
 }
 .footer-contain {
-  display: inline-flex;
-  align-items: center;
   width: 320px;
-  justify-content: center;
   text-align: center;
+		padding-top: 40px;
+	padding-bottom: 28px;
 }
 
 .footer-contain__text {
-  margin: 40px 43px 28px 43px;
+  margin: 0px 43px 0 43px;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -28,6 +26,7 @@ footer {
 .footer-contain__students {
   color: #b7b7b7;
   cursor: pointer;
+	text-decoration: underline;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-contain__students:hover,
@@ -38,11 +37,11 @@ footer {
 @media screen and (min-width: 768px) {
   .footer-contain {
     width: 768px;
+		padding-top: 77px;
+		padding-bottom: 40px;
   }
 
   .footer-contain__text {
-    margin: 77px auto 40px auto;
-
     font-size: 16px;
     line-height: 1.19;
   }
@@ -51,9 +50,7 @@ footer {
 @media screen and (min-width: 1158px) {
   .footer-contain {
     width: 1280px;
-  }
-
-  .footer-contain__text {
-    margin: 100px auto 80px auto;
+		padding-top: 100px;
+		padding-bottom: 80px;
   }
 }
