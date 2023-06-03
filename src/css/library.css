@@ -11,7 +11,7 @@
     ),
     url(../images/m-rows-red-seats-320-min.jpg);
   background-repeat: no-repeat;
-  background-position: 0 11px;
+  background-position: 0 10px bottom;
   background-size: cover;
 }
 @media (min-device-pixel-ratio: 2),
@@ -36,7 +36,7 @@
   width: 235px;
   margin-bottom: 8px;
 
-  font-family: 'Roboto';
+  font-family: 'Roboto Bold';
   font-weight: 700;
   font-size: 32px;
   line-height: 1.18;
@@ -91,14 +91,14 @@
 }
 .library-body__btn-span {
   display: block;
-  font-family: 'Roboto';
+  font-family: 'Roboto Regular';
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
 }
 /* ---------------TABLET--------------- */
 /* addictive-tablet-bg-features */
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 375px) {
   .library-hero__overlay {
     background-color: #111111;
     background-image: linear-gradient(
@@ -133,6 +133,7 @@
         rgba(17, 17, 17, 0) 71.57%
       ),
       url(../images/t-rows-red-seats-768-min.jpg);
+      background-position: 105px ;
   }
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -150,7 +151,8 @@
   /* ---main-tablet-features--- */
   .library-hero__section {
     max-width: none;
-    padding: 62px 32px 118px;
+    padding: 122px 32px 118px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50);
   }
   .library-hero__title {
     width: 332px;
@@ -183,11 +185,12 @@
   .library-hero__overlay {
     background-color: #111111;
     background-image: linear-gradient(
-        77.77deg,
-        #111111 33.58%,
-        rgba(17, 17, 17, 0) 71.57%
+        79.39deg,
+        #111111 32.37%,
+        rgba(17, 17, 17, 0) 72.02%
       ),
       url(../images/d-rows-red-seats-1280@2x-min.jpg);
+      background-position: 107px bottom;
   }
   /* ---main-desktop-features--- */
   .library-hero__section {
