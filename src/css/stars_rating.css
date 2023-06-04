@@ -1,0 +1,49 @@
+.movie-card__rating {
+
+  display: flex;
+
+  align-items: flex-end;
+  font-size: 12px;
+  line-height: 0.75;
+}
+.rating__body {
+  position: relative;
+  border: 1px;
+}
+
+.rating__body::before {
+  content: "★★★★★";
+  display: block;
+}
+
+.rating__active {
+  position: absolute;
+  width: 100%; /*управління шириною заповнення зірок, поставити 0 */
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.rating__active::before {
+  content: "★★★★★";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #f84119;
+}
+
+.rating__items {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.rating__item {
+  flex: 0 0 20%;
+  height: 100%;
+  opacity: 0;
+}
