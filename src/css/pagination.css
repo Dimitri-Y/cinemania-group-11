@@ -1,7 +1,6 @@
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: 20px;
   padding-bottom: 40px;
   background-color: #111111;
@@ -13,8 +12,7 @@
 }
 
 .pagination .arrow {
-  display: flex;
-  align-items: center;
+  display: block;
   width: 20px;
   height: 20px;
   background-size: 6px;
@@ -37,11 +35,10 @@
 }
 
 .pagination-list__link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 24px;
   height: 24px;
+  padding: 7px;
   border: 1px solid #b7b7b7;
   border-radius: 50%;
 
@@ -78,11 +75,11 @@
 
   .pagination__back {
     margin-right: 12px;
-    background-image: url(../images/Vector3.svg);
+    background-image: url(../images/Vector1.svg);
   }
 
   .pagination__forward {
     margin-left: 12px;
-    background-image: url(../images/Vector4.svg);
+    background-image: url(../images/Vector2.svg);
   }
 }

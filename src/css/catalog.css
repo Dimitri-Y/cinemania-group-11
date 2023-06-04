@@ -1,0 +1,126 @@
+/* =======MOVIE-GALLERY======= */
+.catalog__gallery {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  display: flex;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .catalog__gallery {
+    row-gap: 28px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog__gallery {
+    row-gap: 32px;
+  }
+}
+
+/* ============MOVIE-CARD============= */
+.movie-card {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 280px;
+  min-height: 406px;
+  border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
+
+  flex-basis: calc((100% - 2 * 16px) / 1);
+}
+
+@media screen and (min-width: 768px) {
+  .movie-card {
+    min-width: 224px;
+    min-height: 325px;
+    flex-basis: calc((100% - (2 * 16px)) / 3);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .movie-card {
+    min-width: 395px;
+    min-height: 574px;
+    flex-basis: calc((100% - 2 * 16px) / 3);
+  }
+}
+
+.movie-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card__info {
+  height: 40px;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+  .movie-card__info {
+    height: 46px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .movie-card__info {
+    height: 54px;
+    left: 20px;
+    bottom: 20px;
+  }
+}
+
+.movie-card__title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.movie-card__genre-year {
+  color: #b7b7b7;
+}
+
+@media screen and (min-width: 1280px) {
+  .movie-card__title,
+  .movie-card__genre-year {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+}
+
+.movie-card__rating {
+  width: 86px;
+  height: 14px;
+  position: absolute;
+  right: 12px;
+  bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-card__rating {
+    width: 66px;
+    height: 10px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .movie-card__rating {
+    right: 20px;
+    bottom: 24px;
+  }
+}
