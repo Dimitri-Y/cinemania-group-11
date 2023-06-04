@@ -1,0 +1,146 @@
+/* ------------ MOBILE ------------ */
+ .container {
+  padding: 8px 20px;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ 
+ .menu {
+  display: none;
+ }
+ 
+ .logo-text {
+  display: none;
+ }
+ 
+ .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  height: 48px;
+ }
+ 
+ .switch_theme {
+  background-color: #000000;
+  border: none;
+  width: 44px;
+  height: 18px;
+ }
+ 
+ .menu-item {
+ font-family: 'Roboto';
+ font-style: normal;
+ font-weight: 500;
+ font-size: 12px;
+ line-height: 14px;
+ display: flex;
+ align-items: center;
+ text-align: center;
+ text-transform: uppercase;
+ color: #B7B7B7;
+ }
+ 
+ .is-hidden {
+  opacity: 0;
+  pointer-events: none;
+ }
+
+/* <!--------------- MOBILE MENU -----------------> */
+
+.mob-menu {
+ position: fixed;
+ top: 0;
+ left:0;
+ z-index: 1;
+ width: 204px;
+ height: 428px;
+ background-color: inherit;
+ padding-top: 8px;
+ padding-left: 20px;
+ overflow-y: scroll;
+}
+
+.no-scroll {
+ overflow: hidden;
+}
+
+.popcorn-mob {
+ margin-bottom: 40px;
+ }
+ 
+.menu-item-mob {
+ font-family: 'Roboto';
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+margin-bottom: 24px;
+color: #FFFFFF;
+}
+
+.current {
+ color: #F87719;
+}
+
+/* ---------- TABLET ------------ */
+
+@media screen and (min-width: 768px) {
+ .container {
+  max-width: 768px;
+  padding: 6px 32px;
+}
+
+.menu {
+ display: flex;
+ gap: 40px;
+}
+
+.top {
+height: 60px;
+}
+.menu-menu {
+ display: none;
+}
+
+.logo {
+ display: flex;
+ gap: 8px;
+}
+
+.popcorn {
+ width: 48px;
+ height: 48px;
+}
+
+.logo-text {
+ font-family: 'Roboto';
+font-weight: 400;
+font-size: 24px;
+line-height: 28px;
+display: flex;
+align-items: center;
+text-align: center;
+margin-right: 59px;
+color: #FFFFFF;
+}
+
+.switch_theme {
+ width: 60px;
+ height: 24px;
+ margin-left: 169px;
+}
+
+.menu-item {
+ font-size: 14px;
+ line-height: 16px;
+ }
+}
+
+/* ---------- DESKTOP ------------ */
+
+@media screen and (min-width: 1280px) {
+ .container {
+  max-width: 1280px;
+  padding: 8px 32px;
+ }
+}
