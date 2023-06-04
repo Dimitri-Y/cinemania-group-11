@@ -16,18 +16,19 @@
   }
   
   .container {
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 15px;
   }
   
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     .container {
       width: 320px;
       padding: 0 20px;
     }
   }
   
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     .container {
       width: 768px;
       padding: 0 32px;
