@@ -21,11 +21,14 @@
     "axios": "^1.4.0",
     "modern-normalize": "^1.1.0",
     "sass": "^1.62.1",
-    "tui-pagination": "^3.4.1"
+    "tui-pagination": "^3.4.1",
+    "webpack": "^5.85.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "buffer": "^6.0.3",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
