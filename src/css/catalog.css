@@ -1,13 +1,3 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
 /* =======MOVIE-GALLERY======= */
 .catalog__gallery {
   flex-wrap: wrap;
@@ -20,6 +10,7 @@ p {
 @media screen and (min-width: 768px) {
   .catalog__gallery {
     row-gap: 28px;
+    justify-content: flex-start;
   }
 }
 
