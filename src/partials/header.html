@@ -9,13 +9,12 @@
         />
         <p class="logo-text">Cinemania</p>
     </div>
-
     <div>
         <a href="#" class="menu-item menu-menu" data-menu-open>MENU</a>
     </div>
 
     <ul class="menu">
-        <li><a href="#" class="menu-item current">HOME</a></li>
+        <li><a href="index.html" class="menu-item">HOME</a></li>
         <li>
             <a href="catalog.html" class="menu-item">CATALOG</a>
         </li>
@@ -24,9 +23,14 @@
         </li>
     </ul>
 
-    <button type="button" class="switch_theme">
-        <img src="./images/switch_btn.svg" alt="dffdf" />
+    <button type="button" id="darkThemeBtn" class="switch_theme">
+        <img src="./images/switch_btn.svg" alt="dark theme" />
     </button>
+    
+    <button type="button" id="lightThemeBtn" class="switch_theme hidden">
+        <img src="./images/switch_btn_light.svg" alt="light theme" />
+    </button>
+    
 
     <!--------------- MOBILE MENU ----------------->
     <div class="mob-menu is-hidden" data-menu>
@@ -40,7 +44,7 @@
                     height="32px"
                 />
                 <ul class="menu-mob">
-                    <li class="menu-item-mob current"><a href="#">HOME</a></li>
+                    <li class="menu-item-mob"><a href="index.html">HOME</a></li>
                     <li class="menu-item-mob">
                         <a href="catalog.html">CATALOG</a>
                     </li>
