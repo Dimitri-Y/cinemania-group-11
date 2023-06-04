@@ -6,3 +6,4 @@ import './js/pagination';
 import './js/catalog';
 import './js/scrollUp';
 import './js/mobile-menu';
+import './js/modal_window_watch';
