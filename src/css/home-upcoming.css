@@ -1,0 +1,110 @@
+.upcoming__container {
+  display: flex;
+  gap: 16px;
+}
+.upcoming__info {
+  width: 390px;
+  color: #ffffff;
+}
+.upcoming__info-title {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 32px;
+  line-height: 1.19;
+}
+
+.upcoming__title {
+  margin-bottom: 28px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 28px;
+  line-height: 1.18;
+}
+.upcoming {
+  background-color: #282828;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.upcoming__light-black {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #b7b7b7;
+}
+.upcoming__info-release-date {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  color: #f87719;
+}
+.upcoming__movie {
+  display: flex;
+  margin-bottom: 20px;
+}
+.upcoming__info-right {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  margin-left: 58px;
+}
+.upcoming__info-about {
+  font-style: normal;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  color: #b7b7b7;
+}
+.upcoming__info-description {
+  margin-bottom: 20px;
+}
+.upcoming__info-left {
+  min-width: 93px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+.upcoming__info-left:not(last-child) {
+  margin-bottom: 20px;
+}
+.upcoming__text {
+  min-width: 95px;
+  margin: 0px;
+}
+
+.upcoming__info-white {
+  font-style: normal;
+  padding: 1px 8px;
+  min-width: 36px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 5px;
+  color: #111111;
+}
+.upcoming__remindme-btn {
+  display: block;
+  padding: 12px 24px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.17;
+
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 74px;
+  border: none;
+  color: #111111;
+}
+.upcoming__info-release,
+.upcoming__info-vote,
+.upcoming__info-pop,
+.upcoming__info-genre {
+  display: flex;
+  gap: 58px;
+}
+/* .upcoming__poster {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
