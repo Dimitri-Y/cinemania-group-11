@@ -9,7 +9,7 @@ import {
 } from './api-key';
 import Pagination from 'tui-pagination';
 
-let name = '';
+let perPage = 10;
 let page = 1;
 
 const refs = {
@@ -19,35 +19,57 @@ const refs = {
   pagination: document.querySelector('.pagination'),
 };
 
+console.log(refs.paginationListLinks);
+
 refs.pagination.addEventListener('click', onClick);
 
 const options = {
   totalItems: 500,
-  itemsPerPage: 10,
+  itemsPerPage: perPage,
   visiblePages: 4,
+  page,
   template: {
-    page:
-    `<a href="#" class="tui-page-btn pagination-list__link">01</a>`,
-    currentPage: `<a href="#" class="pagination-list__link selected">${page}</a>`,
+    page: `<a href="#" class="tui-page-btn pagination-list__link">0{{page}}</a>`,
+    currentPage: `<a href="#" class="pagination-list__link tui-page-btn selected">0{{page}}</a>`,
     moveButton:
-      `<a href="" class="pagination__back arrow tui-page-btn tui-{{type}} custom-class-{{type}}"></a>` +
-      `<a href="" class="pagination__forward arrow"></a>`,
+      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
+      `</a>` +
+      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
+      `</a>`,
+
     disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
+      `<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">` +
+      `</span>`,
     moreButton: '<a href="" class="pagination-list__link">...</a>',
   },
 };
 
 const pagination = new Pagination('pagination', options);
 
-function onClick(event) {
-  event.preventDefault();
+function correctValue() {
   refs.paginationListLinks.forEach(item => {
-    if (event.target === item) {
-      page = event.target.textContent;
-      console.log(page);
+    console.log(item);
+    if (item.textContent.length > 2) {
+      item.textContent.splice(0, 1);
     }
   });
 }
+
+function onClick(event) {
+  event.preventDefault();
+  page = event.target.textContent;
+  console.log(page);
+}
+
+function checkClass() {
+  refs.paginationListLinks.forEach(item => {
+    console.log(item);
+    if (item.classList.contains('selected')) {
+      page = item.textContent;
+    }
+  });
+}
+
+correctValue();
+
+checkClass();
