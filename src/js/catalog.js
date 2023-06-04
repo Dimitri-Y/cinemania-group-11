@@ -22,12 +22,22 @@ function createCards(movies) {
         if (release_date === '') {
           release_date = 'none';
         }
+
+        const truncatedTitle =
+          title.length > 26 ? title.slice(0, 26) + '...' : title;
+        const truncatedGenre =
+          genre.length > 18 ? genre.slice(0, 18) + '...' : genre;
         return `<li class="movie-card">
       <img class="movie-card__img" src="${IMG_BASE_URL}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
       <div class="movie-card__info">
-      <p class="movie-card__title">${title}</p>
-      <p class="movie-card__genre">${genre} | ${release_date.slice(0, 4)}</p> 
+      <p class="movie-card__title">${truncatedTitle}</p>
+       <div class="movie-card__ganre-rating-wrap">
+      <p class="movie-card__genre-year">${truncatedGenre} | ${release_date.slice(
+          0,
+          4
+        )}</p> 
       <div class="movie-card__rating"></div>
+      </div>
       </div>
     </li>`;
       }
@@ -69,7 +79,7 @@ function getGenres(genreArr) {
   });
 
   if (genre.length > 2) {
-    genre.splice(2, 5, 'Other');
+    genre.splice(2, 5);
   }
   return genre.join(', ');
 }

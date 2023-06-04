@@ -25,37 +25,36 @@
   position: relative;
   cursor: pointer;
   text-decoration: none;
-  min-width: 280px;
-  min-height: 406px;
+  width: 280px;
+  height: 406px;
   border-radius: 5px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0) 63.48%,
     rgba(0, 0, 0, 0.9) 92.16%
-  );
+  ); */
 
   flex-basis: calc((100% - 2 * 16px) / 1);
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.movie-card :hover,
-.movie-card :focus {
+.movie-card:hover,
+.movie-card:focus {
   transform: scale(1.08);
-  transform-origin: center;
 }
 
 @media screen and (min-width: 768px) {
   .movie-card {
-    min-width: 224px;
-    min-height: 325px;
+    width: 224px;
+    height: 325px;
     flex-basis: calc((100% - (2 * 16px)) / 3);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .movie-card {
-    min-width: 395px;
-    min-height: 574px;
+    width: 395px;
+    height: 574px;
     flex-basis: calc((100% - 2 * 16px) / 3);
   }
 }
@@ -63,19 +62,28 @@
 .movie-card__img {
   width: 100%;
   height: 100%;
-  background-image: url(/src/images/image-not-found.jpg);
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 63.48%,
+      rgba(0, 0, 0, 0.9) 92.16%
+    ),
+    url(/src/images/image-not-found.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 5px;
 }
 
 .movie-card__info {
   height: 40px;
   position: absolute;
-  left: 12px;
-  bottom: 12px;
+  left: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
 }
 @media screen and (min-width: 768px) {
   .movie-card__info {
@@ -86,8 +94,9 @@
 @media screen and (min-width: 1280px) {
   .movie-card__info {
     height: 54px;
-    left: 20px;
-    bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -100,8 +109,18 @@
   text-transform: uppercase;
   color: #ffffff;
 }
+.movie-card__ganre-rating-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .movie-card__genre-year {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
   color: #b7b7b7;
 }
 
@@ -114,23 +133,20 @@
 }
 
 .movie-card__rating {
-  width: 86px;
-  height: 14px;
-  position: absolute;
-  right: 12px;
-  bottom: 16px;
+  /* width: 86px;
+  height: 14px; */
 }
 
 @media screen and (min-width: 768px) {
   .movie-card__rating {
-    width: 66px;
-    height: 10px;
+    /* width: 66px;
+    height: 10px; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .movie-card__rating {
-    right: 20px;
-    bottom: 24px;
+    /* right: 20px;
+    bottom: 24px; */
   }
 }
