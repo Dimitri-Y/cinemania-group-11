@@ -8,9 +8,12 @@
 @import url('./reset.css');
 @import url('./fonts.css');
 @import url('./search-form.css');
+@import url('./catalog.css');
 @import url('./pagination.css');
 @import url('./library.css');
 @import url('./home-upcoming.css');
 @import url('./footer.css');
 @import url('./scrollUP.css');
 @import url('./header.css');
+@import url('./modal_window_watch.css');
+

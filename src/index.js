@@ -6,3 +6,7 @@ import './js/home-upcoming';
 import './js/home-weekly';
 import './js/pagination';
 import './js/scrollUp';
+import './js/catalog';
+import './js/scrollUp';
+import './js/mobile-menu';
+import './js/modal_window_watch';

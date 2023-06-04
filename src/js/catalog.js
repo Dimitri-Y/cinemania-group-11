@@ -1,13 +1,11 @@
 import axios from 'axios';
-import KEY from './api-key';
-import TREND_URL from './api-key';
-import IMG_BASE_URL from './api-key';
+import { KEY, TREND_URL, IMG_BASE_URL } from './api-key';
 
 // ======fetch=====
 async function fechMovieTrend(page) {
   const PAGE = `&page=${page}`;
   return await axios
-    .get(`${TREND_URL}?${KEY}${PAGE}`)
+    .get(`${TREND_URL}?api_key=${KEY}${PAGE}`)
     .then(response => response.data);
 }
 
@@ -15,15 +13,16 @@ async function fechMovieTrend(page) {
 function createCards(movies) {
   const { results } = movies;
   return results
-    .map(({ poster_path, title, release_date, id, genre_ids }) => {
-      let genre = getGenres(genre_ids);
-      if (genre === '') {
-        genre = 'unknown';
-      }
-      if (release_date === '') {
-        release_date = 'none';
-      }
-      return `<li class="movie-card">
+    .map(
+      ({ poster_path, title, release_date, id, genre_ids, vote_average }) => {
+        let genre = getGenres(genre_ids);
+        if (genre === '') {
+          genre = 'unknown';
+        }
+        if (release_date === '') {
+          release_date = 'none';
+        }
+        return `<li class="movie-card">
       <img class="movie-card__img" src="${IMG_BASE_URL}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
       <div class="movie-card__info">
       <p class="movie-card__title">${title}</p>
@@ -31,10 +30,11 @@ function createCards(movies) {
       <div class="movie-card__rating"></div>
       </div>
     </li>`;
-    })
+      }
+    )
     .join('');
 }
- 
+
 // =====GENRE====
 const genres = [
   { id: 28, name: 'Action' },
@@ -79,3 +79,14 @@ function renderCards(data, querySelector) {
   /* querySelector.insertAdjacentHTML('beforeend', createCards(data)); */
   querySelector.innerHTML = createCards(data);
 }
+
+// ======ВИКЛИК ФУНКЦІЇ РЕНДЕРУ КАРТОК=======
+const page = 1;
+const movieListContainer = document.querySelector('.catalog__gallery');
+fechMovieTrend(page)
+  .then(data => {
+    renderCards(data, movieListContainer);
+  })
+  .catch(error => {
+    console.error('Error rendering movie cards:', error);
+  });
