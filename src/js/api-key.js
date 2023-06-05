@@ -16,4 +16,5 @@ export {
   UPCOMING_URL,
   TREND_URL,
   IMAGE_URL_W500,
+  VIDEO_URL,
 };

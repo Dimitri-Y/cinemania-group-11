@@ -18,17 +18,15 @@ async function fechMovieVideo(movie_id) {
 }
 
 async function renderVideoLink(movie_id) {
-  
   try {
-
-    if (await fechMovieVideo(movie_id) === undefined) {
-      iframeVideo.classList.add("is-hiddenVideo");
-      iframeVideoError.classList.remove("is-hiddenVideo");
+    if ((await fechMovieVideo(movie_id)) === undefined) {
+      iframeVideo.classList.add('is-hiddenVideo');
+      iframeVideoError.classList.remove('is-hiddenVideo');
     } else {
-      iframeVideo.classList.remove("is-hiddenVideo");
-      iframeVideoError.classList.add("is-hiddenVideo");
+      iframeVideo.classList.remove('is-hiddenVideo');
+      iframeVideoError.classList.add('is-hiddenVideo');
     }
-        
+
     const { results } = await fechMovieVideo(movie_id);
 
     // console.log(results);
@@ -44,8 +42,6 @@ async function renderVideoLink(movie_id) {
 }
 const movie_id = '1100';
 renderVideoLink(movie_id);
-
-
 
 const myModal = new HystModal({
   // for dynamic init() of modals
