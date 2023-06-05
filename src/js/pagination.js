@@ -72,8 +72,8 @@ async function onClickForward(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
       if (
-        (Number(refs.paginationListLinks[i].textContent) >= 03) &
-        (refs.paginationListLinks[i + 1].textContent === '...')
+        parseFloat(refs.paginationListLinks[i].textContent) >= 3 &&
+        refs.paginationListLinks[i + 1].textContent === '...'
       ) {
         changesValuesForward(refs.paginationListLinks[i]);
         changesValuesForward(refs.paginationListLinks[i - 1]);
