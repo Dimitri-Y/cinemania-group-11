@@ -1,3 +1,19 @@
+body {
+  background-color: #000000;
+}
+
+:root {
+  --menu-item-color: #595959;;
+  --menu-item-mob-color: #FFFFFF;
+  --current-color: #F87719;
+  --logo-text-color: #FFFFFF;
+  --light-theme-bc-color: #F5F5F5;
+  --light-theme-logo-color: #282828;
+  --light-theme-item-color: #595959;
+
+
+}
+
 /* ------------ MOBILE ------------ */
  .container {
   padding: 8px 20px;
@@ -5,24 +21,21 @@
   margin-right: auto;
  }
  
- .menu {
-  display: none;
- }
- 
- .logo-text {
+ .menu, .logo-text {
   display: none;
  }
  
  .top {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #000000;
+  background-color: inherit;
   height: 48px;
  }
  
  .switch_theme {
-  background-color: #000000;
+  background-color: inherit;
   border: none;
   width: 44px;
   height: 18px;
@@ -30,15 +43,14 @@
  
  .menu-item {
  font-family: 'Roboto';
- font-style: normal;
  font-weight: 500;
  font-size: 12px;
- line-height: 14px;
+ line-height: 1.7;
  display: flex;
  align-items: center;
  text-align: center;
  text-transform: uppercase;
- color: #B7B7B7;
+ color: var(--menu-item-color);
  }
  
  .is-hidden {
@@ -46,10 +58,14 @@
   pointer-events: none;
  }
 
+ .hidden {
+  display: none;
+}
+
 /* <!--------------- MOBILE MENU -----------------> */
 
 .mob-menu {
- position: fixed;
+ position: absolute;
  top: 0;
  left:0;
  z-index: 1;
@@ -71,15 +87,14 @@
  
 .menu-item-mob {
  font-family: 'Roboto';
-font-weight: 400;
 font-size: 14px;
-line-height: 16px;
+line-height: 1.14;
 margin-bottom: 24px;
-color: #FFFFFF;
+color: var(--menu-item-mob-color);
 }
 
 .current {
- color: #F87719;
+ color: var(--current-color);
 }
 
 /* ---------- TABLET ------------ */
@@ -114,14 +129,13 @@ height: 60px;
 
 .logo-text {
  font-family: 'Roboto';
-font-weight: 400;
 font-size: 24px;
-line-height: 28px;
+line-height: 1.17;
 display: flex;
 align-items: center;
 text-align: center;
 margin-right: 59px;
-color: #FFFFFF;
+color: var(--logo-text-color);
 }
 
 .switch_theme {
@@ -132,7 +146,7 @@ color: #FFFFFF;
 
 .menu-item {
  font-size: 14px;
- line-height: 16px;
+ line-height: 1.14;
  }
 }
 
@@ -144,3 +158,24 @@ color: #FFFFFF;
   padding: 8px 32px;
  }
 }
+
+.light-theme {
+  background-color: var(--light-theme-bc-color);
+}
+
+.light-theme .logo-text {
+  color: var(--light-theme-logo-color);
+}
+
+.light-theme .menu-item {
+  color: var(--light-theme-item-color);
+}
+
+.light-theme .menu-item-mob {
+  color: var(--light-theme-item-color);
+}
+
+ .light-theme .current {
+  color: var(--current-color);
+}
+
