@@ -14,3 +14,4 @@ import './js/genre';
 import './js/movie_card';
 import './js/star_rating';
 import './js/search-form';
+import './js/modal-details';
