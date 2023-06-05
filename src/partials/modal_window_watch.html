@@ -33,9 +33,15 @@
         <div class="hystmodal__wrap">
             <div class="hystmodal__window" role="dialog" aria-modal="true">
                 <button class="hystmodal__close" data-hystclose></button>
-                <iframe src="https://www.youtube.com/embed/nT14mlv92t4?enablejsapi=1&rel=0&showinfo=0" frameborder="0"
+                <iframe class="iframe" id="iframe" src="https://www.youtube.com/watch?v=H8QnlH6sou0" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
+                <div class="errorWatchVideo is-hiddenVideo" id="errorWatchVideo">
+                    <p class="errorText">OOPS...<br>
+                    We are very sorry! <br>
+                    But we couldn’t find the trailer.</p>
+                    <img class="errorImg" src="./images/modal-false-movie-min.png" alt="Error Movie">
+                </div>
             </div>
         </div>
     </div>
