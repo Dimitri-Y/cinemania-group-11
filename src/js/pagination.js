@@ -7,69 +7,115 @@ import {
   UPCOMING_URL,
   TREND_URL,
 } from './api-key';
-import Pagination from 'tui-pagination';
 
-let perPage = 10;
+
 let page = 1;
+let perPage = 20;
 
 const refs = {
-  paginationListLinks: document.querySelectorAll('.pagination-list__link'),
-  paginationBackArrow: document.querySelector('.pagination__back'),
-  paginationForwardArrow: document.querySelector('.pagination__forward'),
-  pagination: document.querySelector('.pagination'),
+  paginationListLinks: document.querySelectorAll(".pagination-list__link"),
+  paginationBackArrow: document.querySelector(".pagination__back"),
+  paginationForwardArrow: document.querySelector(".pagination__forward"),
+  paginationList: document.querySelector(".pagination-list"),
 };
 
-console.log(refs.paginationListLinks);
+refs.paginationBackArrow.setAttribute("disabled", "");
+refs.paginationListLinks[0].classList.add("selected");
 
-refs.pagination.addEventListener('click', onClick);
+refs.paginationBackArrow.addEventListener("click", onClickBack);
+refs.paginationForwardArrow.addEventListener("click", onClickForward);
 
-const options = {
-  totalItems: 500,
-  itemsPerPage: perPage,
-  visiblePages: 4,
-  page,
-  template: {
-    page: `<a href="#" class="tui-page-btn pagination-list__link">0{{page}}</a>`,
-    currentPage: `<a href="#" class="pagination-list__link tui-page-btn selected">0{{page}}</a>`,
-    moveButton:
-      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
-      `</a>` +
-      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
-      `</a>`,
+refs.paginationList.addEventListener("click", onClickList);
 
-    disabledMoveButton:
-      `<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">` +
-      `</span>`,
-    moreButton: '<a href="" class="pagination-list__link">...</a>',
-  },
-};
+function onClickBack(event) {
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (refs.paginationListLinks[i].classList.contains("selected")) {
+      const prevElement = refs.paginationListLinks[i - 1];
 
-const pagination = new Pagination('pagination', options);
+      if (prevElement === refs.paginationListLinks[0]) {
+        refs.paginationForwardArrow.removeAttribute("disabled", "");
+        event.target.setAttribute("disabled", "");
 
-function correctValue() {
-  refs.paginationListLinks.forEach(item => {
-    console.log(item);
-    if (item.textContent.length > 2) {
-      item.textContent.splice(0, 1);
+        refs.paginationListLinks[i].classList.remove("selected");
+        page = prevElement.textContent;
+        prevElement.classList.add("selected");
+        trimZero(page);
+        break;
+      }
+
+      if (prevElement !== refs.paginationListLinks[0]) {
+        refs.paginationListLinks[i].classList.remove("selected");
+        page = prevElement.textContent;
+        prevElement.classList.add("selected");
+        trimZero(page);
+        break;
+      }
     }
-  });
+  }
 }
 
-function onClick(event) {
+function onClickForward(event) {
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (refs.paginationListLinks[i].classList.contains("selected")) {
+      refs.paginationBackArrow.removeAttribute("disabled", "");
+      const nextElement = refs.paginationListLinks[i + 1];
+
+      if (
+        nextElement ===
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        refs.paginationListLinks[i].classList.remove("selected");
+        page = nextElement.textContent;
+        nextElement.classList.add("selected");
+        event.target.setAttribute("disabled", "");
+        trimZero(page);
+        break;
+      }
+
+      if (
+        nextElement !==
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        refs.paginationListLinks[i].classList.remove("selected");
+        page = nextElement.textContent;
+        nextElement.classList.add("selected");
+        trimZero(page);
+        break;
+      }
+    }
+  }
+}
+
+function onClickList(event) {
   event.preventDefault();
-  page = event.target.textContent;
+
+  if (event.target.textContent === "...") {
+    console.log(page);
+    return;
+  }
+  refs.paginationListLinks.forEach((item) => {
+    if (item.classList.contains("selected") && event.target !== item) {
+      item.classList.remove("selected");
+    }
+    if (event.target === item && item !== refs.paginationListLinks[0]) {
+      refs.paginationBackArrow.removeAttribute("disabled", "");
+      page = event.target.textContent;
+      event.target.classList.add("selected");
+      refs.paginationListLinks[0].classList.remove("selected");
+    }
+    if (event.target === item && item === refs.paginationListLinks[0]) {
+      refs.paginationBackArrow.setAttribute("disabled", "");
+      page = event.target.textContent;
+      event.target.classList.add("selected");
+    }
+  });
+  trimZero(page);
+}
+
+function trimZero(page) {
+  page.toString()[0] === "0"
+    ? (page = Number(page.toString().slice(1)))
+    : (page = Number(page));
   console.log(page);
 }
 
-function checkClass() {
-  refs.paginationListLinks.forEach(item => {
-    console.log(item);
-    if (item.classList.contains('selected')) {
-      page = item.textContent;
-    }
-  });
-}
-
-correctValue();
-
-checkClass();
