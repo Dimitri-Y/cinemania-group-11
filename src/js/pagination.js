@@ -1,75 +1,177 @@
 import axios from 'axios';
-import {
-  KEY,
-  BASE_URL,
-  IMG_BASE_URL,
-  IMG_W400,
-  UPCOMING_URL,
-  TREND_URL,
-} from './api-key';
-import Pagination from 'tui-pagination';
+import { KEY, TREND_URL, IMG_BASE_URL, IMAGE_URL_W500 } from './api-key';
+import { fetchMovieTrend } from './api';
+import { getGenres } from './genre';
+import { renderCards } from './movie_card';
 
-let perPage = 10;
+import { createCards, movieListContainer } from './catalog';
+
 let page = 1;
 
 const refs = {
   paginationListLinks: document.querySelectorAll('.pagination-list__link'),
   paginationBackArrow: document.querySelector('.pagination__back'),
   paginationForwardArrow: document.querySelector('.pagination__forward'),
-  pagination: document.querySelector('.pagination'),
+  paginationList: document.querySelector('.pagination-list'),
 };
 
-console.log(refs.paginationListLinks);
+refs.paginationBackArrow.setAttribute('disabled', '');
+refs.paginationListLinks[0].classList.add('selected');
 
-refs.pagination.addEventListener('click', onClick);
+refs.paginationBackArrow.addEventListener('click', onClickBack);
+refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
-const options = {
-  totalItems: 500,
-  itemsPerPage: perPage,
-  visiblePages: 4,
-  page,
-  template: {
-    page: `<a href="#" class="tui-page-btn pagination-list__link">0{{page}}</a>`,
-    currentPage: `<a href="#" class="pagination-list__link tui-page-btn selected">0{{page}}</a>`,
-    moveButton:
-      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
-      `</a>` +
-      `<a href="#" class="tui-page-btn pagination__forward arrow">` +
-      `</a>`,
+refs.paginationList.addEventListener('click', onClickList);
 
-    disabledMoveButton:
-      `<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">` +
-      `</span>`,
-    moreButton: '<a href="" class="pagination-list__link">...</a>',
-  },
-};
+async function onClickBack(event) {
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        refs.paginationListLinks[i + 1].textContent === '...' &&
+        refs.paginationListLinks[i - 1].textContent !== '02'
+      ) {
+        changesValuesBack(refs.paginationListLinks[i]);
+        changesValuesBack(refs.paginationListLinks[i - 1]);
+        changesValuesBack(refs.paginationListLinks[i - 2]);
 
-const pagination = new Pagination('pagination', options);
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
 
-function correctValue() {
-  refs.paginationListLinks.forEach(item => {
-    console.log(item);
-    if (item.textContent.length > 2) {
-      item.textContent.splice(0, 1);
+      const prevElement = refs.paginationListLinks[i - 1];
+
+      if (prevElement === refs.paginationListLinks[0]) {
+        refs.paginationForwardArrow.removeAttribute('disabled', '');
+        event.target.setAttribute('disabled', '');
+
+        refs.paginationListLinks[i].classList.remove('selected');
+        page = prevElement.textContent;
+        prevElement.classList.add('selected');
+        break;
+      }
+
+      if (prevElement !== refs.paginationListLinks[0]) {
+        refs.paginationListLinks[i].classList.remove('selected');
+        page = prevElement.textContent;
+        prevElement.classList.add('selected');
+        break;
+      }
     }
-  });
+  }
+  trimZero(page);
+  await fetchMovieTrend(page)
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
 }
 
-function onClick(event) {
+async function onClickForward(event) {
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        Number(refs.paginationListLinks[i].textContent) >= 03 &&
+        refs.paginationListLinks[i + 1].textContent === '...'
+      ) {
+        changesValuesForward(refs.paginationListLinks[i]);
+        changesValuesForward(refs.paginationListLinks[i - 1]);
+        changesValuesForward(refs.paginationListLinks[i - 2]);
+
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
+      refs.paginationBackArrow.removeAttribute('disabled', '');
+      const nextElement = refs.paginationListLinks[i + 1];
+
+      if (
+        nextElement ===
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        refs.paginationListLinks[i].classList.remove('selected');
+        page = nextElement.textContent;
+        nextElement.classList.add('selected');
+        event.target.setAttribute('disabled', '');
+        break;
+      }
+
+      if (
+        nextElement !==
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        refs.paginationListLinks[i].classList.remove('selected');
+        page = nextElement.textContent;
+        nextElement.classList.add('selected');
+        break;
+      }
+    }
+  }
+  trimZero(page);
+  await fetchMovieTrend(page)
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
+}
+
+async function onClickList(event) {
   event.preventDefault();
-  page = event.target.textContent;
-  console.log(page);
-}
 
-function checkClass() {
+  if (event.target.textContent === '...') {
+    console.log(page);
+    return;
+  }
   refs.paginationListLinks.forEach(item => {
-    console.log(item);
-    if (item.classList.contains('selected')) {
-      page = item.textContent;
+    if (item.classList.contains('selected') && event.target !== item) {
+      item.classList.remove('selected');
+    }
+    if (event.target === item && item !== refs.paginationListLinks[0]) {
+      refs.paginationBackArrow.removeAttribute('disabled', '');
+      page = event.target.textContent;
+      event.target.classList.add('selected');
+      refs.paginationListLinks[0].classList.remove('selected');
+    }
+    if (event.target === item && item === refs.paginationListLinks[0]) {
+      refs.paginationBackArrow.setAttribute('disabled', '');
+      page = event.target.textContent;
+      event.target.classList.add('selected');
     }
   });
+  trimZero(page);
+  await fetchMovieTrend(page)
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
 }
 
-correctValue();
+function trimZero(value) {
+  value.toString()[0] === '0'
+    ? (value = Number(value.toString().slice(1)))
+    : (value = Number(value));
+  console.log(value);
+}
 
-checkClass();
+function changesValuesForward(element) {
+  element.textContent[0] === '0'
+    ? (element.textContent = Number(element.textContent.slice(1)) + 1)
+    : (element.textContent =
+        Number(refs.paginationListLinks[i].textContent) + 1);
+
+  element.textContent = '0' + element.textContent.toString();
+}
+
+function changesValuesBack(element) {
+  element.textContent[0] === '0'
+    ? (element.textContent = Number(element.textContent.slice(1)) - 1)
+    : (element.textContent =
+        Number(refs.paginationListLinks[i].textContent) - 1);
+
+  element.textContent = '0' + element.textContent.toString();
+}
