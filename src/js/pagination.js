@@ -4,14 +4,9 @@ import { fetchMovieTrend } from './api';
 import { getGenres } from './genre';
 import { renderCards } from './movie_card';
 
-import {
-  createCards,
-  movieListContainer,
-} from './catalog';
-
+import { createCards, movieListContainer } from './catalog';
 
 let page = 1;
-let perPage = 20;
 
 const refs = {
   paginationListLinks: document.querySelectorAll('.pagination-list__link'),
@@ -31,6 +26,18 @@ refs.paginationList.addEventListener('click', onClickList);
 async function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        refs.paginationListLinks[i + 1].textContent === '...' &&
+        refs.paginationListLinks[i - 1].textContent !== '02'
+      ) {
+        changesValuesBack(refs.paginationListLinks[i]);
+        changesValuesBack(refs.paginationListLinks[i - 1]);
+        changesValuesBack(refs.paginationListLinks[i - 2]);
+
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
       const prevElement = refs.paginationListLinks[i - 1];
 
       if (prevElement === refs.paginationListLinks[0]) {
@@ -40,7 +47,6 @@ async function onClickBack(event) {
         refs.paginationListLinks[i].classList.remove('selected');
         page = prevElement.textContent;
         prevElement.classList.add('selected');
-        trimZero(page);
         break;
       }
 
@@ -48,23 +54,35 @@ async function onClickBack(event) {
         refs.paginationListLinks[i].classList.remove('selected');
         page = prevElement.textContent;
         prevElement.classList.add('selected');
-        trimZero(page);
         break;
       }
     }
-  };
+  }
+  trimZero(page);
   await fetchMovieTrend(page)
-  .then(data => {
-    renderCards(data, movieListContainer);
-  })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
 }
 
 async function onClickForward(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        Number(refs.paginationListLinks[i].textContent) >= 03 &&
+        refs.paginationListLinks[i + 1].textContent === '...'
+      ) {
+        changesValuesForward(refs.paginationListLinks[i]);
+        changesValuesForward(refs.paginationListLinks[i - 1]);
+        changesValuesForward(refs.paginationListLinks[i - 2]);
+
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
       refs.paginationBackArrow.removeAttribute('disabled', '');
       const nextElement = refs.paginationListLinks[i + 1];
 
@@ -76,7 +94,6 @@ async function onClickForward(event) {
         page = nextElement.textContent;
         nextElement.classList.add('selected');
         event.target.setAttribute('disabled', '');
-        trimZero(page);
         break;
       }
 
@@ -87,18 +104,18 @@ async function onClickForward(event) {
         refs.paginationListLinks[i].classList.remove('selected');
         page = nextElement.textContent;
         nextElement.classList.add('selected');
-        trimZero(page);
         break;
       }
     }
   }
+  trimZero(page);
   await fetchMovieTrend(page)
-  .then(data => {
-    renderCards(data, movieListContainer);
-  })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
 }
 
 async function onClickList(event) {
@@ -126,19 +143,35 @@ async function onClickList(event) {
   });
   trimZero(page);
   await fetchMovieTrend(page)
-  .then(data => {
-    renderCards(data, movieListContainer);
-  })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
+    .then(data => {
+      renderCards(data, movieListContainer);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
 }
 
-function trimZero(page) {
-  page.toString()[0] === '0'
-    ? (page = Number(page.toString().slice(1)))
-    : (page = Number(page));
-  console.log(page);
+function trimZero(value) {
+  value.toString()[0] === '0'
+    ? (value = Number(value.toString().slice(1)))
+    : (value = Number(value));
+  console.log(value);
 }
 
+function changesValuesForward(element) {
+  element.textContent[0] === '0'
+    ? (element.textContent = Number(element.textContent.slice(1)) + 1)
+    : (element.textContent =
+        Number(refs.paginationListLinks[i].textContent) + 1);
 
+  element.textContent = '0' + element.textContent.toString();
+}
+
+function changesValuesBack(element) {
+  element.textContent[0] === '0'
+    ? (element.textContent = Number(element.textContent.slice(1)) - 1)
+    : (element.textContent =
+        Number(refs.paginationListLinks[i].textContent) - 1);
+
+  element.textContent = '0' + element.textContent.toString();
+}

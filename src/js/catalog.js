@@ -6,7 +6,7 @@ import { renderCards } from './movie_card';
 
 
 
-export let page = 1;
+let page = 1;
 
 // ======fetch=====
 export async function fetchMovieTrend(page) {
