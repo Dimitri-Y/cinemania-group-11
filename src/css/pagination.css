@@ -11,8 +11,7 @@ button.arrow {
   align-items: center;
   padding-top: 20px;
   padding-bottom: 40px;
-  margin-top: 500px;
-  background-color: #111111;
+  background-color: transparent;
 }
 
 .pagination-list {
@@ -43,12 +42,12 @@ button[disabled] {
 
 .pagination__back {
   margin-right: 4px;
-  background-image: url(../img/Vector1.svg);
+  background-image: url(../images/Vector1.svg);
 }
 
 .pagination__forward {
   margin-left: 4px;
-  background-image: url(../img/Vector2.svg);
+  background-image: url(../images/Vector2.svg);
 }
 
 .pagination-list__item:not(:last-child) {
@@ -64,7 +63,7 @@ button[disabled] {
   border: 1px solid #b7b7b7;
   border-radius: 50%;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 400;
   font-size: 10px;
   line-height: 1;
@@ -75,8 +74,8 @@ button[disabled] {
 }
 
 .pagination-list__link.selected {
-  background-color: #ffc226;
-  border-color: #ffc226;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -98,11 +97,11 @@ button[disabled] {
 
   .pagination__back {
     margin-right: 12px;
-    background-image: url(../img/Vector3.svg);
+    background-image: url(../images/Vector3.svg);
   }
 
   .pagination__forward {
     margin-left: 12px;
-    background-image: url(../img/Vector4.svg);
+    background-image: url(../images/Vector4.svg);
   }
 }
