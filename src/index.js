@@ -13,3 +13,4 @@ import './js/modal_window_watch';
 import './js/genre';
 import './js/movie_card';
 import './js/star_rating';
+import './js/search-form';
