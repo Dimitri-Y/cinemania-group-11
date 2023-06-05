@@ -10,3 +10,6 @@ import './js/catalog';
 import './js/scrollUp';
 import './js/mobile-menu';
 import './js/modal_window_watch';
+import './js/genre';
+import './js/movie_card';
+import './js/star_rating';
