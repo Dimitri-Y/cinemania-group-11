@@ -35,12 +35,13 @@
 }
 
 .hystmodal__window {
+  position: relative;
   width: 700px;
   height: 400px;
   background: #111111;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   border-radius: 20px;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 iframe {
@@ -58,7 +59,7 @@ iframe {
   background-color: transparent;
   background-position: 50%;
   background-repeat: no-repeat;
-  background-image: url("../images/icon-x.svg"); 
+  background-image: url('../images/icon-x.svg');
   stroke: #ffffff;
   background-size: 100% 100%;
   border: none;
@@ -71,4 +72,37 @@ iframe {
   outline: none;
   outline-offset: 2px;
   stroke: #f87719;
+}
+.errorWatchVideo {
+  display: flex;
+}
+
+.errorText {
+  box-sizing: border-box;
+  position: absolute;
+  width: 321px;
+  height: 100px;
+  left: 50px;
+  top: 150px;
+
+  font-family: 'Roboto Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: calc(100px / 3);
+
+  color: #ffffff;
+}
+.errorImg {
+  position: absolute;
+  width: 363px;
+  height: 318px;
+  left: 337px;
+  top: 77px;
+
+  /* background: url(IMG_9881.png); */
+}
+
+.is-hiddenVideo{
+  display: none;
 }
