@@ -2,6 +2,7 @@ import './js/api';
 import './js/api-key';
 import './js/mobile-menu';
 import './js/switch-theme';
+import './js/hero';
 import './js/home-upcoming';
 import './js/home-weekly';
 import './js/modal_window_watch';

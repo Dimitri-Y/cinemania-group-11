@@ -4,53 +4,79 @@ footer {
   margin-right: auto;
   display: flex;
   justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 28px;
 }
 .footer-contain {
   width: 320px;
   text-align: center;
-		padding-top: 40px;
-	padding-bottom: 28px;
 }
 
 .footer-contain__text {
-  margin: 0px 43px 0 43px;
+  margin: 0px;
 
-  font-family: 'Roboto';
+  font-family: 'Roboto Regular';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
 
   color: #b7b7b7;
 }
-
+.footer-contain__svg {
+  margin-top: 10px;
+}
 .footer-contain__students {
+  font-family: 'Roboto Medium';
   color: #b7b7b7;
   cursor: pointer;
-	text-decoration: underline;
+  text-decoration: underline;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-contain__students:hover,
 .footer-contain__students:focus {
   color: #f87719;
 }
+/* зміна теми сайту */
+.light-theme footer {
+  background: #f5f5f5;
+}
+
+.light-theme .footer-contain__text {
+  color: #595959;
+}
+
+.light-theme .footer-contain__students {
+  color: #595959;
+}
+.light-theme .footer-contain__students:hover,
+.light-theme .footer-contain__students:focus {
+  color: #f87719;
+}
 
 @media screen and (min-width: 768px) {
+  footer {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
   .footer-contain {
     width: 768px;
-		padding-top: 77px;
-		padding-bottom: 40px;
   }
 
   .footer-contain__text {
     font-size: 16px;
     line-height: 1.19;
   }
+  .footer-contain__svg {
+    margin-top: 0px;
+  }
 }
 
 @media screen and (min-width: 1158px) {
+  footer {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
   .footer-contain {
     width: 1280px;
-		padding-top: 100px;
-		padding-bottom: 80px;
   }
 }

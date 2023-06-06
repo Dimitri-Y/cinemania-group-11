@@ -17,7 +17,7 @@ async function fechMovieVideo(movie_id) {
   }
 }
 
-async function renderVideoLink(movie_id) {
+export async function renderVideoLink(movie_id) {
   try {
     if ((await fechMovieVideo(movie_id)) === undefined) {
       iframeVideo.classList.add('is-hiddenVideo');
