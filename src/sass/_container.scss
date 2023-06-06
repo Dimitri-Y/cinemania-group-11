@@ -1,21 +1,25 @@
 .container {
+    // position: absolute;
+    // top: 88px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 32px;
+    // padding: 0 32px;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        max-width: 320px;
-        // max-height: 380px;
+        max-width: 280px;
         padding: 0 20px;
     }
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
-        max-width: 768px;
-        // max-height: 432px;
+        // position: absolute;
+        // top: 122px;
+        max-width: 704px;
+        padding: 0 32px;
     }
 
     @media screen and (min-width: 1280px) {
-        max-width: 1280px;
-        // max-height: 720px;
+        max-width: 1010px;
+        padding: 0 135px;
+        // max-height: 660px;
     }
 }
