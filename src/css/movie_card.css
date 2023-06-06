@@ -26,13 +26,8 @@
   cursor: pointer;
   text-decoration: none;
   width: 280px;
-  height: 406px;
+  height: auto;
   border-radius: 5px;
-  /* background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 63.48%,
-    rgba(0, 0, 0, 0.9) 92.16%
-  ); */
 
   flex-basis: calc((100% - 2 * 16px) / 1);
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,12 +59,14 @@
   height: 100%;
   background-image: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0) 63.48%,
-      rgba(0, 0, 0, 0.9) 92.16%
+      #00000000 63.48%,
+      rgba(0, 0, 0, 0.902) 92.16%
     ),
-    url(/src/images/image-not-found.jpg);
+    url(../images/image-not-found.jpg);
+
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
   border-radius: 5px;
 }
 
@@ -102,7 +99,7 @@
 }
 
 .movie-card__title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -117,7 +114,7 @@
 }
 
 .movie-card__genre-year {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -132,7 +129,3 @@
     line-height: 1.15;
   }
 }
-
-
-
-
