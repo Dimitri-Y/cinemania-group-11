@@ -1,6 +1,5 @@
 import { IMAGE_URL_W500 } from './api-key';
 import { getGenres } from './genre';
-// import {initRatings} from "./star_rating"
 
 function createCards(data) {
   const { results } = data;
@@ -17,7 +16,7 @@ function createCards(data) {
         title.length > 26 ? title.slice(0, 26) + '...' : title;
       const truncatedGenre =
         genre.length > 18 ? genre.slice(0, 18) + '...' : genre;
-      // initRatings();
+
       return `<li class="movie-card">
       <img class="movie-card__img" src="${IMAGE_URL_W500}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
       <div class="movie-card__info">
