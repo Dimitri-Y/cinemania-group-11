@@ -1,10 +1,6 @@
-import axios from 'axios';
-import { KEY, TREND_URL, IMG_BASE_URL, IMAGE_URL_W500 } from './api-key';
 import { fetchMovieTrend } from './api';
-import { getGenres } from './genre';
 import { renderCards } from './movie_card';
-
-import { createCards, movieListContainer } from './catalog';
+import { movieListContainer } from './catalog';
 
 let page = 1;
 
