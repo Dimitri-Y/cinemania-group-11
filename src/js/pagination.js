@@ -1,10 +1,6 @@
-import axios from 'axios';
-import { KEY, TREND_URL, IMG_BASE_URL, IMAGE_URL_W500 } from './api-key';
 import { fetchMovieTrend } from './api';
-import { getGenres } from './genre';
 import { renderCards } from './movie_card';
-
-import { createCards, movieListContainer } from './catalog';
+import { movieListContainer } from './catalog';
 
 let page = 1;
 
@@ -23,7 +19,7 @@ refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
 
-async function onClickBack(event) {
+function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
       if (
@@ -59,7 +55,7 @@ async function onClickBack(event) {
     }
   }
   trimZero(page);
-  await fetchMovieTrend(page)
+  fetchMovieTrend(page)
     .then(data => {
       renderCards(data, movieListContainer);
     })
@@ -68,7 +64,7 @@ async function onClickBack(event) {
     });
 }
 
-async function onClickForward(event) {
+function onClickForward(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
       if (refs.paginationListLinks[i + 1].textContent === '...') {
@@ -106,7 +102,7 @@ async function onClickForward(event) {
     }
   }
   trimZero(page);
-  await fetchMovieTrend(page)
+  fetchMovieTrend(page)
     .then(data => {
       renderCards(data, movieListContainer);
     })
@@ -115,7 +111,7 @@ async function onClickForward(event) {
     });
 }
 
-async function onClickList(event) {
+function onClickList(event) {
   event.preventDefault();
 
   if (event.target.textContent === '...') {
@@ -139,7 +135,7 @@ async function onClickList(event) {
     }
   });
   trimZero(page);
-  await fetchMovieTrend(page)
+  fetchMovieTrend(page)
     .then(data => {
       renderCards(data, movieListContainer);
     })
@@ -158,17 +154,19 @@ function trimZero(value) {
 function changesValuesForward(element) {
   element.textContent[0] === '0'
     ? (element.textContent = Number(element.textContent.slice(1)) + 1)
-    : (element.textContent =
-        Number(refs.paginationListLinks[i].textContent) + 1);
+    : (element.textContent = Number(element.textContent) + 1);
 
-  element.textContent = '0' + element.textContent.toString();
+  if (element.textContent.length < 2) {
+    element.textContent = '0' + element.textContent.toString();
+  }
 }
 
 function changesValuesBack(element) {
   element.textContent[0] === '0'
     ? (element.textContent = Number(element.textContent.slice(1)) - 1)
-    : (element.textContent =
-        Number(refs.paginationListLinks[i].textContent) - 1);
+    : (element.textContent = Number(element.textContent) - 1);
 
-  element.textContent = '0' + element.textContent.toString();
+  if (element.textContent.length < 2) {
+    element.textContent = '0' + element.textContent.toString();
+  }
 }
