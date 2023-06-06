@@ -17,7 +17,7 @@ p {
     position: relative;
     /* width: 100%; */
     margin: 0 auto;
-    width: 280px;
+    width: 320px;
     height: 380px;
     background-color: #111111;
 
@@ -25,7 +25,7 @@ p {
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .hero__img {
-        width: 704px;
+        width: 768px;
         height: 372px;
 
     }
@@ -33,7 +33,7 @@ p {
 
 @media screen and (min-width: 1280px) {
     .hero__img {
-        width: 1010px;
+        width: 1280px;
         height: 660px;
 
     }
@@ -127,7 +127,7 @@ p {
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .containerh {
-        top: 88px;
+        top: 40px;
         max-width: 280px;
         /* max-height: 380px; */
         padding: 0 20px;
@@ -173,7 +173,7 @@ p {
     margin: 0;
     color: #FFFFFF;
 
-    width: 280px;
+    width: 90%;
 
 }
 
@@ -182,7 +182,7 @@ p {
         font-size: 44px;
         font-weight: 700;
         line-height: 49px;
-        width: 704px;
+        /* width: 704px; */
 
     }
 }
@@ -190,7 +190,7 @@ p {
 @media screen and (min-width: 1280px) {
     .hero__title {
         font-size: 54px;
-        width: 1010;
+        /* width: 1010; */
         /* height: 150px; */
         line-height: 55px;
     }

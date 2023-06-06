@@ -1,4 +1,4 @@
-.container {
+.containerq {
     // position: absolute;
     // top: 88px;
     max-width: 100%;
@@ -18,8 +18,8 @@
     }
 
     @media screen and (min-width: 1280px) {
-        // max-width: 1010px;
-        // padding: 0 135px;
+        max-width: 1010px;
+        padding: 0 135px;
         // max-height: 660px;
     }
 }

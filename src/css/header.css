@@ -16,7 +16,7 @@ body {
 
 /* ------------ MOBILE ------------ */
  .container {
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
   margin-left: auto;
   margin-right: auto;
  }

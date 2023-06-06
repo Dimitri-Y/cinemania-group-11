@@ -2,7 +2,6 @@ import { createFilmCardMarkup } from './card-markup';
 import { renderVideoLink } from './modal_window_watch';
 // const axios = require('axios').default;
 import '../css/hero.css';
-// import '../sass/header.scss';
 import '../css/styles.css';
 
 // import axios from 'axios';
