@@ -1,13 +1,13 @@
 
 .catalog{
     min-width: 320px;
-    background: #000;
 }
 .catalog__search-form{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 250px;
     margin-bottom: 16px;
 }
 
@@ -34,13 +34,11 @@
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     margin-right: 16px;
-
-
 }
-
-.catalog__search-input:focus{
-     border: 1px solid #ac2f2f;
- }
+.light-theme .catalog__search-input {
+    color: var(--menu-item-color);
+    border: 1px solid var(--menu-item-color);
+  }
 
 @media screen and (min-width: 1280px) {
     .catalog__search-input {
@@ -50,8 +48,11 @@
 .catalog__search-input::placeholder{
     color: #B7B7B7;
 }
+
+.light-theme .catalog__search-input::placeholder{
+    color: var(--menu-item-color);
+}
 .catalog__submit{
-    position: relative;
     width: 40px;
     height:40px;
     border: none;
@@ -59,17 +60,32 @@
     background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
       
 }
+
 .catalog__submit:hover{
-    background: linear-gradient(141.22deg, #F84119 9.4%, #FFC226 91.91%);
+    background: #FFFFFF;
 }
-.catalog__serch-icon{
-    fill: #FFFFFF;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 50%;
-    left: 50%;
+
+.light-theme .catalog__submit:hover{
+    border: 1px solid var(--current-color);
 } 
+
+
+.catalog__serch-icon,
+.catalog__icon-cross
+{
+    stroke: #FFFFFF;
+    fill:none;
+} 
+
+.light-theme .catalog__serch-icon,
+.light-theme .catalog__icon-cross{
+    stroke: #000;
+} 
+
+.catalog__submit:hover .catalog__serch-icon use,
+.catalog__btn-cross:hover .catalog__icon-cross use {
+    stroke: #ffa500;
+  }
 
 .catalog__message{
     padding-top: 48px;
@@ -80,6 +96,10 @@
     text-align: center;
     color: #FFFFFF;
 }
+
+.light-theme .catalog__message{
+    color: #000;
+} 
 
 .catalog__btn-cross{
     position: absolute;
@@ -95,12 +115,12 @@
 }
 @media screen and (min-width: 768px) {
     .catalog__btn-cross{
-        right: 286px;
+        right: 275px;
   }
 }
 @media screen and (min-width: 1280px) {
     .catalog__btn-cross{
-        right: 485px;
+        right: 480px;
   }
 }
  .ishidden{
