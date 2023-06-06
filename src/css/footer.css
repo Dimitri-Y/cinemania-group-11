@@ -31,7 +31,23 @@ footer {
 }
 .footer-contain__students:hover,
 .footer-contain__students:focus {
-  color: #f87719;
+  color: #F87719;
+}
+/* зміна теми сайту */
+.light-theme footer {
+  background: #F5F5F5;
+}
+
+.light-theme .footer-contain__text {
+  color: #595959;
+}
+
+.light-theme .footer-contain__students {
+  color: #595959;
+}
+.light-theme .footer-contain__students:hover,
+.light-theme .footer-contain__students:focus {
+  color: #F87719;
 }
 
 @media screen and (min-width: 768px) {
