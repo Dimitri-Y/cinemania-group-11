@@ -6,7 +6,7 @@ let page = 1;
 
 // ======ВИКЛИК ФУНКЦІЇ РЕНДЕРУ КАРТОК=======
 
-const movieListContainer = document.querySelector('.catalog__gallery');
+export const movieListContainer = document.querySelector('.catalog__gallery');
 fetchMovieTrend(page)
   .then(data => {
     renderCards(data, movieListContainer);
