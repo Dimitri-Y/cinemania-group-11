@@ -26,7 +26,7 @@
   cursor: pointer;
   text-decoration: none;
   width: 280px;
-  height: 406px;
+  max-height: 406px;
   border-radius: 5px;
   /* background: linear-gradient(
     180deg,
@@ -102,7 +102,7 @@
 }
 
 .movie-card__title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -117,7 +117,7 @@
 }
 
 .movie-card__genre-year {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -132,7 +132,3 @@
     line-height: 1.15;
   }
 }
-
-
-
-
