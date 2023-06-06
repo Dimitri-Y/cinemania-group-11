@@ -26,7 +26,7 @@
   cursor: pointer;
   text-decoration: none;
   width: 280px;
-  max-height: 406px;
+  height: auto;
   border-radius: 5px;
   /* background: linear-gradient(
     180deg,
