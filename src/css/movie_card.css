@@ -28,8 +28,9 @@
   width: 280px;
   height: auto;
   border-radius: 5px;
-
   flex-basis: calc((100% - 2 * 16px) / 1);
+  /* box-shadow: inset 0px -50px 20px rgba(0, 0, 0, 0.8); */
+
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -63,6 +64,7 @@
       rgba(0, 0, 0, 0.902) 92.16%
     ),
     url(../images/image-not-found.jpg);
+   
 
   background-repeat: no-repeat;
   background-size: cover;
