@@ -1,10 +1,12 @@
+import axios from 'axios';
+
 const KEY = 'f1a48bce74b470ddc6475541cec139b4';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_BASE_URL = `https://image.tmdb.org/t/p`;
 const UPCOMING_URL = `${BASE_URL}/movie/upcoming`;
-const IMG_W400 = `/w400`;
 
 const upcomingContainer = document.querySelector('.upcoming__container');
+const librariesKey = 'libraries';
 
 function fetchUpcomingMovies() {
   return fetch(`${UPCOMING_URL}?api_key=${KEY}&language=en-US&page=1`).then(
@@ -17,7 +19,59 @@ function fetchUpcomingMovies() {
   );
 }
 
-// add function onClickRemind
+function onClickRemind(event) {
+  const movieId = event.target.dataset.movieid;
+  // localStorage.clear()
+  // console.log(movieId);
+  const remindBtn = document.querySelector('.upcoming__remindme-btn');
+  if (remindBtn.textContent === 'Add to my Library') {
+    remindBtn.textContent = 'Remove from my Library';
+    addMovieToLibrary(movieId);
+  } else if (remindBtn.textContent === 'Remove from my Library') {
+    remindBtn.textContent = 'Add to my Library';
+    removeMovieFromLibrary(movieId);
+  }
+}
+// !!!
+const getMovieById = async id => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`
+    );
+    const result = {
+      ...data,
+    };
+    return result;
+  } catch (error) {
+    console.error('Smth wrong with api ID fetch' + error);
+  }
+};
+
+function addMovieToLibrary(movieId) {
+  getMovieById(movieId).then(movie => {
+    movie.genre_names = movie.genres
+      .map(genre => {
+        return genre.name;
+      })
+      .slice(0, 2)
+      .join(',');
+    if (movie.release_date) {
+      movie.release_date = movie.release_date.slice(0, 4);
+    }
+    let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
+    libraries[movie.id] = movie;
+    localStorage.setItem(librariesKey, JSON.stringify(libraries));
+  });
+}
+
+function removeMovieFromLibrary(movieId) {
+  let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
+  delete libraries[movieId];
+  localStorage.setItem(librariesKey, JSON.stringify(libraries));
+  if (refs.libraryList) renderLibraryData();
+}
+
+// !!!
 
 async function getFetchedMovies() {
   try {
@@ -27,12 +81,12 @@ async function getFetchedMovies() {
     if (returnedResult.length >= 1) {
       const randomMovie =
         returnedResult[Math.floor(Math.random() * returnedResult.length)];
+      console.log(randomMovie);
       const genreNames = await getGenresById(randomMovie.genre_ids);
       const createdMarkup = await renderMarkup({ ...randomMovie, genreNames });
       upcomingContainer.insertAdjacentHTML('beforeend', createdMarkup);
-      document
-        .querySelector('.upcoming__remindme-btn')
-        .addEventListener('click', onClickRemind);
+      const remindBtn = document.querySelector('.upcoming__remindme-btn');
+      remindBtn.addEventListener('click', onClickRemind);
     }
   } catch (error) {
     console.log(error);
@@ -54,15 +108,14 @@ async function renderMarkup({
 }) {
   const genreNames = await getGenresById(genre_ids);
 
-
-    return `
+  return `
     <div class="upcoming__card">
         <div class="upcoming__thumb">
             <picture class='upcoming__poster'>
             <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 1200px)" class='upcoming__poster-desktop'/>
             <source srcset="https://image.tmdb.org/t/p/original/${backdrop_path}" media="(min-width: 768px)" class='upcoming__poster-tablet'/>
             <source srcset="https://image.tmdb.org/t/p/original/${poster_path}" media="(min-width: 320px)"/>
-            <img src="https://image.tmdb.org/t/p/original/${poster_path}" alt="Movie Poster" style='width: 805px'/>
+            <img src="https://image.tmdb.org/t/p/original/${poster_path}" alt="Movie Poster" style='width: 805px' class='main-img'/>
             </picture>
         </div>
     </div>
@@ -90,12 +143,10 @@ async function renderMarkup({
         <h2 class="upcoming__info-about">ABOUT</h2>
 
         <p class="upcoming__info-description">${overview}</p>
-        <button class="upcoming__remindme-btn" data-movieid=${id}  type="button">Add to Library</button>
+        <button class="upcoming__remindme-btn" data-movieid=${id}  type="button">Add to my Library</button>
     </div>
      `;
 }
-
-
 
 async function getGenresById(genreIds) {
   const BASE_URL = `https://api.themoviedb.org/3/genre/movie/list`;
