@@ -13,6 +13,5 @@ import './js/movie_card';
 import './js/star_rating';
 import './js/scrollUp';
 import './js/catalog';
-import './js/mobile-menu';
 import './js/search-form';
 import './js/modal-details';
