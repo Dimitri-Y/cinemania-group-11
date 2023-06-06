@@ -22,8 +22,11 @@ footer {
 
   color: #b7b7b7;
 }
-
+.footer-contain__svg {
+  margin-top: 10px;
+}
 .footer-contain__students {
+  font-family: 'Roboto Medium';
   color: #b7b7b7;
   cursor: pointer;
   text-decoration: underline;
@@ -31,11 +34,11 @@ footer {
 }
 .footer-contain__students:hover,
 .footer-contain__students:focus {
-  color: #F87719;
+  color: #f87719;
 }
 /* зміна теми сайту */
 .light-theme footer {
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .light-theme .footer-contain__text {
@@ -47,7 +50,7 @@ footer {
 }
 .light-theme .footer-contain__students:hover,
 .light-theme .footer-contain__students:focus {
-  color: #F87719;
+  color: #f87719;
 }
 
 @media screen and (min-width: 768px) {
@@ -62,6 +65,9 @@ footer {
   .footer-contain__text {
     font-size: 16px;
     line-height: 1.19;
+  }
+  .footer-contain__svg {
+    margin-top: 0px;
   }
 }
 
