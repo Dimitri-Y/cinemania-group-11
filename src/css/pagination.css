@@ -1,9 +1,17 @@
+button.arrow {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 20px;
   padding-bottom: 40px;
-  background-color: #111111;
+  background-color: transparent;
 }
 
 .pagination-list {
@@ -11,8 +19,20 @@
   justify-content: center;
 }
 
+.pagination-list__link.more {
+  border: 0;
+  width: 16px;
+}
+
+button[disabled] {
+  pointer-events: auto;
+  cursor: default;
+  /* color: #888; */
+}
+
 .pagination .arrow {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 20px;
   height: 20px;
   background-size: 6px;
@@ -30,19 +50,20 @@
   background-image: url(../images/Vector2.svg);
 }
 
-.pagination-list__link:not(:last-child) {
+.pagination-list__item:not(:last-child) {
   margin-right: 8px;
 }
 
 .pagination-list__link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 24px;
   height: 24px;
-  padding: 7px;
   border: 1px solid #b7b7b7;
   border-radius: 50%;
 
-  font-family: 'Roboto Regular';
+  font-family: 'Roboto';
   font-weight: 400;
   font-size: 10px;
   line-height: 1;
@@ -53,7 +74,8 @@
 }
 
 .pagination-list__link.selected {
-  background-color: #ffc226;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -63,7 +85,7 @@
     font-size: 14px;
   }
 
-  .pagination-list__link:not(:last-child) {
+  .pagination-list__item:not(:last-child) {
     margin-right: 16px;
   }
 
@@ -75,11 +97,11 @@
 
   .pagination__back {
     margin-right: 12px;
-    background-image: url(../images/Vector1.svg);
+    background-image: url(../images/Vector3.svg);
   }
 
   .pagination__forward {
     margin-left: 12px;
-    background-image: url(../images/Vector2.svg);
+    background-image: url(../images/Vector4.svg);
   }
 }
