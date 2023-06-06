@@ -42,7 +42,7 @@ body {
  }
  
  .menu-item {
- font-family: 'Roboto';
+ font-family: 'Roboto Medium';
  font-weight: 500;
  font-size: 12px;
  line-height: 1.7;
@@ -86,7 +86,7 @@ body {
  }
  
 .menu-item-mob {
- font-family: 'Roboto';
+ font-family: 'Roboto Regular';
 font-size: 14px;
 line-height: 1.14;
 margin-bottom: 24px;
@@ -128,7 +128,7 @@ height: 60px;
 }
 
 .logo-text {
- font-family: 'Roboto';
+ font-family: 'Roboto Regular';
 font-size: 24px;
 line-height: 1.17;
 display: flex;

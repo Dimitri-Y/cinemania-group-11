@@ -9,9 +9,12 @@ button.arrow {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
+}
+
+.container.pagination {
   padding-top: 20px;
-  padding-bottom: 40px;
-  background-color: #000;
+  /* padding-bottom: 40px; */
 }
 
 .pagination-list {
@@ -42,12 +45,20 @@ button[disabled] {
 
 .pagination__back {
   margin-right: 4px;
-  background-image: url(../images/Vector1.svg);
+  background-image: url(../images/Vector-back.svg);
+}
+
+.light-theme .pagination__back {
+  background-image: url(../images/Vector-back-light.svg);
 }
 
 .pagination__forward {
   margin-left: 4px;
-  background-image: url(../images/Vector2.svg);
+  background-image: url(../images/Vector-forward.svg);
+}
+
+.light-theme .pagination__forward {
+  background-image: url(../images/Vector-forward-light.svg);
 }
 
 .pagination-list__item:not(:last-child) {
@@ -63,22 +74,36 @@ button[disabled] {
   border: 1px solid #b7b7b7;
   border-radius: 50%;
 
-  font-family: 'Roboto';
+  font-family: 'Roboto Regular';
   font-weight: 400;
   font-size: 10px;
   line-height: 1;
 
   text-align: center;
 
-  color: #ffffff;
+  color: #b7b7b7;
+}
+
+.light-theme .pagination-list__link {
+  border-color: #282828;
+  color: #282828;
 }
 
 .pagination-list__link.selected {
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border: none;
+  color: #ffffff;
+}
+
+.light-theme .pagination-list__link.selected {
+  color: #282828;
 }
 
 @media screen and (min-width: 768px) {
+  .container.pagination {
+    padding-top: 44px;
+  }
+
   .pagination-list__link {
     width: 40px;
     height: 40px;
@@ -97,11 +122,41 @@ button[disabled] {
 
   .pagination__back {
     margin-right: 12px;
-    background-image: url(../images/Vector3.svg);
+    background-image: url(../images/Vector-back-tablet.svg);
   }
 
   .pagination__forward {
     margin-left: 12px;
-    background-image: url(../images/Vector4.svg);
+    background-image: url(../images/Vector-forward-tablet.svg);
+  }
+
+  .light-theme .pagination__back {
+    background-image: url(../images/Vector-back-light-tablet.svg);
+  }
+
+  .light-theme .pagination__forward {
+    background-image: url(../images/Vector-forward-light-tablet.svg);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container.pagination {
+    padding-top: 60px;
+  }
+
+  .pagination__back {
+    background-image: url(../images/Vector-back-desktop.svg);
+  }
+
+  .pagination__forward {
+    background-image: url(../images/Vector-forward-desktop.svg);
+  }
+
+  .light-theme .pagination__back {
+    background-image: url(../images/Vector-back-desktop-light.svg);
+  }
+
+  .light-theme .pagination__forward {
+    background-image: url(../images/Vector-forward-desktop-light.svg);
   }
 }
