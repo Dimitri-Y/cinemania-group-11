@@ -18,7 +18,7 @@ function createFilmCardMarkup(randomFilm) {
     </p>
   </div>
   <div class="hero_but">
-    <button class="hero__but1" type="button" data-modal-open>
+    <button class="hero__but1" type="button" data-modal-open data-hystmodal="#modalVideo">
      Watch trailer
     </button>
     <button class="hero__but1 but2" type="button" data-modal-open>

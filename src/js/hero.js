@@ -1,4 +1,5 @@
 import { createFilmCardMarkup } from './card-markup';
+import { renderVideoLink } from './modal_window_watch';
 // const axios = require('axios').default;
 import '../css/hero.css';
 // import '../sass/header.scss';
@@ -32,8 +33,10 @@ fetch(
     // console.log(randomFilm.id);
     // if (randomFilm !== 0) {
     //   hideDefaulHero();
-
+    console.log(randomFilm);
     const markup = createFilmCardMarkup(randomFilm);
+    const id_movie = randomFilm.id;
+    renderVideoLink(id_movie);
     console.log(markup);
     refs.blockMain.innerHTML = markup;
     console.log(refs.blockMain);
