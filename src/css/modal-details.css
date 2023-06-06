@@ -72,7 +72,7 @@
 
 .modal-about__title {
   font-size: 20px;
-  line-height: 23px;
+  line-height: 1.15;
   margin-bottom: 29px;
 }
 
@@ -100,6 +100,11 @@
   margin-bottom: 12px;
 }
 
+.modal-about-stat__number-item--vote {
+  font-size: 12px;
+  line-height: 1.16;
+}
+
 .modal-about-stat__number-item--vote-disk {
   background-color: #fff;
   color: #111111;
@@ -112,6 +117,7 @@
   color: #b7b7b7;
   font-size: 14px;
   line-height: 1.14;
+  text-transform: uppercase;
 }
 
 .modal-about__description {
@@ -124,6 +130,8 @@
   margin-bottom: 16px;
   color: #f8f8f8;
   overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.67;
 }
 
 .modal-about__btn {
@@ -176,6 +184,8 @@
     max-width: 704px;
     padding: 44px;
     max-height: 488px;
+    overflow-x: visible;
+    overflow-y: visible;
   }
 
   .modal-about__container {
@@ -198,6 +208,11 @@
     margin-bottom: 20px;
   }
 
+  .modal-about-stat__number-item--vote {
+    font-size: 12px;
+    line-height: 1.16;
+  }
+
   .modal-about__subtitle {
     margin-bottom: 16px;
   }
@@ -206,6 +221,8 @@
     max-width: 301px;
     height: 140px;
     margin-bottom: 24px;
+    font-size: 12px;
+    line-height: 1.67;
   }
 }
 
@@ -226,13 +243,32 @@
     margin-bottom: 28px;
   }
 
-  .modal-about-stat__name-items{
+  .modal-about-stat__name-items {
     font-size: 16px;
     line-height: 1.19;
   }
 
+  .modal-about-stat__number-item--vote {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  .modal-about-stat__number-item--popularity,
+  .modal-about-stat__number-item--genre {
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .modal-about__subtitle {
+    font-size: 16px;
+    line-height: 1;
+  }
+
   .modal-about__description {
-    max-width: 331px;
-    height: 159px;
+    max-width: 337px;
+    padding-right: 6px;
+    height: 160px;
+    font-size: 14px;
+    line-height: 1.43;
   }
 }

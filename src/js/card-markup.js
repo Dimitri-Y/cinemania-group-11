@@ -4,7 +4,7 @@ function createFilmCardMarkup(randomFilm) {
   <img class="hero__image" src="https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path}" alt="${randomFilm.title}"/>
   <div class="hero__gradient">
   </div>
-</div>
+
 <div class="containerh hero__containerh">
   <h1 class="hero__title">
     ${randomFilm.title}
@@ -24,6 +24,7 @@ function createFilmCardMarkup(randomFilm) {
     <button class="hero__but1 but2" type="button" data-modal-open>
       More details
     </button>
+</div>
 </div>
 `;
 }
