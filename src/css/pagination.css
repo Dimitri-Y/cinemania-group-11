@@ -11,7 +11,7 @@ button.arrow {
   align-items: center;
   padding-top: 20px;
   padding-bottom: 40px;
-  background-color: transparent;
+  background-color: #000;
 }
 
 .pagination-list {
