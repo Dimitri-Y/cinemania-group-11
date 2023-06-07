@@ -8,16 +8,19 @@
     justify-content: center;
     align-items: center;
     min-width: 250px;
+    margin-top: 40px;
     margin-bottom: 16px;
 }
 
 @media screen and (min-width: 768px) {
     .catalog__search-form{
+        margin-top: 60px;
         margin-bottom: 36px;
   }
 }
 @media screen and (min-width: 1280px) {
     .catalog__search-form{
+        margin-top: 80px;
         margin-bottom: 48px;
   }
 }
@@ -25,7 +28,7 @@
 .catalog__search-input{
     font-family: 'Roboto Regular';
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
     color: #B7B7B7;
     width: 224px;
     height: 40px;
@@ -35,14 +38,17 @@
     border-radius: 8px;
     margin-right: 16px;
 }
+
 .light-theme .catalog__search-input {
-    color: var(--menu-item-color);
-    border: 1px solid var(--menu-item-color);
+    color: #595959;
+    border: 1px solid #595959;
   }
 
 @media screen and (min-width: 1280px) {
     .catalog__search-input {
-      width: 334px;  
+      width: 334px; 
+      font-size: 16px;
+      line-height: 1.17; 
     }
   }
 .catalog__search-input::placeholder{
@@ -92,13 +98,26 @@
     padding-bottom: 40px;
     font-family: 'Roboto Regular';
     font-size: 20px;
-    line-height: 28px;
+    line-height: 1.4;
     text-align: center;
     color: #FFFFFF;
 }
 
+@media screen and (min-width: 768px) {
+    .catalog__message{
+        font-size: 24px;
+        line-height: 1.33;
+  }
+}
+@media screen and (min-width: 1280px) {
+    .catalog__message{
+        font-size: 32px;
+        line-height: 1.13;
+  }
+}
+
 .light-theme .catalog__message{
-    color: #000;
+    color: #111;
 } 
 
 .catalog__btn-cross{
