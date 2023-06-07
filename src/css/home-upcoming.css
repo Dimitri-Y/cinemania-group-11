@@ -1,5 +1,32 @@
 /* ==============================HOME-UPCOMING============================== */
 
+/* ====================LIGHT-THEME==================== */
+.light-theme .upcoming__title {
+  color: #111;
+}
+.light-theme .upcoming__info-title {
+  color: #111;
+}
+.light-theme .upcoming__light-black{
+  color: #111;
+}
+.light-theme .slash{
+  color: #111;
+}
+.light-theme .upcoming__info-about{
+  color: #111;
+}
+.light-theme .upcoming__info-description{
+  color: #282828;
+}
+.light-theme .upcoming__info-pop-range{
+  color: #111;
+}
+.light-theme .upcoming__info-genre-kind{
+  color: #111;
+}
+/* ====================/LIGHT-THEME==================== */
+
 /* ====================MOBILE==================== */
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -7,11 +34,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    color: #111111;
+    /* color: #111111; */
   }
   section.upcoming {
-    padding:16px 0 40px;
-    background-color: #111111;
+    padding: 16px 0 40px;
+    /* background-color: #111111; */
   }
   .upcoming__title {
     font-size: 16px;
@@ -21,6 +48,7 @@
     text-transform: uppercase;
     line-height: 1.18;
   }
+
   .upcoming__info-title {
     margin-bottom: 20px;
     font-family: 'Roboto Medium';
@@ -53,6 +81,9 @@
   .upcoming__info-pop,
   .upcoming__info-genre {
     display: flex;
+  }
+  .upcoming__info-vote {
+    margin-bottom: 12px;
   }
   .slash {
     color: #fff;
@@ -130,7 +161,7 @@
   section.upcoming {
     padding-bottom: 17px;
     padding-top: 22px;
-    background-color: #111111;
+    /* background-color: #111111; */
   }
 
   .upcoming__title {
@@ -265,7 +296,7 @@
 @media screen and (min-width: 1279px) {
   section.upcoming {
     padding: 30px 0 50px;
-    background-color: #111111;
+    /* background-color: #111111; */
   }
   .upcoming__info {
     width: 390px;
@@ -313,7 +344,7 @@
     color: #f87719;
   }
   .upcoming {
-    background-color: #282828;
+    /* background-color: #282828; */
     padding-top: 30px;
     padding-bottom: 50px;
   }
@@ -387,7 +418,8 @@
   .main-img {
     border-radius: 5px;
   }
-  .upcoming__info-pop,.upcoming__info-release {
+  .upcoming__info-pop,
+  .upcoming__info-release {
     margin-bottom: 12px;
   }
 }
