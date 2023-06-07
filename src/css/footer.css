@@ -1,5 +1,5 @@
 footer {
-  background: #111111;;
+  background: #111111;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -15,7 +15,6 @@ footer {
   margin: 0px;
 
   font-family: 'Roboto Regular';
-  font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
 
@@ -84,7 +83,7 @@ footer {
   overflow-y: scroll;
 
   color: #f8f8f8;
-  background: #000;
+  background: #111111;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   border-radius: 16px;
 }
@@ -97,11 +96,6 @@ footer {
   background-color: #f87719;
   border-radius: 74px;
 }
-
-/* .footer-contain__modal::-webkit-scrollbar-thumb:hover,
-.footer-contain__modal::-webkit-scrollbar-thumb:focus {
-  background-color: #f85500;
-} */
 
 /* закриваюча свг */
 .footer-contain__modal svg {
@@ -119,18 +113,14 @@ footer {
 /*  */
 .footer-contain__modal-title {
   margin: 0;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  font-family: 'Roboto Medium';
   font-size: 20px;
   line-height: 1.15;
 }
 .footer-contain__modal-text {
   margin-top: 15px;
   margin-bottom: 20px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
+  font-family: 'Roboto Regular';
   font-size: 12px;
   line-height: 1.67;
 }
@@ -150,7 +140,7 @@ footer {
   border: none;
 
   color: #f5f5f5;
-  background: #000;
+  background: #111111;
 
   transition: background 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -193,9 +183,7 @@ footer {
   margin-top: 0px;
   margin-bottom: 15px;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  font-family: 'Roboto Medium';
   font-size: 16px;
   line-height: 1.14;
 }
@@ -212,14 +200,15 @@ footer {
   margin-right: 8px;
   color: #b7b7b7;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  font-family: 'Roboto Medium';
   font-size: 12px;
   line-height: 1.33;
 }
 
 .footer-contain__modal-list-name {
+  font-family: 'Roboto Medium';
+  font-size: 14px;
+  line-height: 1.17;
   color: #f87719;
   text-decoration: underline;
   transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -246,7 +235,7 @@ footer {
   border: none;
 
   color: #f5f5f5;
-  background: #000;
+  background: #111111;
 
   transition: background 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -312,10 +301,7 @@ footer {
     margin: 0%;
   }
   .footer-contain__modal-list-name {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
   }
   /* .footer-contain__modal-back {
