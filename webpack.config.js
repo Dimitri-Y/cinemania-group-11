@@ -1,7 +1,7 @@
 // import { resolve } from 'path';
 // import { webpack } from 'webpack';
 
-export const mode = 'production';
+// export const mode = 'production';
 // export const entry = './src/index.js';
 // export const output = {
 //   path: resolve(__dirname, 'dist'),
