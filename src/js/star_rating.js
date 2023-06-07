@@ -1,7 +1,4 @@
-// const ratings = document.querySelectorAll('.rating');
-// if (ratings.length > 0) {
-//   initRatings();
-// }
+
 
 function initRatings(data) {
   const ratings = document.querySelectorAll('.rating');
