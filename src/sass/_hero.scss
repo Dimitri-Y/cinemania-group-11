@@ -6,7 +6,7 @@
 .hero {
      width: 100%;
      height: 100%;
-     max-width: 320px;
+     max-width: 280px;
     //  height: 380px;
      margin: 0 auto;
 
@@ -28,7 +28,7 @@
         }
 
      @media screen and (min-width: 768px) and (max-width: 1279px) {
-         max-width: 768px;
+         max-width: 704px;
         //  height: 248px;
          padding-top: 62px;
          padding-bottom: 62px;
@@ -48,8 +48,8 @@
         }
 
      @media screen and (min-width: 1280px) {
-         max-width: 1280px;
-        //  height: 66npm0px;
+         max-width: 1010px;
+     
          padding-top: 169px;
          padding-bottom: 169px;
          margin: 0 auto;
@@ -65,37 +65,6 @@
             background: linear-gradient(83.16deg, #111111 36.85%, rgba(17, 17, 17, 0) 60.05%), -webkit-image-set(url(../images/hero/hero_home_d_2x.webp) 2x) top 0px left 275px/1280px 720px no-repeat;
             }
         }
-         
-    
-
-    //  &__img {
-    //     width: 100%;
-    //     height: 100%;
-    //     max-width: 320px;
-    //     max-height: 380px;
-    //     margin: 0 auto;
-    //     display: block;
-    //     position: absolute;
-    //     top: 48px;
-    //     // left: 0;
-    //     // max-width: 320px;
-        
-
-    //         @media screen and (min-width: 768px) and (max-width: 1279px) {
-    //             width: 100%;
-    //             height: 100%;
-    //             max-width: 768px;
-    //             max-height: 372px;
-    //             // margin: 0 auto;
-    //             // display: block;
-    //             // position: absolute;
-    //             top: 60px;
-    //             left: 0;
-    //             // max-width: 320px;
-                
-    //                                     @media screen and (min-width: 1280px) {
-
-    //  }
 
      &__container {
          display: flex;
@@ -107,7 +76,7 @@
      &__title {
         font-family: 'Roboto Bold';
         font-size: 32px;
-        width: 199px;
+        width: 100%;
         font-weight: 700;
         line-height: 38px;
         letter-spacing: 0em;
@@ -116,8 +85,6 @@
 
          @media screen and (min-width: 768px) {
              font-size: 44px;
-             width: 332px;
-             height: 104px;
              font-weight: 700;
              line-height: 52px;
              
@@ -126,8 +93,6 @@
 
          @media screen and (min-width: 1280px) {
              font-size: 64px;
-             width: 484px;
-             height: 150px;
              line-height: 75px;
              padding-bottom: 16px;
          }
