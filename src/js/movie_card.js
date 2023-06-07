@@ -17,7 +17,7 @@ function createCards(data) {
       // const truncatedGenre =
       //   genre.length > 18 ? genre.slice(0, 18) + '...' : genre;
 
-      return `<li class="movie-card">
+      return `<li class="movie-card js-open-modal" data-id="${id}" data-modal="1">
       <img class="movie-card__img" src="${IMAGE_URL_W500}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
       <div class="movie-card__info">
       <p class="movie-card__title">${title}</p>
