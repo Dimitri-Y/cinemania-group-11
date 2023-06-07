@@ -1,0 +1,65 @@
+.weekly__trends {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 32px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 768px) {
+  .weekly__trends {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .weekly__trends {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+}
+
+.weekly__trends-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 1.1875;
+  color: #ffffff;
+  /* color: #f87719; */
+}
+.weekly__trends-title a {
+  text-transform: none;
+  color: #f87719;
+}
+@media screen and (min-width: 768px) {
+  .weekly__trends-title {
+    font-size: 24px;
+    line-height: 1.6666;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .weekly__trends-title {
+    font-size: 28px;
+    line-height: 1.1785;
+  }
+}
+.weekly__gallery {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  display: flex;
+  position: relative;
+}
+.weekly__container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+@media screen and (min-width: 768px) {
+  .weekly__container {
+    padding-top: 52px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .weekly__container {
+    padding-top: 80px;
+  }
+}
