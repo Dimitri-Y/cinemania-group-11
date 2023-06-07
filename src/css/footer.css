@@ -1,15 +1,14 @@
 footer {
-  background: #000;
+  background: #111111;;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 28px;
 }
 .footer-contain {
   width: 320px;
   text-align: center;
+  padding: 40px 42px 28px;
 }
 
 .footer-contain__text {
@@ -52,7 +51,6 @@ footer {
 .light-theme .footer-contain__students:focus {
   color: #f87719;
 }
-
 
 /* modal */
 .footer-contain__backdrop {
@@ -121,7 +119,7 @@ footer {
 /*  */
 .footer-contain__modal-title {
   margin: 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -130,7 +128,7 @@ footer {
 .footer-contain__modal-text {
   margin-top: 15px;
   margin-bottom: 20px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -159,7 +157,7 @@ footer {
 /* градієнт border */
 .footer-contain__modal-github::before,
 .footer-contain__modal-back::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -1px;
   left: -1px;
@@ -195,7 +193,7 @@ footer {
   margin-top: 0px;
   margin-bottom: 15px;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -214,7 +212,7 @@ footer {
   margin-right: 8px;
   color: #b7b7b7;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -254,10 +252,6 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
-  footer {
-    padding-top: 60px;
-    padding-bottom: 40px;
-  }
   .footer-contain {
     width: 768px;
   }
@@ -265,12 +259,13 @@ footer {
   .footer-contain__text {
     font-size: 16px;
     line-height: 1.19;
+
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
   .footer-contain__svg {
     margin-top: 0px;
   }
-
-
 
   /* modal */
   .footer-contain__modal {
@@ -317,7 +312,7 @@ footer {
     margin: 0%;
   }
   .footer-contain__modal-list-name {
-    font-family: "Roboto";
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -328,16 +323,14 @@ footer {
   } */
 }
 
-
 @media screen and (min-width: 1158px) {
-  footer {
-    padding-top: 100px;
-    padding-bottom: 80px;
-  }
   .footer-contain {
     width: 1280px;
   }
-
+  .footer-contain__text {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
 
   /* modal */
   .footer-contain__modal {
