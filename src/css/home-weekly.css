@@ -4,15 +4,18 @@
   width: calc(100% - 32px);
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
   .weekly__trends {
     width: 100%;
+    margin-bottom: 24px;
   }
 }
 @media screen and (min-width: 1280px) {
   .weekly__trends {
     width: 100%;
+    margin-bottom: 28px;
   }
 }
 
@@ -45,4 +48,18 @@
   gap: 16px;
   display: flex;
   position: relative;
+}
+.weekly__container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+@media screen and (min-width: 768px) {
+  .weekly__container {
+    padding-top: 52px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .weekly__container {
+    padding-top: 80px;
+  }
 }
