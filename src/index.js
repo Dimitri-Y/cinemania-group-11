@@ -19,3 +19,4 @@ import './js/genre';
 import './js/star_rating';
 import './js/search-form';
 import './js/modal-details';
+import './js/footer';
