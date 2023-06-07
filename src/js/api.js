@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { KEY, TREND_URL } from './api-key';
 
+// запит на трендові фільми тижня
 async function fetchMovieTrend(page) {
   const PAGE = `&page=${page}`;
   return await axios
