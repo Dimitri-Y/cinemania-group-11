@@ -45,7 +45,7 @@ fetch(
 
       // renderStars();
       const rate = randomFilm.vote_average;
-      initRatings(rating, rate);
+      initRatings(rate);
 
       // const markupStars = createStarsMarkup;
     }
