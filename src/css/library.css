@@ -59,14 +59,14 @@
   padding: 44px 0 42px;
   background-color: #111111;
 }
-.library-body__wrap {
+.library-body__default-item {
   display: block;
-  width: 240px;
   margin: 0 auto;
 }
 .library-body__default-sub {
   display: block;
   margin: 0 auto 20px;
+  max-width: 240px;
 
   font-family: 'Roboto';
   font-weight: 400;
@@ -91,8 +91,7 @@
 }
 .library-body__btn-span {
   display: block;
-  font-family: 'Roboto Regular';
-  font-weight: 500;
+  font-family: 'Roboto Medium';
   font-size: 12px;
   line-height: 14px;
 }
@@ -171,6 +170,7 @@
     width: 438px;
   }
   .library-body__default-sub {
+    max-width: none;
     font-size: 24px;
     line-height: 1.33;
   }

@@ -18,14 +18,33 @@ async function fetchWeeklyTrend(page) {
 }
 let page = 1;
 
-export const movieListContainer = document.querySelector('.weekly__gallery');
-const childCount = movieListContainer.childElementCount;
-fetchWeeklyTrend(page)
-  .then(data => {
-    renderCards(data, movieListContainer);
-    initRatings(data);
-    if (childCount === 3) return;
-  })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
+const weeklyListContainer = document.querySelector('.weekly__gallery');
+function getAndRenderMovie() {
+  fetchWeeklyTrend(page)
+    .then(data => {
+      renderCards(data, weeklyListContainer);
+      initRatings(data);
+    })
+    .catch(error => {
+      console.error('Error rendering movie cards:', error);
+    });
+}
+function toggleLastTwoMovies() {
+  const movies = weeklyListContainer.querySelectorAll('li');
+  const lastTwoMovies = Array.from(movies).slice(-2);
+
+  if (window.innerWidth <= 767) {
+    lastTwoMovies.forEach(movie => {
+      movie.style.display = 'none';
+    });
+  } else {
+    lastTwoMovies.forEach(movie => {
+      movie.style.display = 'block';
+    });
+  }
+}
+
+// Викликати функцію при завантаженні сторінки та при зміні розміру вікна
+window.addEventListener('DOMContentLoaded', getAndRenderMovie);
+window.addEventListener('DOMContentLoaded', toggleLastTwoMovies);
+window.addEventListener('resize', toggleLastTwoMovies);
