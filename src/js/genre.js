@@ -29,11 +29,13 @@ function getGenres(genreArr) {
       }
     }
   });
-
-  if (genre.length > 2) {
-    genre.splice(2, 5);
+  if (genre.length > 1) {
+    genre.splice(1);
   }
+  // if (genre.length > 2) {
+  //   genre.splice(2, 5);
+  // }
   return genre.join(', ');
 }
 
-export { getGenres};
+export { getGenres };

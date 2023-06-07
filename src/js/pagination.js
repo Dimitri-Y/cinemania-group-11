@@ -22,6 +22,22 @@ refs.paginationList.addEventListener('click', onClickList);
 function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+
+
+      if (
+      
+        refs.paginationListLinks[i] ===
+          refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        changesValuesBack(refs.paginationListLinks[i]);
+        changesValuesBack(refs.paginationListLinks[i - 1]);
+        changesValuesBack(refs.paginationListLinks[i - 2]);
+        changesValuesBack(refs.paginationListLinks[i - 3]);
+
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
       if (
         refs.paginationListLinks[i + 1].textContent === '...' &&
         refs.paginationListLinks[i - 1].textContent !== '02'
@@ -33,6 +49,8 @@ function onClickBack(event) {
         page = refs.paginationListLinks[i].textContent;
         break;
       }
+
+
 
       const prevElement = refs.paginationListLinks[i - 1];
 
@@ -118,22 +136,55 @@ function onClickList(event) {
     console.log(page);
     return;
   }
-  refs.paginationListLinks.forEach(item => {
-    if (item.classList.contains('selected') && event.target !== item) {
-      item.classList.remove('selected');
+
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (
+      refs.paginationListLinks[i].classList.contains('selected') &&
+      event.target !== refs.paginationListLinks[i]
+    ) {
+      refs.paginationListLinks[i].classList.remove('selected');
     }
-    if (event.target === item && item !== refs.paginationListLinks[0]) {
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      event.target ===
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+    ) {
+      refs.paginationBackArrow.removeAttribute('disabled', '');
+      refs.paginationForwardArrow.setAttribute('disabled', '');
+      page = event.target.textContent;
+      event.target.classList.add('selected');
+
+      refs.paginationListLinks[0].textContent = '...';
+
+      refs.paginationListLinks[i - 1].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 1;
+      refs.paginationListLinks[i - 1].classList.remove('more');
+      refs.paginationListLinks[i - 2].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 2;
+      refs.paginationListLinks[i - 3].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 3;
+    }
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      refs.paginationListLinks[i] !== refs.paginationListLinks[0]
+    ) {
       refs.paginationBackArrow.removeAttribute('disabled', '');
       page = event.target.textContent;
       event.target.classList.add('selected');
       refs.paginationListLinks[0].classList.remove('selected');
     }
-    if (event.target === item && item === refs.paginationListLinks[0]) {
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      refs.paginationListLinks[i] === refs.paginationListLinks[0]
+    ) {
       refs.paginationBackArrow.setAttribute('disabled', '');
       page = event.target.textContent;
       event.target.classList.add('selected');
     }
-  });
+  }
   trimZero(page);
   fetchMovieTrend(page)
     .then(data => {
