@@ -1,5 +1,6 @@
 import './js/api';
 import './js/api-key';
+import './js/preloader';
 import './js/mobile-menu';
 import './js/switch-theme';
 import './js/hero';
