@@ -4,8 +4,8 @@
   "description": "",
   "homepage": "https://Dimitri-Y.github.io/cinemania-group-11",
   "scripts": {
-    "start": "parcel src/*.html &&webpack --mode=production",
-    "build": "parcel build src/*html --public-url /cinemania-group-11/ &&webpack --mode=development"
+    "start": "parcel src/*.html ",
+    "build": "parcel build src/*html --public-url /cinemania-group-11/"
   },
   "repository": {
     "type": "git",
