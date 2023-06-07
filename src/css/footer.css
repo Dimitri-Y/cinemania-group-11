@@ -177,9 +177,7 @@ footer {
 }
 
 .footer-contain__modal-github:focus,
-.footer-contain__modal-github:hover,
-.footer-contain__modal-back:focus,
-.footer-contain__modal-back:hover {
+.footer-contain__modal-github:hover {
   background: linear-gradient(
     to right,
     rgba(255, 194, 38, 1),
@@ -256,6 +254,14 @@ footer {
 .light-theme .footer-contain__modal-back {
   background: #f5f5f5;
   color: #111111;
+}
+.footer-contain__modal-back:focus,
+.footer-contain__modal-back:hover {
+  background: linear-gradient(
+    to right,
+    rgba(255, 194, 38, 1),
+    rgba(248, 65, 25, 1)
+  );
 }
 
 @media screen and (min-width: 768px) {
