@@ -7,7 +7,7 @@ import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
 
-let value = '';
+
 let page = 1;
 
 const refs = {
