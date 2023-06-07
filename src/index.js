@@ -6,6 +6,7 @@ import './js/hero';
 import './js/home-upcoming';
 import './js/home-weekly';
 import './js/modal_window_watch';
+import './js/my-library';
 import './js/pagination';
 import './js/genre';
 import './js/movie_card';
