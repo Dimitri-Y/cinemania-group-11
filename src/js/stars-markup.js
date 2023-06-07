@@ -1,0 +1,18 @@
+function createStarsMarkup(randomFilm) {}
+return `
+<div class="rating">
+    <div class="rating__body">
+      <div class="rating__active">
+        </div>
+        <div class="rating__items">
+            <input class="rating__item" type="radio" value="1" name="rating">
+            <input class="rating__item" type="radio" value="2" name="rating">
+            <input class="rating__item" type="radio" value="3" name="rating">
+            <input class="rating__item" type="radio" value="4" name="rating">
+            <input class="rating__item" type="radio" value="5" name="rating">
+        </div>
+    </div>
+</div>
+`;
+
+export { createStarsMarkup };

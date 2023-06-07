@@ -45,6 +45,7 @@
     #f84119 9.4%,
     rgba(248, 159, 25, 0.68) 91.91%
   );
+  /* background-clip: text; */
   -webkit-background-clip: text; /* градіент до тексту */
   -webkit-text-fill-color: transparent; /*  текст прозорий */
 }

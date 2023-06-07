@@ -3,6 +3,8 @@ import { renderVideoLink } from './modal_window_watch';
 // const axios = require('axios').default;
 import '../css/hero.css';
 import '../css/styles.css';
+import { initRatings } from './star_rating';
+// import { createStarsMarkup } from './stars-markup';
 
 // import axios from 'axios';
 
@@ -34,11 +36,18 @@ fetch(
       //   hideDefaulHero();
       console.log(randomFilm);
       const markup = createFilmCardMarkup(randomFilm);
-      const id_movie = randomFilm.id;
-      renderVideoLink(id_movie);
       console.log(markup);
       refs.blockMain.innerHTML = markup;
       console.log(refs.blockMain);
+
+      const id_movie = randomFilm.id;
+      renderVideoLink(id_movie);
+
+      // renderStars();
+      const rate = randomFilm.vote_average;
+      initRatings(rating, rate);
+
+      // const markupStars = createStarsMarkup;
     }
   })
   .catch(error => {
@@ -48,3 +57,8 @@ fetch(
 function showDefaulHero() {
   refs.filmHero.classList.remove('is-hidden');
 }
+
+// function renderStars(randomFilm, querySelector) {
+//   /* querySelector.insertAdjacentHTML('beforeend', createCards(data)); */
+//   querySelector.innerHTML = markup;
+// }

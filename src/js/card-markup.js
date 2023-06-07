@@ -9,9 +9,19 @@ function createFilmCardMarkup(randomFilm) {
   <h1 class="hero__title">
     ${randomFilm.title}
   </h1>
-  <h2 class="hero__rate">
-    ${randomFilm.vote_average}
-  </h2>
+  <div class="ratingR">
+    <div class="ratingR__body">
+      <div class="ratingR__active">
+      </div>
+      <div class="ratingR__items">
+        <input class="ratingR__item" type="radio" value="1" name="rating">
+        <input class="ratingR__item" type="radio" value="2" name="rating">
+        <input class="ratingR__item" type="radio" value="3" name="rating">
+        <input class="ratingR__item" type="radio" value="4" name="rating">
+        <input class="ratingR__item" type="radio" value="5" name="rating">
+      </div>
+    </div>
+  </div>
   <div class="hero__p">
     <p>
       ${randomFilm.overview}

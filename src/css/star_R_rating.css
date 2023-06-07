@@ -1,0 +1,69 @@
+.ratingR {
+    display: flex;
+
+    align-items: flex-end;
+    font-size: 12px;
+    line-height: 0.75;
+}
+
+@media screen and (min-width: 1280px) {
+    .ratingR {
+        font-size: 20px;
+        line-height: 1.15;
+    }
+}
+
+.ratingR__body {
+    position: relative;
+    border: 1px;
+}
+
+.ratingR__body::before {
+    content: '★★★★★';
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px #f84119;
+    /* Додано властивість text-stroke для контуру зірок */
+}
+
+.ratingR__active {
+    position: absolute;
+    width: 0;
+    /*управління шириною заповнення зірок, поставити 0 */
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.ratingR__active::before {
+    content: '★★★★★';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(141.22deg,
+            #f84119 9.4%,
+            rgba(248, 159, 25, 0.68) 91.91%);
+    /* background-clip: text; */
+    -webkit-background-clip: text;
+    /* градіент до тексту */
+    -webkit-text-fill-color: transparent;
+    /*  текст прозорий */
+}
+
+.ratingR__items {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.ratingR__item {
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+}
