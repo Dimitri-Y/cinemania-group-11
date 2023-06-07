@@ -88,6 +88,13 @@ footer {
   border-radius: 16px;
 }
 
+.light-theme .footer-contain__modal {
+  color: #111111;
+  background: #f8f8f8;
+  box-shadow: 1px 1px 14px 4px rgba(28, 25, 23, 0.42);
+  border-radius: 16px;
+}
+
 /*  редагування скролу в модалці */
 .footer-contain__modal::-webkit-scrollbar {
   width: 4px;
@@ -103,6 +110,9 @@ footer {
   stroke: #f5f5f5;
   cursor: pointer;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.light-theme .footer-contain__modal svg {
+  stroke: #111111;
 }
 
 .footer-contain__modal svg:hover,
@@ -143,6 +153,10 @@ footer {
   background: #111111;
 
   transition: background 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.light-theme .footer-contain__modal-github {
+  background: #f5f5f5;
+  color: #111111;
 }
 /* градієнт border */
 .footer-contain__modal-github::before,
@@ -238,6 +252,10 @@ footer {
   background: #111111;
 
   transition: background 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.light-theme .footer-contain__modal-back {
+  background: #f5f5f5;
+  color: #111111;
 }
 
 @media screen and (min-width: 768px) {
