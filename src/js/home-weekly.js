@@ -29,3 +29,21 @@ fetchWeeklyTrend(page)
   .catch(error => {
     console.error('Error rendering movie cards:', error);
   });
+function toggleLastTwoMovies() {
+  const movies = movieListContainer.querySelectorAll('li');
+  const lastTwoMovies = Array.from(movies).slice(-2);
+
+  if (window.innerWidth <= 767) {
+    lastTwoMovies.forEach(movie => {
+      movie.style.display = 'none';
+    });
+  } else {
+    lastTwoMovies.forEach(movie => {
+      movie.style.display = 'block';
+    });
+  }
+}
+
+// Викликати функцію при завантаженні сторінки та при зміні розміру вікна
+window.addEventListener('DOMContentLoaded', toggleLastTwoMovies);
+window.addEventListener('resize', toggleLastTwoMovies);
