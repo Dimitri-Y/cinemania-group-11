@@ -117,7 +117,7 @@ refs.catalogGal.addEventListener('click', onModalRender);
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;
   fetchDetailsMovie(ElId).then(response => renderAboutModal(response));
-  console.log(evt.target.classList.contains('movie-card__img'));
+  // console.log(evt.target);
   if(evt.target.classList.contains('js-open-modal')){
     refs.modalDet.classList.add('active')
     refs.overlay.classList.add('active')
