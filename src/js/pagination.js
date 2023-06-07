@@ -7,7 +7,6 @@ import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
 
-
 let page = 1;
 
 const refs = {
@@ -25,6 +24,8 @@ refs.paginationBackArrow.addEventListener('click', onClickBack);
 refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
+
+
 
 function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
@@ -80,7 +81,7 @@ function onClickBack(event) {
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        paginationListLinks[paginationListLinks.length - 1].textContent =
+        refs.paginationListLinks[refs.paginationListLinks.length - 1].textContent =
           data.total_pages.toString();
         console.log(data);
         console.log(data.results.length);
@@ -188,7 +189,7 @@ function onClickForward(event) {
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        paginationListLinks[paginationListLinks.length - 1].textContent =
+        refs.paginationListLinks[refs.paginationListLinks.length - 1].textContent =
           data.total_pages.toString();
         console.log(data);
         console.log(data.results.length);
