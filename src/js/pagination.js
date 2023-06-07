@@ -1,6 +1,12 @@
 import { fetchMovieTrend } from './api';
 import { renderCards } from './movie_card';
 import { movieListContainer } from './catalog';
+import { initRatings } from './star_rating';
+import { searchFilms } from './search-form';
+import { fetchMovieSearch } from './search-form';
+import { searchFormEl } from './search-form';
+import { value } from './search-form';
+
 
 let page = 1;
 
@@ -9,6 +15,7 @@ const refs = {
   paginationBackArrow: document.querySelector('.pagination__back'),
   paginationForwardArrow: document.querySelector('.pagination__forward'),
   paginationList: document.querySelector('.pagination-list'),
+  catalogBtnCross: document.querySelector('.catalog__btn-cross'),
 };
 
 refs.paginationBackArrow.setAttribute('disabled', '');
@@ -22,6 +29,19 @@ refs.paginationList.addEventListener('click', onClickList);
 function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        refs.paginationListLinks[i] ===
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+      ) {
+        changesValuesBack(refs.paginationListLinks[i]);
+        changesValuesBack(refs.paginationListLinks[i - 1]);
+        changesValuesBack(refs.paginationListLinks[i - 2]);
+        changesValuesBack(refs.paginationListLinks[i - 3]);
+
+        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
       if (
         refs.paginationListLinks[i + 1].textContent === '...' &&
         refs.paginationListLinks[i - 1].textContent !== '02'
@@ -55,18 +75,79 @@ function onClickBack(event) {
     }
   }
   trimZero(page);
-  fetchMovieTrend(page)
-    .then(data => {
-      renderCards(data, movieListContainer);
-    })
-    .catch(error => {
-      console.error('Error rendering movie cards:', error);
-    });
+  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+    fetchMovieSearch(page, value)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        paginationListLinks[paginationListLinks.length - 1].textContent =
+          data.total_pages.toString();
+        console.log(data);
+        console.log(data.results.length);
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+
+    console.log('Search');
+  } else {
+    fetchMovieTrend(page)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        console.log('Trend');
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+  }
 }
 
 function onClickForward(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+      if (
+        Number(refs.paginationListLinks[i].textContent) + 1 ===
+        Number(
+          refs.paginationListLinks[refs.paginationListLinks.length - 1]
+            .textContent
+        )
+      ) {
+        refs.paginationBackArrow.removeAttribute('disabled', '');
+        refs.paginationForwardArrow.setAttribute('disabled', '');
+        page = refs.paginationListLinks[i + 2].textContent;
+        refs.paginationListLinks[i + 2].classList.add('selected');
+        refs.paginationListLinks[i].classList.remove('selected');
+        refs.paginationListLinks[i + 1].classList.remove('more');
+
+        refs.paginationListLinks[0].textContent = '...';
+
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 2
+        ].textContent =
+          Number(
+            refs.paginationListLinks[refs.paginationListLinks.length - 1]
+              .textContent
+          ) - 1;
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 3
+        ].textContent =
+          Number(
+            refs.paginationListLinks[refs.paginationListLinks.length - 1]
+              .textContent
+          ) - 2;
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 4
+        ].textContent =
+          Number(
+            refs.paginationListLinks[refs.paginationListLinks.length - 1]
+              .textContent
+          ) - 3;
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 2
+        ].textContent.classList.remove('more');
+      }
+
       if (refs.paginationListLinks[i + 1].textContent === '...') {
         changesValuesForward(refs.paginationListLinks[i]);
         changesValuesForward(refs.paginationListLinks[i - 1]);
@@ -102,13 +183,32 @@ function onClickForward(event) {
     }
   }
   trimZero(page);
-  fetchMovieTrend(page)
-    .then(data => {
-      renderCards(data, movieListContainer);
-    })
-    .catch(error => {
-      console.error('Error rendering movie cards:', error);
-    });
+  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+    fetchMovieSearch(page, value)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        paginationListLinks[paginationListLinks.length - 1].textContent =
+          data.total_pages.toString();
+        console.log(data);
+        console.log(data.results.length);
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+
+    console.log('Search');
+  } else {
+    fetchMovieTrend(page)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        console.log('Trend');
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+  }
 }
 
 function onClickList(event) {
@@ -118,22 +218,55 @@ function onClickList(event) {
     console.log(page);
     return;
   }
-  refs.paginationListLinks.forEach(item => {
-    if (item.classList.contains('selected') && event.target !== item) {
-      item.classList.remove('selected');
+
+  for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
+    if (
+      refs.paginationListLinks[i].classList.contains('selected') &&
+      event.target !== refs.paginationListLinks[i]
+    ) {
+      refs.paginationListLinks[i].classList.remove('selected');
     }
-    if (event.target === item && item !== refs.paginationListLinks[0]) {
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      event.target ===
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
+    ) {
+      refs.paginationBackArrow.removeAttribute('disabled', '');
+      refs.paginationForwardArrow.setAttribute('disabled', '');
+      page = event.target.textContent;
+      event.target.classList.add('selected');
+
+      refs.paginationListLinks[0].textContent = '...';
+
+      refs.paginationListLinks[i - 1].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 1;
+      refs.paginationListLinks[i - 1].classList.remove('more');
+      refs.paginationListLinks[i - 2].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 2;
+      refs.paginationListLinks[i - 3].textContent =
+        Number(refs.paginationListLinks[i].textContent) - 3;
+    }
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      refs.paginationListLinks[i] !== refs.paginationListLinks[0]
+    ) {
       refs.paginationBackArrow.removeAttribute('disabled', '');
       page = event.target.textContent;
       event.target.classList.add('selected');
       refs.paginationListLinks[0].classList.remove('selected');
     }
-    if (event.target === item && item === refs.paginationListLinks[0]) {
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
+      refs.paginationListLinks[i] === refs.paginationListLinks[0]
+    ) {
       refs.paginationBackArrow.setAttribute('disabled', '');
       page = event.target.textContent;
       event.target.classList.add('selected');
     }
-  });
+  }
   trimZero(page);
   fetchMovieTrend(page)
     .then(data => {

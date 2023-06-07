@@ -123,13 +123,17 @@ async function renderMarkup({
         <h2 class="upcoming__info-title">${title}</h2>
         <div class="upcoming__movie">
             <div class="upcoming__info-left">
+              <div class="upcoming__text-wrap-one">
                 <div class="upcoming__info-release">
                     <p class="upcoming__text"> <span class ="upcoming__light-black">Release date</span> </p>
                     <div class="upcoming__info-release-date">${release_date}</div>
                 </div>
                 <div class="upcoming__info-vote">
                     <p class="upcoming__text"><span class ="upcoming__light-black">Vote/Votes</span></p>
-                     <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span class="slash"> / </span><span class="upcoming__info-white"> ${vote_count}</span></div>                    </div>
+                     <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span class="slash"> / </span><span class="upcoming__info-white"> ${vote_count}</span></div>                    
+                </div>
+              </div>
+              <div class="upcoming__text-wrap-two">
                 <div class="upcoming__info-pop">
                     <p class="upcoming__text"> <span class ="upcoming__light-black">Popularity</span> </p>
                     <div class="upcoming__info-pop-range">${popularity}</div>
@@ -138,6 +142,7 @@ async function renderMarkup({
                     <p class="upcoming__text"><span class ="upcoming__light-black">Genre</span></p>
                     <div class="upcoming__info-genre-kind">${genreNames}</div>
                 </div>
+              </div>
             </div>
         </div>
         <h2 class="upcoming__info-about">ABOUT</h2>

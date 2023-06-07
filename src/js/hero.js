@@ -2,7 +2,6 @@ import { createFilmCardMarkup } from './card-markup';
 import { renderVideoLink } from './modal_window_watch';
 // const axios = require('axios').default;
 import '../css/hero.css';
-// import '../sass/header.scss';
 import '../css/styles.css';
 
 // import axios from 'axios';
@@ -24,28 +23,28 @@ fetch(
     // console.log(films.results);
     // console.log(films.results[0].id);
     // const markup = createFilmCardMarkup(films);
-    if (films.results.length !== 0) {
-      hideDefaulHero();
+    if (films.results.length === 0) {
+      showDefaulHero();
+    } else if (films.results.length !== 0) {
+      var randomFilm =
+        films.results[Math.floor(Math.random() * films.results.length)];
+      // console.log(randomFilm);
+      // console.log(randomFilm.id);
+      // if (randomFilm !== 0) {
+      //   hideDefaulHero();
+      console.log(randomFilm);
+      const markup = createFilmCardMarkup(randomFilm);
+      const id_movie = randomFilm.id;
+      renderVideoLink(id_movie);
+      console.log(markup);
+      refs.blockMain.innerHTML = markup;
+      console.log(refs.blockMain);
     }
-    var randomFilm =
-      films.results[Math.floor(Math.random() * films.results.length)];
-    // console.log(randomFilm);
-    // console.log(randomFilm.id);
-    // if (randomFilm !== 0) {
-    //   hideDefaulHero();
-    console.log(randomFilm);
-    const markup = createFilmCardMarkup(randomFilm);
-    const id_movie = randomFilm.id;
-    renderVideoLink(id_movie);
-    console.log(markup);
-    refs.blockMain.innerHTML = markup;
-    console.log(refs.blockMain);
-    // }
   })
   .catch(error => {
     console.log(error);
   });
 
-function hideDefaulHero() {
-  refs.filmHero.classList.add('is-hidden');
+function showDefaulHero() {
+  refs.filmHero.classList.remove('is-hidden');
 }
