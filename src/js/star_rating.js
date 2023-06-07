@@ -2,7 +2,7 @@
 
 function initRatings(data) {
   const ratings = document.querySelectorAll('.rating');
-  console.log(ratings);
+  // console.log(ratings);
   // console.log(data.results[0].vote_average);
   if (ratings.length > 0) {
     for (let index = 0; index < ratings.length; index++) {

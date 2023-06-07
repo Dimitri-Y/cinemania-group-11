@@ -4,12 +4,13 @@ import { renderCards } from './movie_card';
 import { initRatings } from './star_rating';
 import { movieListContainer } from './catalog';
    
-const searchFormEl = document.getElementById("idFormCatalog");
+export const searchFormEl = document.getElementById("idFormCatalog");
 const clearBtn = document.querySelector(".catalog__btn-cross");
 const messageEl = document.querySelector(".catalog__message")
     
-const value = "";
+export let value = "";
 let page = 1;
+let paginationListLinks =  document.querySelectorAll('.pagination-list__link');
 
 searchFormEl.addEventListener("submit", searchFilms);
 clearBtn.addEventListener("click", resetForm);
@@ -17,10 +18,10 @@ searchFormEl.addEventListener("input", addCrossBtn);
 
 
 
-function searchFilms(event){
+export function searchFilms(event){
 
     event.preventDefault();
-    const value = searchFormEl.elements.name.value.trim();
+    value = searchFormEl.elements.name.value.trim();
     if (value === "") alert("Enter the name of the movie");
     else {
         fetchMovieSearch(page, value)
@@ -34,6 +35,7 @@ function searchFilms(event){
             }
             renderCards(data, movieListContainer);
             initRatings(data);
+            paginationListLinks[paginationListLinks.length - 1].textContent = data.total_pages.toString();
             console.log(data);
             console.log(data.results.length);
           }
@@ -61,7 +63,7 @@ function switchBtnCross(){
 }
 
 
-async function fetchMovieSearch(page, value) {
+export async function fetchMovieSearch(page, value) {
   const PAGE = `&page=${page}`;
   const QUERY = `&query=${value}`;
   return await axios
