@@ -79,7 +79,7 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
+  min-width: 280px;
   max-height: 500px;
   /* max-height: 100%; */
 
@@ -276,7 +276,7 @@ footer {
   .footer-contain__modal {
     padding: 25px 44px;
 
-    width: 704px;
+    min-width: 704px;
     max-height: 677px;
     /* max-height: 100%; */
   }
@@ -343,7 +343,7 @@ footer {
   .footer-contain__modal {
     padding: 30px 60px;
 
-    width: 846px;
+    min-width: 846px;
     max-height: 694px;
     /* max-height: 100%; */
   }
