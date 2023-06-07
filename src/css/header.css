@@ -107,7 +107,7 @@ color: var(--menu-item-mob-color);
 
 .menu {
  display: flex;
- gap: 40px;
+ gap: 32px;
 }
 
 .top {
@@ -155,7 +155,6 @@ color: var(--logo-text-color);
 @media screen and (min-width: 1280px) {
  .container {
   max-width: 1280px;
-  padding: 8px 32px;
  }
 }
 
