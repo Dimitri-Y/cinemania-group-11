@@ -127,21 +127,15 @@ function onClickBack(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -238,21 +232,15 @@ function onClickForward(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -313,21 +301,15 @@ function onClickList(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -335,7 +317,6 @@ function trimZero(value) {
   value.toString()[0] === '0'
     ? (value = Number(value.toString().slice(1)))
     : (value = Number(value));
-  console.log(value);
 }
 
 function changesValuesForward(element) {

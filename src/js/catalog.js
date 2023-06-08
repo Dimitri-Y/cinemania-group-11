@@ -29,8 +29,4 @@ fetchMovieTrend(page)
     paginationBackArrow.setAttribute('disabled', '');
     paginationForwardArrow.removeAttribute('disabled', '');
   })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
-
-// console.log(page);
+  .catch(error => {});

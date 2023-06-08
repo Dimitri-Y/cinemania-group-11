@@ -26,7 +26,6 @@ function fetchUpcomingMovies() {
 function onClickRemind(event) {
   const movieId = event.target.dataset.movieid;
   // localStorage.clear()
-  // console.log(movieId);
   const remindBtn = document.querySelector('.upcoming__remindme-btn');
   if (remindBtn.textContent === 'Add to my Library') {
     remindBtn.textContent = 'Remove from my Library';
@@ -46,9 +45,7 @@ const getMovieById = async id => {
       ...data,
     };
     return result;
-  } catch (error) {
-    console.error('Smth wrong with api ID fetch' + error);
-  }
+  } catch (error) {}
 };
 
 function addMovieToLibrary(movieId) {
@@ -74,16 +71,13 @@ async function getFetchedMovies() {
     if (returnedResult.length >= 1) {
       const randomMovie =
         returnedResult[Math.floor(Math.random() * returnedResult.length)];
-      console.log(randomMovie);
       const genreNames = await getGenresById(randomMovie.genre_ids);
       const createdMarkup = await renderMarkup({ ...randomMovie, genreNames });
       upcomingContainer.insertAdjacentHTML('beforeend', createdMarkup);
       const remindBtn = document.querySelector('.upcoming__remindme-btn');
       remindBtn.addEventListener('click', onClickRemind);
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 getFetchedMovies();
 

@@ -92,9 +92,7 @@ export function searchFilms(event) {
           paginationListLinks[3].classList.add('more');
         }
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 

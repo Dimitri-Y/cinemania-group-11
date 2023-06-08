@@ -127,7 +127,6 @@ if (refs.weeklyGal === null && refs.libraryGal === null) {
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;
   fetchDetailsMovie(ElId).then(response => renderAboutModal(response));
-  console.log(evt.target);
   if (evt.target.classList.contains('js-open-modal')) {
     refs.modalDet.classList.add('active');
     refs.overlay.classList.add('active');
@@ -172,7 +171,7 @@ function onRemoveInLocalStorage() {
     localStorage.removeItem(STORAGE_KEY);
   }
   if (refs.weeklyGal === null && refs.catalogGal === null) {
-    location.reload()
+    location.reload();
   }
 }
 

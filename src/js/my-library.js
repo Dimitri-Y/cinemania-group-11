@@ -19,12 +19,9 @@ filmsIdsArray.forEach(item => {
   const promise = axios
     .get(`https://api.themoviedb.org/3/movie/${item}?api_key=${KEY}`)
     .then(response => {
-      console.log(response.data);
       return response.data;
     })
-    .catch(error => {
-      console.error('Помилка запиту:', error);
-    });
+    .catch(error => {});
   promisesArray.push(promise);
 });
 // ! // Розбір всіх промісів, одночасне їх виконання за допомогою методу Promise.all() ,
@@ -38,15 +35,11 @@ Promise.all(promisesArray)
     renderLibraryCards(arrayFilms, myLibraryUrl);
     initLibraryCardRatings(arrayFilms);
   })
-  .catch(error => {
-    console.error('Ошибка запроса:', error);
-  });
+  .catch(error => {});
 // * // Функція створення карток ;
 function createLibraryCards(array) {
   return array
-    .map(({ poster_path, title, release_date, id, genres}) => {
-      console.log(genres[0].id);
-
+    .map(({ poster_path, title, release_date, id, genres }) => {
       return `<li class="movie-card js-open-modal" data-id="${id}" data-modal="1">
     <img class="movie-card__img" src="${IMAGE_URL_W500}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
     <div class="movie-card__info">

@@ -25,9 +25,7 @@ function getAndRenderMovie() {
       renderCards(data, weeklyListContainer);
       initRatings(data);
     })
-    .catch(error => {
-      console.error('Error rendering movie cards:', error);
-    });
+    .catch(error => {});
 }
 function toggleLastTwoMovies() {
   const movies = weeklyListContainer.querySelectorAll('li');
