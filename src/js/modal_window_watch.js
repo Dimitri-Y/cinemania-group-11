@@ -40,8 +40,7 @@ export async function renderVideoLink(movie_id) {
     // console.error(error);
   }
 }
-const movie_id = '1100';
-renderVideoLink(movie_id);
+
 
 const myModal = new HystModal({
   // for dynamic init() of modals
