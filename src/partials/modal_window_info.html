@@ -1,7 +1,19 @@
 <!-- <a href="#" class="js-open-modal" data-modal="1">Открыть окно 1</a> -->
 
 <div class="modal-about" data-modal="1">
-
+    <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        xmlns="http://www.w3.org/2000/svg"
+        class="modal-about-close js-modal-close"
+    >
+        <path
+            d="M11.25 11.25L0.75 0.75M11.25 0.75L0.75 11.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
     <!-- <svg
       class="modal__cross js-modal-close"
       xmlns="http://www.w3.org/2000/svg"
@@ -12,65 +24,73 @@
       />
     </svg> -->
     <div class="modal-about__container">
-      <img
-        class="modal-about__img"
-        src="https://m.media-amazon.com/images/I/81fk-N7tvbL._AC_UF894,1000_QL80_.jpg"
-        alt="John Wick: Chapter 4"
-      />
-      <div class="modal-about__inner">
-        <h2 class="modal-about__title">John Wick: Chapter 4</h2>
-        <div class="modal-about-stat__inner">
-          <ul class="modal-about-stat__name-items">
-            <li class="modal-about-stat__name-item--vote">Vote/Votes</li>
-            <li class="modal-about-stat__name-item--popularity">
-              Popularity
-            </li>
-            <li class="modal-about-stat__name-item--genre">Genre</li>
-          </ul>
-          <ul class="modal-about-stat__number-items">
-            <li class="modal-about-stat__number-item--vote">
-              <span id="voteSpan" class="modal-about-stat__number-item--vote-disk"
-                >7.3</span
-              >
-              /
-              <span id="votesSpan" class="modal-about-stat__number-item--vote-disk"
-                >1260</span
-              >
-            </li>
-            <li class="modal-about-stat__number-item--popularity">100.2</li>
-            <li class="modal-about-stat__number-item--genre">
-              Action Thriller Crime
-            </li>
-          </ul>
+        <img
+            class="modal-about__img"
+            src="https://m.media-amazon.com/images/I/81fk-N7tvbL._AC_UF894,1000_QL80_.jpg"
+            alt="John Wick: Chapter 4"
+        />
+        <div class="modal-about__inner">
+            <h2 class="modal-about__title">John Wick: Chapter 4</h2>
+            <div class="modal-about-stat__inner">
+                <ul class="modal-about-stat__name-items">
+                    <li class="modal-about-stat__name-item--vote">
+                        Vote/Votes
+                    </li>
+                    <li class="modal-about-stat__name-item--popularity">
+                        Popularity
+                    </li>
+                    <li class="modal-about-stat__name-item--genre">Genre</li>
+                </ul>
+                <ul class="modal-about-stat__number-items">
+                    <li class="modal-about-stat__number-item--vote">
+                        <span
+                            id="voteSpan"
+                            class="modal-about-stat__number-item--vote-disk"
+                            >7.3</span
+                        >
+                        /
+                        <span
+                            id="votesSpan"
+                            class="modal-about-stat__number-item--vote-disk"
+                            >1260</span
+                        >
+                    </li>
+                    <li class="modal-about-stat__number-item--popularity">
+                        100.2
+                    </li>
+                    <li class="modal-about-stat__number-item--genre">
+                        Action Thriller Crime
+                    </li>
+                </ul>
+            </div>
+            <h3 class="modal-about__subtitle">About</h3>
+            <p class="modal-about__description">
+                John Wick (Keanu Reeves) takes on his most lethal adversaries
+                yet in the upcoming fourth instalment of the series. With the
+                price on his head ever increasing, John Wick uncovers a path to
+                defeating The High Table. But before he can earn his freedom,
+                Wick must face off against a new enemy with powerful alliances
+                across the globe and forces that turn old friends into foes.
+            </p>
+            <ul class="modal-about__btn-items">
+                <li class="modal-about__btn-item">
+                    <button
+                        class="modal-about__btn modal-about__btn--add"
+                        type="button"
+                    >
+                        Add to my library
+                    </button>
+                </li>
+                <li class="modal-about__btn-item">
+                    <button
+                        class="modal-about__btn modal-about__btn--remove is-hidden"
+                        type="button"
+                    >
+                        Remove from my library
+                    </button>
+                </li>
+            </ul>
         </div>
-        <h3 class="modal-about__subtitle">About</h3>
-        <p class="modal-about__description">
-          John Wick (Keanu Reeves) takes on his most lethal adversaries yet in
-          the upcoming fourth instalment of the series. With the price on his
-          head ever increasing, John Wick uncovers a path to defeating The
-          High Table. But before he can earn his freedom, Wick must face off
-          against a new enemy with powerful alliances across the globe and
-          forces that turn old friends into foes.
-        </p>
-        <ul class="modal-about__btn-items">
-          <li class="modal-about__btn-item">
-            <button
-              class="modal-about__btn modal-about__btn--add"
-              type="button"
-            >
-              Add to my library
-            </button>
-          </li>
-          <li class="modal-about__btn-item">
-            <button
-              class="modal-about__btn modal-about__btn--remove is-hidden"
-              type="button"
-            >
-              Remove from my library
-            </button>
-          </li>
-        </ul>
-      </div>
     </div>
 </div>
 
