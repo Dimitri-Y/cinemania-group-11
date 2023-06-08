@@ -84,8 +84,6 @@ function renderLibraryCards(data, querySelector) {
 // ? -- Функція для рендеру рейтингу зірочок ;
 function initLibraryCardRatings(data) {
   const ratingsUrl = document.querySelectorAll('.rating');
-  // console.log(ratings);
-  // console.log(data.results[0].vote_average);
   if (ratingsUrl.length > 0) {
     for (let index = 0; index < ratingsUrl.length; index++) {
       const rating = ratingsUrl[index];
