@@ -20,10 +20,18 @@ const refs = {
 refs.paginationBackArrow.setAttribute('disabled', '');
 refs.paginationListLinks[0].classList.add('selected');
 
+searchFormEl.addEventListener('submit', onSubmit);
+
 refs.paginationBackArrow.addEventListener('click', onClickBack);
 refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
+
+function onSubmit(event) {
+  if (!event.currentTarget.classList.contains('search')) {
+    event.currentTarget.classList.add('search');
+  }
+}
 
 function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
@@ -75,7 +83,7 @@ function onClickBack(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (!refs.catalogBtnCross.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -188,7 +196,7 @@ function onClickForward(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (!refs.catalogBtnCross.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -274,7 +282,7 @@ function onClickList(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (!refs.catalogBtnCross.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);

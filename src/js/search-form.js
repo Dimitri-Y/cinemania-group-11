@@ -10,9 +10,9 @@ const messageEl = document.querySelector('.catalog__message');
 
 export let value = '';
 let page = 1;
-let paginationListLinks = document.querySelectorAll('.pagination-list__link');
-let paginationBackArrow = document.querySelector('.pagination__back');
-let paginationForwardArrow = document.querySelector('.pagination__forward');
+const paginationListLinks = document.querySelectorAll('.pagination-list__link');
+const paginationBackArrow = document.querySelector('.pagination__back');
+const paginationForwardArrow = document.querySelector('.pagination__forward');
 
 searchFormEl.addEventListener('submit', searchFilms);
 clearBtn.addEventListener('click', resetForm);
