@@ -15,20 +15,21 @@ let arrayFilms = [];
 // ? // Функція перебору масиву і запису отриманного значення в константу,
 // ? -- та пушу кожного об'єкту в promisesArray ;
 updateIncomingData();
-doneAllPromises()
+doneAllPromises();
 // ! // Розбір всіх промісів, одночасне їх виконання за допомогою методу Promise.all() ,
 // ! // та рендер карток функцією ;
 function doneAllPromises() {
   Promise.all(promisesArray)
-  .then(responses => {
-    arrayFilms = responses;
-    if (arrayFilms == false) {
-      return;
-    }
-    renderLibraryCards(arrayFilms, myLibraryUrl);
-    initLibraryCardRatings(arrayFilms);
-  })
-  .catch(error => {});
+    .then(responses => {
+      arrayFilms = responses;
+      if (arrayFilms == false) {
+        return;
+      }
+      renderLibraryCards(arrayFilms, myLibraryUrl);
+      initLibraryCardRatings(arrayFilms);
+    })
+    .catch(error => {});
+}
 // * // Функція створення карток ;
 function createLibraryCards(array) {
   return array
