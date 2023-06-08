@@ -63,13 +63,14 @@ export function searchFilms(event) {
           }
 
           if (data.total_pages < 6) {
-            paginationForwardArrow.setAttribute('disabled', '');
             paginationListLinks[0].textContent = '01';
             paginationListLinks[1].textContent = '02';
             paginationListLinks[2].textContent = '03';
             paginationListLinks[3].textContent = '04';
             paginationListLinks[paginationListLinks.length - 1].textContent =
               data.total_pages.toString();
+
+            paginationForwardArrow.setAttribute('disabled', '');
             paginationListLinks[3].classList.remove('more');
           } else {
             paginationListLinks[0].textContent = '01';
@@ -78,6 +79,8 @@ export function searchFilms(event) {
             paginationListLinks[3].textContent = '...';
             paginationListLinks[paginationListLinks.length - 1].textContent =
               data.total_pages.toString();
+
+            paginationListLinks[3].classList.add('more');
           }
 
           paginationListLinks.forEach(item =>
@@ -89,7 +92,6 @@ export function searchFilms(event) {
           paginationBackArrow.setAttribute('disabled', '');
           paginationForwardArrow.removeAttribute('disabled', '');
           paginationListLinks[0].classList.remove('more');
-          paginationListLinks[3].classList.add('more');
         }
       })
       .catch(error => {
