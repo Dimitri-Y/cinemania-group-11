@@ -258,9 +258,10 @@ function onClickForward(event) {
 
 function onClickList(event) {
   event.preventDefault();
-
-  if (event.target.textContent === '...') {
-    console.log(pageList);
+  if (
+    event.target !==
+    refs.paginationListLinks[refs.paginationListLinks.length - 1]
+  ) {
     return;
   }
 
@@ -274,6 +275,15 @@ function onClickList(event) {
 
     if (
       event.target === refs.paginationListLinks[i] &&
+      refs.paginationListLinks[i].textContent === '01'
+    ) {
+      refs.paginationBackArrow.setAttribute('disabled', '');
+      page = event.target.textContent;
+      event.target.classList.add('selected');
+    }
+
+    if (
+      event.target === refs.paginationListLinks[i] &&
       event.target ===
         refs.paginationListLinks[refs.paginationListLinks.length - 1]
     ) {
@@ -281,6 +291,7 @@ function onClickList(event) {
       refs.paginationForwardArrow.setAttribute('disabled', '');
       page = event.target.textContent;
       event.target.classList.add('selected');
+      refs.paginationListLinks[0].classList.add('more');
 
       refs.paginationListLinks[0].textContent = '...';
 
@@ -291,25 +302,6 @@ function onClickList(event) {
         Number(refs.paginationListLinks[i].textContent) - 2;
       refs.paginationListLinks[i - 3].textContent =
         Number(refs.paginationListLinks[i].textContent) - 3;
-    }
-
-    if (
-      event.target === refs.paginationListLinks[i] &&
-      refs.paginationListLinks[i] !== refs.paginationListLinks[0]
-    ) {
-      refs.paginationBackArrow.removeAttribute('disabled', '');
-      page = event.target.textContent;
-      event.target.classList.add('selected');
-      refs.paginationListLinks[0].classList.remove('selected');
-    }
-
-    if (
-      event.target === refs.paginationListLinks[i] &&
-      refs.paginationListLinks[i] === refs.paginationListLinks[0]
-    ) {
-      refs.paginationBackArrow.setAttribute('disabled', '');
-      page = event.target.textContent;
-      event.target.classList.add('selected');
     }
   }
   trimZero(page);

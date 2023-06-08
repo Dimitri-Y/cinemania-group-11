@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { KEY, SEARCH_URL } from './api-key';
 import { renderCards } from './movie_card';
+
 import { initRatings } from './star_rating';
 import { movieListContainer } from './catalog';
 
@@ -40,12 +41,25 @@ export function searchFilms(event) {
           if (data.total_pages === 1) {
             pagination.classList.add('hidden');
           }
-          paginationListLinks[0].textContent = '01';
-          paginationListLinks[1].textContent = '02';
-          paginationListLinks[2].textContent = '03';
-          paginationListLinks[3].textContent = '...';
-          paginationListLinks[paginationListLinks.length - 1].textContent =
-            data.total_pages.toString();
+
+          if (data.total_pages < 6) {
+            paginationForwardArrow.setAttribute('disabled', '');
+            paginationListLinks[0].textContent = '01';
+            paginationListLinks[1].textContent = '02';
+            paginationListLinks[2].textContent = '03';
+            paginationListLinks[3].textContent = '04';
+            paginationListLinks[paginationListLinks.length - 1].textContent =
+              data.total_pages.toString();
+            paginationListLinks[3].classList.remove('more');
+          } else {
+            paginationListLinks[0].textContent = '01';
+            paginationListLinks[1].textContent = '02';
+            paginationListLinks[2].textContent = '03';
+            paginationListLinks[3].textContent = '...';
+            paginationListLinks[paginationListLinks.length - 1].textContent =
+              data.total_pages.toString();
+          }
+
           paginationListLinks.forEach(item =>
             item.classList.contains('selected')
               ? item.classList.remove('selected')
@@ -54,8 +68,8 @@ export function searchFilms(event) {
           paginationListLinks[0].classList.add('selected');
           paginationBackArrow.setAttribute('disabled', '');
           paginationForwardArrow.removeAttribute('disabled', '');
-          // console.log(data);
-          // console.log(data.results.length);
+          paginationListLinks[0].classList.remove('more');
+          paginationListLinks[3].classList.add('more');
         }
       })
       .catch(error => {
