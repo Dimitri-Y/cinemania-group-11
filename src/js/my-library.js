@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { KEY } from './api-key';
-import { getGenres } from './genre';
 import { IMAGE_URL_W500 } from './api-key';
-
+// ? -- Посилання на технічний контейнер library-body__wrap ;
 const myLibraryUrl = document.getElementById('library-body__wrap');
 // ? // Масив айдішок ;
 let filmsIdsArray = [];
@@ -13,29 +12,24 @@ filmsIdsArray = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 // todo // що повернув фетч ;
 const promisesArray = [];
 let arrayFilms = [];
-// ? // Перебор масиву і запис отриманного значення в константу,
-// ? // та пуш кожного об'єкту в promisesArray ;
-filmsIdsArray.forEach(item => {
-  const promise = axios
-    .get(`https://api.themoviedb.org/3/movie/${item}?api_key=${KEY}`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {});
-  promisesArray.push(promise);
-});
+// ? // Функція перебору масиву і запису отриманного значення в константу,
+// ? -- та пушу кожного об'єкту в promisesArray ;
+updateIncomingData();
+doneAllPromises();
 // ! // Розбір всіх промісів, одночасне їх виконання за допомогою методу Promise.all() ,
 // ! // та рендер карток функцією ;
-Promise.all(promisesArray)
-  .then(responses => {
-    arrayFilms = responses;
-    if (arrayFilms == false) {
-      return;
-    }
-    renderLibraryCards(arrayFilms, myLibraryUrl);
-    initLibraryCardRatings(arrayFilms);
-  })
-  .catch(error => {});
+function doneAllPromises() {
+  Promise.all(promisesArray)
+    .then(responses => {
+      arrayFilms = responses;
+      if (arrayFilms == false) {
+        return;
+      }
+      renderLibraryCards(arrayFilms, myLibraryUrl);
+      initLibraryCardRatings(arrayFilms);
+    })
+    .catch(error => {});
+}
 // * // Функція створення карток ;
 function createLibraryCards(array) {
   return array
@@ -67,15 +61,27 @@ function createLibraryCards(array) {
     })
     .join('');
 }
-// * // Функція рендеру карток, що викликається вище ;
+// ? -- Функція фетчу для оновлення data ;
+function updateIncomingData() {
+  filmsIdsArray.forEach(item => {
+    const promise = axios
+      .get(`https://api.themoviedb.org/3/movie/${item}?api_key=${KEY}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        console.error('Помилка запиту:', error);
+      });
+    promisesArray.push(promise);
+  });
+}
+// ? -- Функція рендеру карток, що викликається вище ;
 function renderLibraryCards(data, querySelector) {
   querySelector.innerHTML = createLibraryCards(data);
 }
-// ? // Функція для рендеру рейтингу зірочок ;
+// ? -- Функція для рендеру рейтингу зірочок ;
 function initLibraryCardRatings(data) {
   const ratingsUrl = document.querySelectorAll('.rating');
-  // console.log(ratings);
-  // console.log(data.results[0].vote_average);
   if (ratingsUrl.length > 0) {
     for (let index = 0; index < ratingsUrl.length; index++) {
       const rating = ratingsUrl[index];
