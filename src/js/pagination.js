@@ -2,7 +2,6 @@ import { fetchMovieTrend } from './api';
 import { renderCards } from './movie_card';
 import { movieListContainer } from './catalog';
 import { initRatings } from './star_rating';
-import { searchFilms } from './search-form';
 import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
@@ -26,6 +25,11 @@ refs.paginationBackArrow.addEventListener('click', onClickBack);
 refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
+
+
+if (searchFormEl.classList.contains('search')) {
+  searchFormEl.classList.remove('search');
+}
 
 function onSubmit(event) {
   if (!event.currentTarget.classList.contains('search')) {
@@ -83,7 +87,7 @@ function onClickBack(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('search')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -196,7 +200,7 @@ function onClickForward(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('search')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -282,7 +286,7 @@ function onClickList(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('search')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
