@@ -56,7 +56,7 @@
 }
 /* BODY SECTION */
 .library-body__section {
-  padding: 44px 0 42px;
+  padding-top: 44px;
   background-color: #111111;
 }
 .library-body__gallery {
@@ -171,7 +171,7 @@
     line-height: 1.14;
   }
   .library-body__section {
-    padding: 80px 0 60px;
+    padding-top: 80px;
   }
   .library-body__gallery {
     justify-content: flex-start;
@@ -219,7 +219,7 @@
     line-height: 1.18;
   }
   .library-body__section {
-    padding: 160px 0 108px;
+    padding-top: 160px;
   }
   .library-body__gallery {
     row-gap: 32px;
