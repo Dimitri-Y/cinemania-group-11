@@ -112,16 +112,16 @@ const refs = {
   modalRemoveLibraryBtn: document.querySelector('.modal-about__btn--remove'),
   overlay: document.querySelector('.js-overlay-modal'),
   weeklyGal: document.querySelector('#cards__list'),
-  heroDetailsBtn: document.querySelector('.but2')
+  heroDetailsBtn: document.querySelector('.but2'),
+  libraryGal: document.querySelector('.library-body__gallery'),
 };
 
-console.log(refs.heroDetailsBtn);
-
-
-if (refs.weeklyGal === null) {
+if (refs.weeklyGal === null && refs.libraryGal === null) {
   refs.catalogGal.addEventListener('click', onModalRender);
-} else {
+} else if (refs.catalogGal === null && refs.libraryGal === null) {
   refs.weeklyGal.addEventListener('click', onModalRender);
+} else {
+  refs.libraryGal.addEventListener('click', onModalRender);
 }
 
 function onModalRender(evt) {
@@ -170,6 +170,9 @@ function onRemoveInLocalStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryIdArray));
   if (!libraryIdArray[0]) {
     localStorage.removeItem(STORAGE_KEY);
+  }
+  if (refs.weeklyGal === null && refs.catalogGal === null) {
+    location.reload()
   }
 }
 
