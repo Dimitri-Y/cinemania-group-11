@@ -22,9 +22,10 @@ document.querySelectorAll('.catalog__dropdown-item').forEach(function(listItem){
 export let valueYear = '';
 export let value = '';
 let page = 1;
-let paginationListLinks = document.querySelectorAll('.pagination-list__link');
-let paginationBackArrow = document.querySelector('.pagination__back');
-let paginationForwardArrow = document.querySelector('.pagination__forward');
+const paginationListLinks = document.querySelectorAll('.pagination-list__link');
+const paginationBackArrow = document.querySelector('.pagination__back');
+const paginationForwardArrow = document.querySelector('.pagination__forward');
+const pagination = document.querySelector('.pagination');
 
 searchFormEl.addEventListener('submit', searchFilms);
 clearBtn.addEventListener('click', resetForm);
@@ -46,12 +47,17 @@ export function searchFilms(event) {
         if (data.results.length === 0) {
           movieListContainer.innerHTML = '';
           messageEl.classList.remove('ishidden');
+          pagination.classList.add('hidden');
         } else {
-          if (!messageEl.classList.contains('ishidden')) {
-            messageEl.classList.add('ishidden');
-          }
+          pagination.classList.remove('hidden');
+          messageEl.classList.add('ishidden');
+
           renderCards(data, movieListContainer);
           initRatings(data);
+
+          if (data.total_pages === 1) {
+            pagination.classList.add('hidden');
+          }
           paginationListLinks[0].textContent = '01';
           paginationListLinks[1].textContent = '02';
           paginationListLinks[2].textContent = '03';

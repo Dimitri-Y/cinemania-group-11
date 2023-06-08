@@ -1,39 +1,34 @@
-var path = require('path');
-
-module.exports = {
-  entry: './src/main.js',
+odule.exports = {
+  mode: 'production',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
   },
-  module: {
-    rules: [
+  module: [
+    rules[
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
-        loaders: [
+        test: /\.(jpg|png|svg|gif)$/,
+        use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name].[ext]',
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              useRelativePath: true,
             },
           },
-          'img-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 70,
+              },
+            },
+          },
         ],
-      },
+      }
     ],
-  },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-    },
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-  },
-  performance: {
-    hints: false,
-  },
-  devtool: '#eval-source-map',
+  ],
 };
