@@ -96,7 +96,7 @@ function onRemoveInLocalStorage() {
     localStorage.removeItem(STORAGE_KEY);
   }
   if (refs.weeklyGal === null && refs.catalogGal === null) {
-    location.reload()
+    location.reload();
   }
 }
 // ? -- Заміна кнопки додавання на видалення ;

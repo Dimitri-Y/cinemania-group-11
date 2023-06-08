@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { KEY, SEARCH_URL } from './api-key';
 import { renderCards } from './movie_card';
+
 import { initRatings } from './star_rating';
 import { movieListContainer } from './catalog';
 import Notiflix from 'notiflix';
@@ -11,13 +12,15 @@ const messageEl = document.querySelector('.js-catalog__message--search');
 const searhYearEl = document.querySelector('.catalog__search-year');
 const yearListEl = document.querySelector('.catalog__dropdown-list');
 
-document.querySelectorAll('.catalog__dropdown-item').forEach(function(listItem){
-  listItem.addEventListener('click', function(){
-    searhYearEl.value = this.textContent;
-    yearListEl.classList.toggle('ishidden');
-    return valueYear = searhYearEl.value;
-  })
-});
+document
+  .querySelectorAll('.catalog__dropdown-item')
+  .forEach(function (listItem) {
+    listItem.addEventListener('click', function () {
+      searhYearEl.value = this.textContent;
+      yearListEl.classList.toggle('ishidden');
+      return (valueYear = searhYearEl.value);
+    });
+  });
 
 export let valueYear = '';
 export let value = '';
@@ -26,12 +29,12 @@ const paginationListLinks = document.querySelectorAll('.pagination-list__link');
 const paginationBackArrow = document.querySelector('.pagination__back');
 const paginationForwardArrow = document.querySelector('.pagination__forward');
 const pagination = document.querySelector('.pagination');
-
-searchFormEl.addEventListener('submit', searchFilms);
-clearBtn.addEventListener('click', resetForm);
-searchFormEl.addEventListener('input', addCrossBtn);
-searhYearEl.addEventListener('click',searchYear);
-
+try {
+  searchFormEl.addEventListener('submit', searchFilms);
+  clearBtn.addEventListener('click', resetForm);
+  searchFormEl.addEventListener('input', addCrossBtn);
+  searhYearEl.addEventListener('click', searchYear);
+} catch (error) {}
 export function searchFilms(event) {
   event.preventDefault();
 
@@ -58,12 +61,25 @@ export function searchFilms(event) {
           if (data.total_pages === 1) {
             pagination.classList.add('hidden');
           }
-          paginationListLinks[0].textContent = '01';
-          paginationListLinks[1].textContent = '02';
-          paginationListLinks[2].textContent = '03';
-          paginationListLinks[3].textContent = '...';
-          paginationListLinks[paginationListLinks.length - 1].textContent =
-            data.total_pages.toString();
+
+          if (data.total_pages < 6) {
+            paginationForwardArrow.setAttribute('disabled', '');
+            paginationListLinks[0].textContent = '01';
+            paginationListLinks[1].textContent = '02';
+            paginationListLinks[2].textContent = '03';
+            paginationListLinks[3].textContent = '04';
+            paginationListLinks[paginationListLinks.length - 1].textContent =
+              data.total_pages.toString();
+            paginationListLinks[3].classList.remove('more');
+          } else {
+            paginationListLinks[0].textContent = '01';
+            paginationListLinks[1].textContent = '02';
+            paginationListLinks[2].textContent = '03';
+            paginationListLinks[3].textContent = '...';
+            paginationListLinks[paginationListLinks.length - 1].textContent =
+              data.total_pages.toString();
+          }
+
           paginationListLinks.forEach(item =>
             item.classList.contains('selected')
               ? item.classList.remove('selected')
@@ -72,11 +88,11 @@ export function searchFilms(event) {
           paginationListLinks[0].classList.add('selected');
           paginationBackArrow.setAttribute('disabled', '');
           paginationForwardArrow.removeAttribute('disabled', '');
+          paginationListLinks[0].classList.remove('more');
+          paginationListLinks[3].classList.add('more');
         }
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -104,8 +120,6 @@ export async function fetchMovieSearch(page, value, valueYear) {
     .then(response => response.data);
 }
 
-function searchYear(){
-  yearListEl.classList.toggle('ishidden')
+function searchYear() {
+  yearListEl.classList.toggle('ishidden');
 }
-
-

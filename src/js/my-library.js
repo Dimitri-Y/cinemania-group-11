@@ -28,10 +28,7 @@ function doneAllPromises() {
     renderLibraryCards(arrayFilms, myLibraryUrl);
     initLibraryCardRatings(arrayFilms);
   })
-  .catch(error => {
-    console.error('Ошибка запроса:', error);
-  });
-}
+  .catch(error => {});
 // * // Функція створення карток ;
 function createLibraryCards(array) {
   return array
