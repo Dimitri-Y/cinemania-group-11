@@ -346,9 +346,10 @@ footer {
   .footer-contain__modal {
     padding: 30px 60px;
 
-    min-width: 846px;
+    width: 940px;
     max-height: 694px;
     /* max-height: 100%; */
+    /* z-index: 999; */
   }
   .footer-contain__modal-text {
     margin-bottom: 40px;
