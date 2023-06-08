@@ -12,6 +12,10 @@ button.arrow {
   background-color: transparent;
 }
 
+.pagination.hidden{
+  display: none;
+}
+
 .container.pagination {
   padding-top: 20px;
 }
