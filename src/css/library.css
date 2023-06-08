@@ -59,6 +59,13 @@
   padding: 44px 0 42px;
   background-color: #111111;
 }
+.library-body__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
 .library-body__default-item {
   display: block;
   margin: 0 auto;
@@ -132,7 +139,7 @@
         rgba(17, 17, 17, 0) 71.57%
       ),
       url(../images/t-rows-red-seats-768-min.jpg);
-      background-position: 105px ;
+    background-position: 105px;
   }
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -151,7 +158,7 @@
   .library-hero__section {
     max-width: none;
     padding: 122px 32px 118px;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
   }
   .library-hero__title {
     width: 332px;
@@ -165,6 +172,10 @@
   }
   .library-body__section {
     padding: 80px 0 60px;
+  }
+  .library-body__gallery {
+    justify-content: flex-start;
+    row-gap: 28px;
   }
   .library-body__wrap {
     width: 438px;
@@ -190,7 +201,7 @@
         rgba(17, 17, 17, 0) 72.02%
       ),
       url(../images/d-rows-red-seats-1280@2x-min.jpg);
-      background-position: 107px bottom;
+    background-position: 107px bottom;
   }
   /* ---main-desktop-features--- */
   .library-hero__section {
@@ -209,6 +220,9 @@
   }
   .library-body__section {
     padding: 160px 0 108px;
+  }
+  .library-body__gallery {
+    row-gap: 32px;
   }
   .library-body__wrap {
     width: 584px;
