@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://Dimitri-Y.github.io/cinemania-group-11",
   "scripts": {
-    "start": "parcel src/*.html&&webpack",
+    "start": "parcel src/*.html ",
     "build": "parcel build src/*html --public-url /cinemania-group-11/"
   },
   "repository": {
@@ -19,11 +19,13 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
+    "path": "^0.12.7",
     "sass": "^1.62.1",
     "uspin": "^1.3.0",
-    "vue-ui-preloader": "^1.2.1",
-    "webpack": "^5.85.0"
+    "vue-ui-preloader": "^1.2.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
@@ -34,6 +36,7 @@
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4",
+    "webpack": "^5.86.0",
     "webpack-cli": "^5.1.3"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"

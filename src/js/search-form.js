@@ -14,7 +14,6 @@ let paginationListLinks = document.querySelectorAll('.pagination-list__link');
 let paginationBackArrow = document.querySelector('.pagination__back');
 let paginationForwardArrow = document.querySelector('.pagination__forward');
 
-
 searchFormEl.addEventListener('submit', searchFilms);
 clearBtn.addEventListener('click', resetForm);
 searchFormEl.addEventListener('input', addCrossBtn);
