@@ -3,9 +3,9 @@ import { renderCards } from './movie_card';
 import { initRatings } from './star_rating';
 
 let page = 1;
-let paginationListLinks = document.querySelectorAll('.pagination-list__link');
-let paginationBackArrow = document.querySelector('.pagination__back');
-let paginationForwardArrow = document.querySelector('.pagination__forward');
+const paginationListLinks = document.querySelectorAll('.pagination-list__link');
+const paginationBackArrow = document.querySelector('.pagination__back');
+const paginationForwardArrow = document.querySelector('.pagination__forward');
 
 // ======ВИКЛИК ФУНКЦІЇ РЕНДЕРУ КАРТОК=======
 
