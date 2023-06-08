@@ -33,4 +33,4 @@ fetchMovieTrend(page)
     console.error('Error rendering movie cards:', error);
   });
 
-console.log(page);
+// console.log(page);
