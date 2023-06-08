@@ -12,13 +12,19 @@ function createCards(data) {
       if (release_date === '') {
         release_date = 'none';
       }
+
+      if (!poster_path) {
+        poster_path = './images/not_found.jpg';
+      }
+      const imageAlt = poster_path ? title : 'Image Not Found';
+
       // const truncatedTitle =
       //   title.length > 26 ? title.slice(0, 26) + '...' : title;
       // const truncatedGenre =
       //   genre.length > 18 ? genre.slice(0, 18) + '...' : genre;
 
       return `<li class="movie-card js-open-modal" data-id="${id}" data-modal="1">
-      <img class="movie-card__img" src="${IMAGE_URL_W500}${poster_path}" alt="${title}" data-id="${id}" loading="lazy"/>
+      <img class="movie-card__img" src="${IMAGE_URL_W500}${poster_path}" alt="${imageAlt}" data-id="${id}" loading="lazy"/>
       <div class="movie-card__info">
       <p class="movie-card__title">${title}</p>
        <div class="movie-card__ganre-rating-wrap">

@@ -2,7 +2,6 @@ import { fetchMovieTrend } from './api';
 import { renderCards } from './movie_card';
 import { movieListContainer } from './catalog';
 import { initRatings } from './star_rating';
-import { searchFilms } from './search-form';
 import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
@@ -20,10 +19,23 @@ const refs = {
 refs.paginationBackArrow.setAttribute('disabled', '');
 refs.paginationListLinks[0].classList.add('selected');
 
+searchFormEl.addEventListener('submit', onSubmit);
+
 refs.paginationBackArrow.addEventListener('click', onClickBack);
 refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
+
+
+if (searchFormEl.classList.contains('search')) {
+  searchFormEl.classList.remove('search');
+}
+
+function onSubmit(event) {
+  if (!event.currentTarget.classList.contains('search')) {
+    event.currentTarget.classList.add('search');
+  }
+}
 
 function onClickBack(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
@@ -75,7 +87,7 @@ function onClickBack(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -188,7 +200,7 @@ function onClickForward(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
@@ -274,7 +286,7 @@ function onClickList(event) {
     }
   }
   trimZero(page);
-  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+  if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value)
       .then(data => {
         renderCards(data, movieListContainer);
