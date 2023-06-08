@@ -26,30 +26,64 @@ refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
 refs.paginationList.addEventListener('click', onClickList);
 
-
 if (searchFormEl.classList.contains('search')) {
   searchFormEl.classList.remove('search');
 }
 
 function onSubmit(event) {
+  event.preventDefault();
   if (!event.currentTarget.classList.contains('search')) {
     event.currentTarget.classList.add('search');
   }
 }
 
 function onClickBack(event) {
+  event.preventDefault();
+  refs.paginationForwardArrow.removeAttribute('disabled', '');
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
+      const prevElement = refs.paginationListLinks[i - 1];
       if (
         refs.paginationListLinks[i] ===
         refs.paginationListLinks[refs.paginationListLinks.length - 1]
       ) {
-        changesValuesBack(refs.paginationListLinks[i]);
-        changesValuesBack(refs.paginationListLinks[i - 1]);
-        changesValuesBack(refs.paginationListLinks[i - 2]);
-        changesValuesBack(refs.paginationListLinks[i - 3]);
+        refs.paginationListLinks[i].classList.remove('selected');
+        page = prevElement.textContent;
+        prevElement.classList.add('selected');
 
-        page = refs.paginationListLinks[i].textContent;
+        break;
+      }
+
+      if (refs.paginationListLinks[i - 1].textContent === '...') {
+        refs.paginationListLinks[i].classList.remove('selected');
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 2
+        ].textContent = '...';
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 2
+        ].classList.add('more');
+
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 3
+        ].textContent = Number(refs.paginationListLinks[i].textContent) - 1;
+
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 4
+        ].textContent = Number(refs.paginationListLinks[i].textContent) - 2;
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 5
+        ].textContent = Number(refs.paginationListLinks[i].textContent) - 1;
+
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 5
+        ].classList.remove('more');
+
+        page =
+          refs.paginationListLinks[refs.paginationListLinks.length - 3]
+            .textContent;
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 3
+        ].classList.add('selected');
 
         break;
       }
@@ -65,8 +99,6 @@ function onClickBack(event) {
         page = refs.paginationListLinks[i].textContent;
         break;
       }
-
-      const prevElement = refs.paginationListLinks[i - 1];
 
       if (prevElement === refs.paginationListLinks[0]) {
         refs.paginationForwardArrow.removeAttribute('disabled', '');
@@ -95,14 +127,11 @@ function onClickBack(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log(data);
-        console.log(data.results.length);
+        console.log('Search');
       })
       .catch(error => {
         console.error('Error rendering movie cards:', error);
       });
-
-    console.log('Search');
   } else {
     fetchMovieTrend(page)
       .then(data => {
@@ -129,6 +158,7 @@ function onClickForward(event) {
         refs.paginationListLinks[i + 1].classList.remove('more');
 
         refs.paginationListLinks[0].textContent = '...';
+        refs.paginationListLinks[0].classList.add('more');
 
         refs.paginationListLinks[
           refs.paginationListLinks.length - 2
@@ -208,14 +238,11 @@ function onClickForward(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log(data);
-        console.log(data.results.length);
+        console.log('Search');
       })
       .catch(error => {
         console.error('Error rendering movie cards:', error);
       });
-
-    console.log('Search');
   } else {
     fetchMovieTrend(page)
       .then(data => {
@@ -233,7 +260,7 @@ function onClickList(event) {
   event.preventDefault();
 
   if (event.target.textContent === '...') {
-    console.log(page);
+    console.log(pageList);
     return;
   }
 
@@ -294,14 +321,11 @@ function onClickList(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log(data);
-        console.log(data.results.length);
+        console.log('Search');
       })
       .catch(error => {
         console.error('Error rendering movie cards:', error);
       });
-
-    console.log('Search');
   } else {
     fetchMovieTrend(page)
       .then(data => {

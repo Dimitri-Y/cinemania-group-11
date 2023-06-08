@@ -14,7 +14,6 @@ button.arrow {
 
 .container.pagination {
   padding-top: 20px;
-  /* padding-bottom: 40px; */
 }
 
 .pagination-list {
@@ -30,7 +29,6 @@ button.arrow {
 button[disabled] {
   pointer-events: auto;
   cursor: default;
-  /* color: #888; */
 }
 
 .pagination .arrow {
