@@ -32,7 +32,7 @@ let libraryIdArray = [];
 if (localStorage.getItem(STORAGE_KEY)) {
   libraryIdArray = JSON.parse(localStorage.getItem(STORAGE_KEY));
 }
-// ? -- Асинхронна функція фетчу, що повертає data ;
+// ! -- Асинхронна функція фетчу, що повертає data ;
 async function fetchDetailsMovie(id) {
   const url = `${VIDEO_URL}/${id}?api_key=${KEY}`;
   const { data } = await axios.get(url);
@@ -50,7 +50,6 @@ if (refs.weeklyGal === null && refs.libraryGal === null) {
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;
   fetchDetailsMovie(ElId).then(response => renderAboutModal(response));
-  console.log(evt.target);
   if (evt.target.classList.contains('js-open-modal')) {
     refs.modalDet.classList.add('active');
     refs.overlay.classList.add('active');
@@ -72,12 +71,16 @@ function renderAboutModal({
   vote_count,
   popularity,
   overview,
+  genres,
 }) {
+  let genreNames = genres.map(genre => genre.name).join(' ');
   refs.modalImg.src = `https://image.tmdb.org/t/p/w500/${poster_path}`;
   refs.modalTitle.textContent = original_title;
-  refs.modalVote.textContent = vote_average;
+  refs.modalVote.textContent = vote_average.toFixed(1);
   refs.modalVotes.textContent = vote_count;
-  refs.modalPopularity.textContent = popularity;
+  refs.modalGenre.textContent = genreNames;
+  // refs.modalGenre.textContent = `${genres[0].name}`
+  refs.modalPopularity.textContent = popularity.toFixed(1);
   refs.modalDescription.textContent = overview;
 }
 // ? -- Функція пушу значень в масив айдішок фільмів,
