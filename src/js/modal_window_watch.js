@@ -1,8 +1,10 @@
 import './dict-modal/hystmodal.min.js';
 import axios from 'axios';
 import { KEY, VIDEO_URL } from './api-key';
+import '../css/modal_window_watch.css';
 
-const iframeVideo = document.getElementById('iframe');
+const iframeVideo = document.getElementById('iframe_container');
+const iframeEl = document.getElementById('iframe');
 const iframeVideoError = document.getElementById('errorWatchVideo');
 
 // ======fetch=====
@@ -20,11 +22,11 @@ async function fechMovieVideo(movie_id) {
 export async function renderVideoLink(movie_id) {
   try {
     if ((await fechMovieVideo(movie_id)) === undefined) {
-      iframeVideo.classList.add('is-hiddenVideo');
-      iframeVideoError.classList.remove('is-hiddenVideo');
+      iframeVideo.classList.add('is-hidden');
+      iframeVideoError.classList.remove('is-hidden');
     } else {
-      iframeVideo.classList.remove('is-hiddenVideo');
-      iframeVideoError.classList.add('is-hiddenVideo');
+      iframeVideo.classList.remove('is-hidden');
+      iframeVideoError.classList.add('is-hidden');
     }
 
     const { results } = await fechMovieVideo(movie_id);
@@ -32,7 +34,7 @@ export async function renderVideoLink(movie_id) {
     // console.log(results);
     const keyVideo = results[0].key;
     // console.log(keyVideo);
-    iframeVideo.setAttribute(
+    iframeEl.setAttribute(
       'src',
       `https://www.youtube.com/embed/${keyVideo}?enablejsapi=1&rel=0&showinfo=0`
     );
