@@ -7,7 +7,6 @@ import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
 
-
 let page = 1;
 
 const refs = {
@@ -39,6 +38,7 @@ function onClickBack(event) {
         changesValuesBack(refs.paginationListLinks[i - 3]);
 
         page = refs.paginationListLinks[i].textContent;
+
         break;
       }
 
@@ -80,8 +80,9 @@ function onClickBack(event) {
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        paginationListLinks[paginationListLinks.length - 1].textContent =
-          data.total_pages.toString();
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 1
+        ].textContent = data.total_pages.toString();
         console.log(data);
         console.log(data.results.length);
       })
@@ -107,17 +108,12 @@ function onClickForward(event) {
   for (let i = 0; i < refs.paginationListLinks.length; i += 1) {
     if (refs.paginationListLinks[i].classList.contains('selected')) {
       if (
-        Number(refs.paginationListLinks[i].textContent) + 1 ===
+        Number(refs.paginationListLinks[i].textContent) + 3 ===
         Number(
           refs.paginationListLinks[refs.paginationListLinks.length - 1]
             .textContent
         )
       ) {
-        refs.paginationBackArrow.removeAttribute('disabled', '');
-        refs.paginationForwardArrow.setAttribute('disabled', '');
-        page = refs.paginationListLinks[i + 2].textContent;
-        refs.paginationListLinks[i + 2].classList.add('selected');
-        refs.paginationListLinks[i].classList.remove('selected');
         refs.paginationListLinks[i + 1].classList.remove('more');
 
         refs.paginationListLinks[0].textContent = '...';
@@ -143,12 +139,21 @@ function onClickForward(event) {
             refs.paginationListLinks[refs.paginationListLinks.length - 1]
               .textContent
           ) - 3;
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 2
-        ].textContent.classList.remove('more');
+
+        page =
+          refs.paginationListLinks[refs.paginationListLinks.length - 3]
+            .textContent;
+        break;
       }
 
-      if (refs.paginationListLinks[i + 1].textContent === '...') {
+      if (
+        refs.paginationListLinks[i + 1].textContent === '...' &&
+        Number(refs.paginationListLinks[i].textContent) + 1 !==
+          Number(
+            refs.paginationListLinks[refs.paginationListLinks.length - 1]
+              .textContent
+          )
+      ) {
         changesValuesForward(refs.paginationListLinks[i]);
         changesValuesForward(refs.paginationListLinks[i - 1]);
         changesValuesForward(refs.paginationListLinks[i - 2]);
@@ -188,8 +193,9 @@ function onClickForward(event) {
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        paginationListLinks[paginationListLinks.length - 1].textContent =
-          data.total_pages.toString();
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 1
+        ].textContent = data.total_pages.toString();
         console.log(data);
         console.log(data.results.length);
       })
@@ -268,13 +274,33 @@ function onClickList(event) {
     }
   }
   trimZero(page);
-  fetchMovieTrend(page)
-    .then(data => {
-      renderCards(data, movieListContainer);
-    })
-    .catch(error => {
-      console.error('Error rendering movie cards:', error);
-    });
+  if (!refs.catalogBtnCross.classList.contains('ishidden')) {
+    fetchMovieSearch(page, value)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        refs.paginationListLinks[
+          refs.paginationListLinks.length - 1
+        ].textContent = data.total_pages.toString();
+        console.log(data);
+        console.log(data.results.length);
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+
+    console.log('Search');
+  } else {
+    fetchMovieTrend(page)
+      .then(data => {
+        renderCards(data, movieListContainer);
+        initRatings(data);
+        console.log('Trend');
+      })
+      .catch(error => {
+        console.error('Error rendering movie cards:', error);
+      });
+  }
 }
 
 function trimZero(value) {
@@ -296,8 +322,8 @@ function changesValuesForward(element) {
 
 function changesValuesBack(element) {
   element.textContent[0] === '0'
-    ? (element.textContent = Number(element.textContent.slice(1)) - 1)
-    : (element.textContent = Number(element.textContent) - 1);
+    ? (element.textContent = String(Number(element.textContent.slice(1)) - 1))
+    : (element.textContent = String(Number(element.textContent) - 1));
 
   if (element.textContent.length < 2) {
     element.textContent = '0' + element.textContent.toString();

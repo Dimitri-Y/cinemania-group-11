@@ -6,11 +6,13 @@ import { movieListContainer } from './catalog';
 
 export const searchFormEl = document.getElementById('idFormCatalog');
 const clearBtn = document.querySelector('.catalog__btn-cross');
-const messageEl = document.querySelector('.js-catalog__message--search');
+const messageEl = document.querySelector('.catalog__message');
 
 export let value = '';
 let page = 1;
 let paginationListLinks = document.querySelectorAll('.pagination-list__link');
+let paginationBackArrow = document.querySelector('.pagination__back');
+let paginationForwardArrow = document.querySelector('.pagination__forward');
 
 searchFormEl.addEventListener('submit', searchFilms);
 clearBtn.addEventListener('click', resetForm);
@@ -32,10 +34,22 @@ export function searchFilms(event) {
           }
           renderCards(data, movieListContainer);
           initRatings(data);
+          paginationListLinks[0].textContent = '01';
+          paginationListLinks[1].textContent = '02';
+          paginationListLinks[2].textContent = '03';
+          paginationListLinks[3].textContent = '...';
           paginationListLinks[paginationListLinks.length - 1].textContent =
             data.total_pages.toString();
-          console.log(data);
-          console.log(data.results.length);
+          paginationListLinks.forEach(item =>
+            item.classList.contains('selected')
+              ? item.classList.remove('selected')
+              : item
+          );
+          paginationListLinks[0].classList.add('selected');
+          paginationBackArrow.setAttribute('disabled', '');
+          paginationForwardArrow.removeAttribute('disabled', '');
+          // console.log(data);
+          // console.log(data.results.length);
         }
       })
       .catch(error => {
