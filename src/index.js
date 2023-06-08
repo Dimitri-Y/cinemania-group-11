@@ -1,8 +1,8 @@
 import './js/api';
 import './js/api-key';
-import './js/preloader';
 import './js/mobile-menu';
 import './js/switch-theme';
+import './js/preloader';
 import './js/hero';
 import './js/modal_window_watch';
 import './js/home-upcoming';
