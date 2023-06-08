@@ -16,19 +16,19 @@ const refs = {
   catalogBtnCross: document.querySelector('.catalog__btn-cross'),
 };
 
-refs.paginationBackArrow.setAttribute('disabled', '');
-refs.paginationListLinks[0].classList.add('selected');
+try {
+  refs.paginationBackArrow.setAttribute('disabled', '');
+  refs.paginationListLinks[0].classList.add('selected');
+  searchFormEl.addEventListener('submit', onSubmit);
 
-searchFormEl.addEventListener('submit', onSubmit);
+  refs.paginationBackArrow.addEventListener('click', onClickBack);
+  refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
-refs.paginationBackArrow.addEventListener('click', onClickBack);
-refs.paginationForwardArrow.addEventListener('click', onClickForward);
-
-refs.paginationList.addEventListener('click', onClickList);
-
-if (searchFormEl.classList.contains('search')) {
-  searchFormEl.classList.remove('search');
-}
+  refs.paginationList.addEventListener('click', onClickList);
+  if (searchFormEl.classList.contains('search')) {
+    searchFormEl.classList.remove('search');
+  }
+} catch (error) {}
 
 function onSubmit(event) {
   event.preventDefault();

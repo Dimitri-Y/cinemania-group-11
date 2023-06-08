@@ -29,12 +29,12 @@ const paginationListLinks = document.querySelectorAll('.pagination-list__link');
 const paginationBackArrow = document.querySelector('.pagination__back');
 const paginationForwardArrow = document.querySelector('.pagination__forward');
 const pagination = document.querySelector('.pagination');
-
-searchFormEl.addEventListener('submit', searchFilms);
-clearBtn.addEventListener('click', resetForm);
-searchFormEl.addEventListener('input', addCrossBtn);
-searhYearEl.addEventListener('click', searchYear);
-
+try {
+  searchFormEl.addEventListener('submit', searchFilms);
+  clearBtn.addEventListener('click', resetForm);
+  searchFormEl.addEventListener('input', addCrossBtn);
+  searhYearEl.addEventListener('click', searchYear);
+} catch (error) {}
 export function searchFilms(event) {
   event.preventDefault();
 

@@ -5,10 +5,10 @@
     menu: document.querySelector('[data-menu]'),
     menuItems: document.querySelectorAll('.menu-item-mob a, .menu-item'),
   };
-
-  elements.openMenuBtn.addEventListener('click', toggleMenu);
-  document.addEventListener('click', handleOutsideClick);
-
+  try {
+    elements.openMenuBtn.addEventListener('click', toggleMenu);
+    document.addEventListener('click', handleOutsideClick);
+  } catch (error) {}
   // add "current"
   elements.menuItems.forEach(menuItem => {
     const menuItemPath = menuItem.getAttribute('href');
