@@ -3,15 +3,15 @@ const refs = {
   closeModalBtnFooter: document.querySelector('[data-modal-close-footer]'),
   modalFooter: document.querySelector('[data-modal-footer]'),
   goBackModalBtnFooter: document.querySelector('[data-modal-go-back-footer]'),
-  backdropFooter: document.querySelector(".footer-contain__backdrop"),
+  backdropFooter: document.querySelector('.footer-contain__backdrop'),
 };
-
-refs.openModalBtnFooter.addEventListener('click', openModalFooter);
-refs.closeModalBtnFooter.addEventListener('click', closeModalFooter);
-refs.goBackModalBtnFooter.addEventListener('click', closeModalFooter);
-refs.backdropFooter.addEventListener('click', closeOnBdrModalFooter)
-window.addEventListener('keydown', onEscKeyPressFooter);
-
+try {
+  refs.openModalBtnFooter.addEventListener('click', openModalFooter);
+  refs.closeModalBtnFooter.addEventListener('click', closeModalFooter);
+  refs.goBackModalBtnFooter.addEventListener('click', closeModalFooter);
+  refs.backdropFooter.addEventListener('click', closeOnBdrModalFooter);
+  window.addEventListener('keydown', onEscKeyPressFooter);
+} catch (error) {}
 function openModalFooter(e) {
   e.preventDefault();
   refs.modalFooter.classList.remove('footer-contain__is-hidden');

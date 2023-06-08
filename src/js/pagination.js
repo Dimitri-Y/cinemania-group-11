@@ -16,19 +16,19 @@ const refs = {
   catalogBtnCross: document.querySelector('.catalog__btn-cross'),
 };
 
-refs.paginationBackArrow.setAttribute('disabled', '');
-refs.paginationListLinks[0].classList.add('selected');
+try {
+  refs.paginationBackArrow.setAttribute('disabled', '');
+  refs.paginationListLinks[0].classList.add('selected');
+  searchFormEl.addEventListener('submit', onSubmit);
 
-searchFormEl.addEventListener('submit', onSubmit);
+  refs.paginationBackArrow.addEventListener('click', onClickBack);
+  refs.paginationForwardArrow.addEventListener('click', onClickForward);
 
-refs.paginationBackArrow.addEventListener('click', onClickBack);
-refs.paginationForwardArrow.addEventListener('click', onClickForward);
-
-refs.paginationList.addEventListener('click', onClickList);
-
-if (searchFormEl.classList.contains('search')) {
-  searchFormEl.classList.remove('search');
-}
+  refs.paginationList.addEventListener('click', onClickList);
+  if (searchFormEl.classList.contains('search')) {
+    searchFormEl.classList.remove('search');
+  }
+} catch (error) {}
 
 function onSubmit(event) {
   event.preventDefault();
@@ -127,21 +127,15 @@ function onClickBack(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -238,21 +232,15 @@ function onClickForward(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -313,21 +301,15 @@ function onClickList(event) {
         refs.paginationListLinks[
           refs.paginationListLinks.length - 1
         ].textContent = data.total_pages.toString();
-        console.log('Search');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   } else {
     fetchMovieTrend(page)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        console.log('Trend');
       })
-      .catch(error => {
-        console.error('Error rendering movie cards:', error);
-      });
+      .catch(error => {});
   }
 }
 
@@ -335,7 +317,6 @@ function trimZero(value) {
   value.toString()[0] === '0'
     ? (value = Number(value.toString().slice(1)))
     : (value = Number(value));
-  console.log(value);
 }
 
 function changesValuesForward(element) {

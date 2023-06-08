@@ -25,26 +25,28 @@ function getAndRenderMovie() {
       renderCards(data, weeklyListContainer);
       initRatings(data);
     })
-    .catch(error => {
-      console.error('Error rendering movie cards:', error);
-    });
+    .catch(error => {});
 }
 function toggleLastTwoMovies() {
-  const movies = weeklyListContainer.querySelectorAll('li');
-  const lastTwoMovies = Array.from(movies).slice(-2);
+  try {
+    const movies = weeklyListContainer.querySelectorAll('li');
+    const lastTwoMovies = Array.from(movies).slice(-2);
 
-  if (window.innerWidth <= 767) {
-    lastTwoMovies.forEach(movie => {
-      movie.style.display = 'none';
-    });
-  } else {
-    lastTwoMovies.forEach(movie => {
-      movie.style.display = 'block';
-    });
-  }
+    if (window.innerWidth <= 767) {
+      lastTwoMovies.forEach(movie => {
+        movie.style.display = 'none';
+      });
+    } else {
+      lastTwoMovies.forEach(movie => {
+        movie.style.display = 'block';
+      });
+    }
+  } catch (error) {}
 }
 
 // Викликати функцію при завантаженні сторінки та при зміні розміру вікна
-window.addEventListener('DOMContentLoaded', getAndRenderMovie);
-window.addEventListener('DOMContentLoaded', toggleLastTwoMovies);
-window.addEventListener('resize', toggleLastTwoMovies);
+try {
+  window.addEventListener('DOMContentLoaded', getAndRenderMovie);
+  window.addEventListener('DOMContentLoaded', toggleLastTwoMovies);
+  window.addEventListener('resize', toggleLastTwoMovies);
+} catch (error) {}

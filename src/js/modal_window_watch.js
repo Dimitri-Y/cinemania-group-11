@@ -14,9 +14,7 @@ async function fechMovieVideo(movie_id) {
       `${VIDEO_URL}/${movie_id}/videos?api_key=${KEY}&language=en-US`
     );
     return data;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export async function renderVideoLink(movie_id) {
@@ -36,9 +34,7 @@ export async function renderVideoLink(movie_id) {
       'src',
       `https://www.youtube.com/embed/${keyVideo}?enablejsapi=1&rel=0&showinfo=0`
     );
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 const myModal = new HystModal({

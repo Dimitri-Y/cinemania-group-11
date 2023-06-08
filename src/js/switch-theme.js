@@ -36,10 +36,10 @@ function toggleThemes() {
 
 const darkThemeBtn = document.querySelector('#darkThemeBtn');
 const lightThemeBtn = document.querySelector('#lightThemeBtn');
-
-darkThemeBtn.addEventListener('click', toggleThemes);
-lightThemeBtn.addEventListener('click', toggleThemes);
-
+try {
+  darkThemeBtn.addEventListener('click', toggleThemes);
+  lightThemeBtn.addEventListener('click', toggleThemes);
+} catch (error) {}
 const savedTheme = loadThemePreference();
 
 if (savedTheme) {
