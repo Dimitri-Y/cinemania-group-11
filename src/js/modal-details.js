@@ -96,6 +96,7 @@ async function fetchDetailsMovie(id) {
 }
 
 const refs = {
+  body: document.querySelector('body'),
   catalogGal: document.querySelector('.catalog__gallery'),
   modalDet: document.querySelector('.modal-about'),
   modalImg: document.querySelector('.modal-about__img'),
@@ -109,18 +110,28 @@ const refs = {
   modalDescription: document.querySelector('.modal-about__description'),
   modalAddLibraryBtn: document.querySelector('.modal-about__btn--add'),
   modalRemoveLibraryBtn: document.querySelector('.modal-about__btn--remove'),
-  overlay: document.querySelector('.js-overlay-modal')
+  overlay: document.querySelector('.js-overlay-modal'),
+  weeklyGal: document.querySelector('#cards__list'),
+  heroDetailsBtn: document.querySelector('.but2'),
+  libraryGal: document.querySelector('.library-body__gallery'),
 };
 
-refs.catalogGal.addEventListener('click', onModalRender);
+if (refs.weeklyGal === null && refs.libraryGal === null) {
+  refs.catalogGal.addEventListener('click', onModalRender);
+} else if (refs.catalogGal === null && refs.libraryGal === null) {
+  refs.weeklyGal.addEventListener('click', onModalRender);
+} else {
+  refs.libraryGal.addEventListener('click', onModalRender);
+}
 
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;
   fetchDetailsMovie(ElId).then(response => renderAboutModal(response));
-  // console.log(evt.target);
-  if(evt.target.classList.contains('js-open-modal')){
-    refs.modalDet.classList.add('active')
-    refs.overlay.classList.add('active')
+  console.log(evt.target);
+  if (evt.target.classList.contains('js-open-modal')) {
+    refs.modalDet.classList.add('active');
+    refs.overlay.classList.add('active');
+    refs.body.classList.add('modal-about__no-scroll');
   }
   refs.modalAddLibraryBtn.addEventListener('click', onPushInLocalStorage);
   if (libraryIdArray.includes(ElId)) {
@@ -159,6 +170,9 @@ function onRemoveInLocalStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryIdArray));
   if (!libraryIdArray[0]) {
     localStorage.removeItem(STORAGE_KEY);
+  }
+  if (refs.weeklyGal === null && refs.catalogGal === null) {
+    location.reload()
   }
 }
 

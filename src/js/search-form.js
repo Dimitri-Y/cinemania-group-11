@@ -4,11 +4,25 @@ import { renderCards } from './movie_card';
 
 import { initRatings } from './star_rating';
 import { movieListContainer } from './catalog';
+import Notiflix from 'notiflix';
 
 export const searchFormEl = document.getElementById('idFormCatalog');
 const clearBtn = document.querySelector('.catalog__btn-cross');
-const messageEl = document.querySelector('.catalog__message');
+const messageEl = document.querySelector('.js-catalog__message--search');
+const searhYearEl = document.querySelector('.catalog__search-year');
+const yearListEl = document.querySelector('.catalog__dropdown-list');
 
+document
+  .querySelectorAll('.catalog__dropdown-item')
+  .forEach(function (listItem) {
+    listItem.addEventListener('click', function () {
+      searhYearEl.value = this.textContent;
+      yearListEl.classList.toggle('ishidden');
+      return (valueYear = searhYearEl.value);
+    });
+  });
+
+export let valueYear = '';
 export let value = '';
 let page = 1;
 const paginationListLinks = document.querySelectorAll('.pagination-list__link');
@@ -19,13 +33,19 @@ const pagination = document.querySelector('.pagination');
 searchFormEl.addEventListener('submit', searchFilms);
 clearBtn.addEventListener('click', resetForm);
 searchFormEl.addEventListener('input', addCrossBtn);
+searhYearEl.addEventListener('click', searchYear);
 
 export function searchFilms(event) {
   event.preventDefault();
+
+  if (!yearListEl.classList.contains('ishidden')) {
+    yearListEl.classList.add('ishidden');
+  }
+
   value = searchFormEl.elements.name.value.trim();
-  if (value === '') alert('Enter the name of the movie');
+  if (value === '') Notiflix.Notify.warning('Enter the name of the movie.');
   else {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
         if (data.results.length === 0) {
           movieListContainer.innerHTML = '';
@@ -93,10 +113,15 @@ function switchBtnCross() {
   clearBtn.classList.toggle('ishidden');
 }
 
-export async function fetchMovieSearch(page, value) {
+export async function fetchMovieSearch(page, value, valueYear) {
   const PAGE = `&page=${page}`;
   const QUERY = `&query=${value}`;
+  const YEAR = `&primary_release_year=${valueYear}`;
   return await axios
-    .get(`${SEARCH_URL}?api_key=${KEY}${QUERY}${PAGE}`)
+    .get(`${SEARCH_URL}?api_key=${KEY}${QUERY}${PAGE}${YEAR}`)
     .then(response => response.data);
+}
+
+function searchYear() {
+  yearListEl.classList.toggle('ishidden');
 }

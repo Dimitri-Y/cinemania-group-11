@@ -1,16 +1,16 @@
 (() => {
-  const refs = {
+  const elements = {
     openMenuBtn: document.querySelector("[data-menu-open]"),
     closeMenuBtn: document.querySelector("body"),
     menu: document.querySelector("[data-menu]"),
     menuItems: document.querySelectorAll(".menu-item-mob a, .menu-item"),
   };
 
-  refs.openMenuBtn.addEventListener("click", toggleMenu);
+  elements.openMenuBtn.addEventListener("click", toggleMenu);
   document.addEventListener("click", handleOutsideClick);
 
   // add "current"
-  refs.menuItems.forEach((menuItem) => {
+  elements.menuItems.forEach((menuItem) => {
     const menuItemPath = menuItem.getAttribute("href");
     console.log("menuItemPath:", menuItemPath);
     console.log("window.location.pathname:", window.location.pathname);
@@ -20,16 +20,16 @@
   });
 
   function toggleMenu() {
-    refs.menu.classList.toggle("is-hidden");
+    elements.menu.classList.toggle("is-hidden-menu");
     document.body.classList.toggle("no-scroll");
   }
 
   function handleOutsideClick(event) {
     if (
-      !refs.menu.contains(event.target) &&
-      !refs.openMenuBtn.contains(event.target)
+      !elements.menu.contains(event.target) &&
+      !elements.openMenuBtn.contains(event.target)
     ) {
-      refs.menu.classList.add("is-hidden");
+      elements.menu.classList.add("is-hidden-menu");
       document.body.classList.remove("no-scroll");
     }
   }

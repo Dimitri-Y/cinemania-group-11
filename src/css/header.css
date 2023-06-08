@@ -3,7 +3,7 @@ body {
 }
 
 :root {
-  --menu-item-color: #595959;;
+  --menu-item-color: #595959;
   --menu-item-mob-color: #FFFFFF;
   --current-color: #F87719;
   --logo-text-color: #FFFFFF;
@@ -53,12 +53,12 @@ body {
  color: var(--menu-item-color);
  }
  
- .is-hidden {
+ .is-hidden-menu {
   opacity: 0;
   pointer-events: none;
  }
 
- .hidden {
+ .hidden-menu {
   display: none;
 }
 
@@ -68,7 +68,7 @@ body {
  position: absolute;
  top: 0;
  left:0;
- z-index: 1;
+ z-index: 10;
  width: 204px;
  height: 428px;
  background-color: inherit;
@@ -147,6 +147,11 @@ color: var(--logo-text-color);
 .menu-item {
  font-size: 14px;
  line-height: 1.14;
+ height: 100%;
+ }
+
+ .menu {
+  height: 100%;
  }
 }
 

@@ -6,7 +6,11 @@ const IMG_BASE_URL = `https://image.tmdb.org/t/p`;
 const UPCOMING_URL = `${BASE_URL}/movie/upcoming`;
 
 const upcomingContainer = document.querySelector('.upcoming__container');
-const librariesKey = 'libraries';
+const librariesKey = 'my-library-array';
+let libraryIdArray = [];
+if (localStorage.getItem(librariesKey)) {
+  libraryIdArray = JSON.parse(localStorage.getItem(librariesKey));
+}
 
 function fetchUpcomingMovies() {
   return fetch(`${UPCOMING_URL}?api_key=${KEY}&language=en-US&page=1`).then(
@@ -48,27 +52,16 @@ const getMovieById = async id => {
 };
 
 function addMovieToLibrary(movieId) {
-  getMovieById(movieId).then(movie => {
-    movie.genre_names = movie.genres
-      .map(genre => {
-        return genre.name;
-      })
-      .slice(0, 2)
-      .join(',');
-    if (movie.release_date) {
-      movie.release_date = movie.release_date.slice(0, 4);
-    }
-    let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
-    libraries[movie.id] = movie;
-    localStorage.setItem(librariesKey, JSON.stringify(libraries));
-  });
+  libraryIdArray.push(movieId);
+  localStorage.setItem(librariesKey, JSON.stringify(libraryIdArray));
 }
 
 function removeMovieFromLibrary(movieId) {
-  let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
-  delete libraries[movieId];
-  localStorage.setItem(librariesKey, JSON.stringify(libraries));
-  if (refs.libraryList) renderLibraryData();
+  libraryIdArray.splice(libraryIdArray.indexOf(movieId), 1);
+  localStorage.setItem(librariesKey, JSON.stringify(libraryIdArray));
+  if (!libraryIdArray[0]) {
+    localStorage.removeItem(librariesKey);
+  }
 }
 
 // !!!
