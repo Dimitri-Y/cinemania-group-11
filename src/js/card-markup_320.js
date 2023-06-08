@@ -1,9 +1,9 @@
 import { IMG_BASE_URL } from './api-key';
 
-function createFilmCardMarkup(randomFilm) {
+function createFilmCardMarkup320(randomFilm) {
   return `
  <div class="hero__img">
-  <img class="hero__image" src="${IMG_BASE_URL}/original/${randomFilm.backdrop_path}" alt="${randomFilm.title}"/>
+  <img class="hero__image" src="${IMG_BASE_URL}/original/${randomFilm.poster_path}" alt="${randomFilm.title}"/>
   <div class="hero__gradient">
   </div>
 
@@ -43,4 +43,4 @@ function createFilmCardMarkup(randomFilm) {
 `;
 }
 
-export { createFilmCardMarkup };
+export { createFilmCardMarkup320 };

@@ -1,15 +1,17 @@
 .ratingR {
     display: flex;
-
     align-items: flex-end;
-    font-size: 12px;
+    font-size: 19px;
     line-height: 0.75;
+    margin-bottom: 21px;
+
 }
 
 @media screen and (min-width: 1280px) {
     .ratingR {
-        font-size: 20px;
+        font-size: 30px;
         line-height: 1.15;
+        margin-bottom: 30px;
     }
 }
 
@@ -28,7 +30,7 @@
 
 .ratingR__active {
     position: absolute;
-    width: 0;
+    width: 0%;
     /*управління шириною заповнення зірок, поставити 0 */
     height: 100%;
     top: 0;
@@ -46,6 +48,7 @@
     background: linear-gradient(141.22deg,
             #f84119 9.4%,
             rgba(248, 159, 25, 0.68) 91.91%);
+    /* background-clip: text; */
     /* background-clip: text; */
     -webkit-background-clip: text;
     /* градіент до тексту */

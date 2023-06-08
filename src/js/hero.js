@@ -1,53 +1,54 @@
 import { createFilmCardMarkup } from './card-markup';
+import { createFilmCardMarkup320 } from './card-markup_320';
+
 import { renderVideoLink } from './modal_window_watch';
-// const axios = require('axios').default;
+import { TREND_DF_URL, KEY } from './api-key';
+
 import '../css/hero.css';
 import '../css/styles.css';
-import { initRatings } from './star_rating';
-// import { createStarsMarkup } from './stars-markup';
-
-// import axios from 'axios';
 
 const refs = {
   blockMain: document.querySelector('main'),
   filmHero: document.querySelector('.hero'),
 };
+const ratings = document.querySelectorAll('.rating');
+console.log(ratings);
 
-fetch(
-  'https://api.themoviedb.org/3/trending/movie/day?api_key=4523ef29a1d3e4e799126624640d84fe'
-)
+fetch(`${TREND_DF_URL}?api_key=${KEY}`)
   // .then(response => response.json())
   .then(response => {
     return response.json();
   })
   .then(films => {
-    // console.log(films);
-    // console.log(films.results);
-    // console.log(films.results[0].id);
-    // const markup = createFilmCardMarkup(films);
     if (films.results.length === 0) {
       showDefaulHero();
     } else if (films.results.length !== 0) {
       var randomFilm =
         films.results[Math.floor(Math.random() * films.results.length)];
-      // console.log(randomFilm);
-      // console.log(randomFilm.id);
-      // if (randomFilm !== 0) {
-      //   hideDefaulHero();
+
       console.log(randomFilm);
-      const markup = createFilmCardMarkup(randomFilm);
-      console.log(markup);
+      const randomRate = randomFilm.vote_average;
+
+      // console.log(randomRate);
+
+      //рендер разметки в HTML, если экран менее 768px?
+      // разметка рандомного фильма с постером:
+      // если экран более 768px - разметка с плакатом.
+
+      const markup =
+        document.documentElement.clientWidth < 768
+          ? createFilmCardMarkup320(randomFilm)
+          : createFilmCardMarkup(randomFilm);
+
       refs.blockMain.innerHTML = markup;
       console.log(refs.blockMain);
 
+      const rateActive = refs.blockMain.querySelector('.ratingR__active');
+      const rateActiveWidth = (randomRate / 10) * 100;
+      rateActive.style.width = `${rateActiveWidth}%`;
+
       const id_movie = randomFilm.id;
       renderVideoLink(id_movie);
-
-      // renderStars();
-      const rate = randomFilm.vote_average;
-      initRatings(rate);
-
-      // const markupStars = createStarsMarkup;
     }
   })
   .catch(error => {
@@ -57,8 +58,3 @@ fetch(
 function showDefaulHero() {
   refs.filmHero.classList.remove('is-hidden');
 }
-
-// function renderStars(randomFilm, querySelector) {
-//   /* querySelector.insertAdjacentHTML('beforeend', createCards(data)); */
-//   querySelector.innerHTML = markup;
-// }
