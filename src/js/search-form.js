@@ -31,11 +31,15 @@ export function searchFilms(event) {
           messageEl.classList.remove('ishidden');
           pagination.classList.add('hidden');
         } else {
-          if (!messageEl.classList.contains('ishidden')) {
-            messageEl.classList.add('ishidden');
-          }
+          pagination.classList.remove('hidden');
+          messageEl.classList.add('ishidden');
+
           renderCards(data, movieListContainer);
           initRatings(data);
+
+          if (data.total_pages === 1) {
+            pagination.classList.add('hidden');
+          }
           paginationListLinks[0].textContent = '01';
           paginationListLinks[1].textContent = '02';
           paginationListLinks[2].textContent = '03';
