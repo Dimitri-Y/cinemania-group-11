@@ -6,7 +6,11 @@ const IMG_BASE_URL = `https://image.tmdb.org/t/p`;
 const UPCOMING_URL = `${BASE_URL}/movie/upcoming`;
 
 const upcomingContainer = document.querySelector('.upcoming__container');
-const librariesKey = 'libraries';
+const librariesKey = 'my-library-array';
+let libraryIdArray = [];
+if (localStorage.getItem(librariesKey)) {
+  libraryIdArray = JSON.parse(localStorage.getItem(librariesKey));
+}
 
 function fetchUpcomingMovies() {
   return fetch(`${UPCOMING_URL}?api_key=${KEY}&language=en-US&page=1`).then(
@@ -22,7 +26,6 @@ function fetchUpcomingMovies() {
 function onClickRemind(event) {
   const movieId = event.target.dataset.movieid;
   // localStorage.clear()
-  // console.log(movieId);
   const remindBtn = document.querySelector('.upcoming__remindme-btn');
   if (remindBtn.textContent === 'Add to my Library') {
     remindBtn.textContent = 'Remove from my Library';
@@ -42,33 +45,20 @@ const getMovieById = async id => {
       ...data,
     };
     return result;
-  } catch (error) {
-    console.error('Smth wrong with api ID fetch' + error);
-  }
+  } catch (error) {}
 };
 
 function addMovieToLibrary(movieId) {
-  getMovieById(movieId).then(movie => {
-    movie.genre_names = movie.genres
-      .map(genre => {
-        return genre.name;
-      })
-      .slice(0, 2)
-      .join(',');
-    if (movie.release_date) {
-      movie.release_date = movie.release_date.slice(0, 4);
-    }
-    let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
-    libraries[movie.id] = movie;
-    localStorage.setItem(librariesKey, JSON.stringify(libraries));
-  });
+  libraryIdArray.push(movieId);
+  localStorage.setItem(librariesKey, JSON.stringify(libraryIdArray));
 }
 
 function removeMovieFromLibrary(movieId) {
-  let libraries = JSON.parse(localStorage.getItem(librariesKey)) || {};
-  delete libraries[movieId];
-  localStorage.setItem(librariesKey, JSON.stringify(libraries));
-  if (refs.libraryList) renderLibraryData();
+  libraryIdArray.splice(libraryIdArray.indexOf(movieId), 1);
+  localStorage.setItem(librariesKey, JSON.stringify(libraryIdArray));
+  if (!libraryIdArray[0]) {
+    localStorage.removeItem(librariesKey);
+  }
 }
 
 // !!!
@@ -81,16 +71,13 @@ async function getFetchedMovies() {
     if (returnedResult.length >= 1) {
       const randomMovie =
         returnedResult[Math.floor(Math.random() * returnedResult.length)];
-      console.log(randomMovie);
       const genreNames = await getGenresById(randomMovie.genre_ids);
       const createdMarkup = await renderMarkup({ ...randomMovie, genreNames });
       upcomingContainer.insertAdjacentHTML('beforeend', createdMarkup);
       const remindBtn = document.querySelector('.upcoming__remindme-btn');
       remindBtn.addEventListener('click', onClickRemind);
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 getFetchedMovies();
 
@@ -123,13 +110,17 @@ async function renderMarkup({
         <h2 class="upcoming__info-title">${title}</h2>
         <div class="upcoming__movie">
             <div class="upcoming__info-left">
+              <div class="upcoming__text-wrap-one">
                 <div class="upcoming__info-release">
                     <p class="upcoming__text"> <span class ="upcoming__light-black">Release date</span> </p>
                     <div class="upcoming__info-release-date">${release_date}</div>
                 </div>
                 <div class="upcoming__info-vote">
                     <p class="upcoming__text"><span class ="upcoming__light-black">Vote/Votes</span></p>
-                     <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span class="slash"> / </span><span class="upcoming__info-white"> ${vote_count}</span></div>                    </div>
+                     <div class="upcoming__info-votes"><span class="upcoming__info-white">${vote_average}</span> <span class="slash"> / </span><span class="upcoming__info-white"> ${vote_count}</span></div>                    
+                </div>
+              </div>
+              <div class="upcoming__text-wrap-two">
                 <div class="upcoming__info-pop">
                     <p class="upcoming__text"> <span class ="upcoming__light-black">Popularity</span> </p>
                     <div class="upcoming__info-pop-range">${popularity}</div>
@@ -138,6 +129,7 @@ async function renderMarkup({
                     <p class="upcoming__text"><span class ="upcoming__light-black">Genre</span></p>
                     <div class="upcoming__info-genre-kind">${genreNames}</div>
                 </div>
+              </div>
             </div>
         </div>
         <h2 class="upcoming__info-about">ABOUT</h2>

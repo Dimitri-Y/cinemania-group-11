@@ -56,17 +56,24 @@
 }
 /* BODY SECTION */
 .library-body__section {
-  padding: 44px 0 42px;
+  padding-top: 44px;
   background-color: #111111;
 }
-.library-body__default-wrap {
+.library-body__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+.library-body__default-item {
   display: block;
-  width: 240px;
   margin: 0 auto;
 }
 .library-body__default-sub {
   display: block;
   margin: 0 auto 20px;
+  max-width: 240px;
 
   font-family: 'Roboto';
   font-weight: 400;
@@ -91,8 +98,7 @@
 }
 .library-body__btn-span {
   display: block;
-  font-family: 'Roboto Regular';
-  font-weight: 500;
+  font-family: 'Roboto Medium';
   font-size: 12px;
   line-height: 14px;
 }
@@ -133,7 +139,7 @@
         rgba(17, 17, 17, 0) 71.57%
       ),
       url(../images/t-rows-red-seats-768-min.jpg);
-      background-position: 105px ;
+    background-position: 105px;
   }
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -152,7 +158,7 @@
   .library-hero__section {
     max-width: none;
     padding: 122px 32px 118px;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
   }
   .library-hero__title {
     width: 332px;
@@ -165,12 +171,17 @@
     line-height: 1.14;
   }
   .library-body__section {
-    padding: 80px 0 60px;
+    padding-top: 80px;
   }
-  .library-body__default-wrap {
+  .library-body__gallery {
+    justify-content: flex-start;
+    row-gap: 28px;
+  }
+  .library-body__wrap {
     width: 438px;
   }
   .library-body__default-sub {
+    max-width: none;
     font-size: 24px;
     line-height: 1.33;
   }
@@ -190,7 +201,7 @@
         rgba(17, 17, 17, 0) 72.02%
       ),
       url(../images/d-rows-red-seats-1280@2x-min.jpg);
-      background-position: 107px bottom;
+    background-position: 107px bottom;
   }
   /* ---main-desktop-features--- */
   .library-hero__section {
@@ -208,9 +219,12 @@
     line-height: 1.18;
   }
   .library-body__section {
-    padding: 160px 0 108px;
+    padding-top: 160px;
   }
-  .library-body__default-wrap {
+  .library-body__gallery {
+    row-gap: 32px;
+  }
+  .library-body__wrap {
     width: 584px;
   }
   .library-body__default-sub {

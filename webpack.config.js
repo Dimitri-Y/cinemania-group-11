@@ -1,4 +1,10 @@
-module.exports = {
+odule.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+  },
   module: [
     rules[
       {
@@ -8,7 +14,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: './',
+              outputPath: 'images/',
               useRelativePath: true,
             },
           },

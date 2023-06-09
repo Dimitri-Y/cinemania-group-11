@@ -26,7 +26,6 @@ fetch(`${TREND_DF_URL}?api_key=${KEY}`)
       var randomFilm =
         films.results[Math.floor(Math.random() * films.results.length)];
 
-      console.log(randomFilm);
       const randomRate = randomFilm.vote_average;
 
       // console.log(randomRate);
@@ -41,7 +40,6 @@ fetch(`${TREND_DF_URL}?api_key=${KEY}`)
           : createFilmCardMarkup(randomFilm);
 
       refs.blockMain.innerHTML = markup;
-      console.log(refs.blockMain);
 
       const rateActive = refs.blockMain.querySelector('.ratingR__active');
       const rateActiveWidth = (randomRate / 10) * 100;
@@ -51,9 +49,7 @@ fetch(`${TREND_DF_URL}?api_key=${KEY}`)
       renderVideoLink(id_movie);
     }
   })
-  .catch(error => {
-    console.log(error);
-  });
+  .catch(error => {});
 
 function showDefaulHero() {
   refs.filmHero.classList.remove('is-hidden');

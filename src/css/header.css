@@ -1,26 +1,27 @@
 body {
-  background-color: #000000;
+  background-color: #111;
 }
 
 :root {
-  --menu-item-color: #595959;;
+  --menu-item-color: #595959;
   --menu-item-mob-color: #FFFFFF;
   --current-color: #F87719;
   --logo-text-color: #FFFFFF;
   --light-theme-bc-color: #F5F5F5;
   --light-theme-logo-color: #282828;
   --light-theme-item-color: #595959;
-
-
 }
 
 /* ------------ MOBILE ------------ */
  .container {
-  /* padding: 8px 20px; */
   margin-left: auto;
   margin-right: auto;
  }
  
+ .container-mob-menu {
+  position: relative; 
+}
+
  .menu, .logo-text {
   display: none;
  }
@@ -53,28 +54,43 @@ body {
  color: var(--menu-item-color);
  }
  
- .is-hidden {
+ .is-hidden-menu {
   opacity: 0;
   pointer-events: none;
  }
 
- .hidden {
+ .hidden-menu {
   display: none;
 }
 
 /* <!--------------- MOBILE MENU -----------------> */
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .mob-menu {
  position: absolute;
  top: 0;
  left:0;
- z-index: 1;
+ z-index: 10;
  width: 204px;
  height: 428px;
- background-color: inherit;
+ background-color: #171717;
+border-radius: 0px 8px 8px 0px;
  padding-top: 8px;
  padding-left: 20px;
  overflow-y: scroll;
+}
+
+.is-visible {
+  display: block;
 }
 
 .no-scroll {
@@ -107,7 +123,7 @@ color: var(--menu-item-mob-color);
 
 .menu {
  display: flex;
- gap: 40px;
+ gap: 32px;
 }
 
 .top {
@@ -115,6 +131,9 @@ height: 60px;
 }
 .menu-menu {
  display: none;
+}
+.mob-menu {
+  display: none;
 }
 
 .logo {
@@ -147,6 +166,11 @@ color: var(--logo-text-color);
 .menu-item {
  font-size: 14px;
  line-height: 1.14;
+ height: 100%;
+ }
+
+ .menu {
+  height: 100%;
  }
 }
 
@@ -155,7 +179,6 @@ color: var(--logo-text-color);
 @media screen and (min-width: 1280px) {
  .container {
   max-width: 1280px;
-  padding: 8px 32px;
  }
 }
 

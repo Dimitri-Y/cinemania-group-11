@@ -22,6 +22,7 @@
 }
 
 .modal-about {
+  position: relative;
   opacity: 0;
   visibility: hidden;
   width: 100%;
@@ -54,15 +55,20 @@
   visibility: visible;
 }
 
-/* .modal__cross {
-  width: 24px;
-  height: 24px;
+.modal-about-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  fill: #fff;
+  top: 27px;
+  right: 23px;
+  float: right;
+  stroke: #f5f5f5;
   cursor: pointer;
-} */
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-about-close:hover,
+.modal-about-close:focus {
+  stroke: #f87719;
+}
 
 .modal-about__img {
   width: 248px;
@@ -72,7 +78,7 @@
 
 .modal-about__title {
   font-size: 20px;
-  line-height: 23px;
+  line-height: 1.15;
   margin-bottom: 29px;
 }
 
@@ -100,6 +106,11 @@
   margin-bottom: 12px;
 }
 
+.modal-about-stat__number-item--vote {
+  font-size: 12px;
+  line-height: 1.16;
+}
+
 .modal-about-stat__number-item--vote-disk {
   background-color: #fff;
   color: #111111;
@@ -112,6 +123,7 @@
   color: #b7b7b7;
   font-size: 14px;
   line-height: 1.14;
+  text-transform: uppercase;
 }
 
 .modal-about__description {
@@ -124,6 +136,8 @@
   margin-bottom: 16px;
   color: #f8f8f8;
   overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.67;
 }
 
 .modal-about__btn {
@@ -176,6 +190,13 @@
     max-width: 704px;
     padding: 44px;
     max-height: 488px;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .modal-about-close {
+    top: 31px;
+    right: 31px;
   }
 
   .modal-about__container {
@@ -198,6 +219,11 @@
     margin-bottom: 20px;
   }
 
+  .modal-about-stat__number-item--vote {
+    font-size: 12px;
+    line-height: 1.16;
+  }
+
   .modal-about__subtitle {
     margin-bottom: 16px;
   }
@@ -206,6 +232,8 @@
     max-width: 301px;
     height: 140px;
     margin-bottom: 24px;
+    font-size: 12px;
+    line-height: 1.67;
   }
 }
 
@@ -214,6 +242,11 @@
     max-width: 846px;
     max-height: 598px;
     padding: 60px;
+  }
+
+  .modal-about-close {
+    top: 47px;
+    right: 47px;
   }
 
   .modal-about__img {
@@ -226,13 +259,32 @@
     margin-bottom: 28px;
   }
 
-  .modal-about-stat__name-items{
+  .modal-about-stat__name-items {
     font-size: 16px;
     line-height: 1.19;
   }
 
+  .modal-about-stat__number-item--vote {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  .modal-about-stat__number-item--popularity,
+  .modal-about-stat__number-item--genre {
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .modal-about__subtitle {
+    font-size: 16px;
+    line-height: 1;
+  }
+
   .modal-about__description {
-    max-width: 331px;
-    height: 159px;
+    max-width: 337px;
+    padding-right: 6px;
+    height: 160px;
+    font-size: 14px;
+    line-height: 1.43;
   }
 }

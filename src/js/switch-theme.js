@@ -1,18 +1,3 @@
-// (() => {
-//  const darkThemeBtn = document.querySelector("#darkThemeBtn");
-//  const lightThemeBtn = document.querySelector("#lightThemeBtn");
-//  const body = document.querySelector("body");
-
-//  darkThemeBtn.addEventListener("click", toggleThemes);
-//  lightThemeBtn.addEventListener("click", toggleThemes);
-
-//  function toggleThemes() {
-//    body.classList.toggle("light-theme");
-//    darkThemeBtn.classList.toggle("hidden");
-//    lightThemeBtn.classList.toggle("hidden");
-//  }
-// })();
-
 // save theme in localStorage
 function saveThemePreference(theme) {
   localStorage.setItem('theme', theme);
@@ -51,10 +36,10 @@ function toggleThemes() {
 
 const darkThemeBtn = document.querySelector('#darkThemeBtn');
 const lightThemeBtn = document.querySelector('#lightThemeBtn');
-
-darkThemeBtn.addEventListener('click', toggleThemes);
-lightThemeBtn.addEventListener('click', toggleThemes);
-
+try {
+  darkThemeBtn.addEventListener('click', toggleThemes);
+  lightThemeBtn.addEventListener('click', toggleThemes);
+} catch (error) {}
 const savedTheme = loadThemePreference();
 
 if (savedTheme) {

@@ -3,6 +3,9 @@ import { renderCards } from './movie_card';
 import { initRatings } from './star_rating';
 
 let page = 1;
+const paginationListLinks = document.querySelectorAll('.pagination-list__link');
+const paginationBackArrow = document.querySelector('.pagination__back');
+const paginationForwardArrow = document.querySelector('.pagination__forward');
 
 // ======ВИКЛИК ФУНКЦІЇ РЕНДЕРУ КАРТОК=======
 
@@ -11,9 +14,24 @@ fetchMovieTrend(page)
   .then(data => {
     renderCards(data, movieListContainer);
     initRatings(data);
-  })
-  .catch(error => {
-    console.error('Error rendering movie cards:', error);
-  });
+    paginationListLinks[0].textContent = '01';
+    paginationListLinks[1].textContent = '02';
+    paginationListLinks[2].textContent = '03';
+    paginationListLinks[3].textContent = '...';
 
-console.log(page);
+    data.total_pages > 500
+      ? (paginationListLinks[paginationListLinks.length - 1].textContent =
+          '500')
+      : (paginationListLinks[paginationListLinks.length - 1].textContent =
+          data.total_pages.toString());
+
+    paginationListLinks.forEach(item =>
+      item.classList.contains('selected')
+        ? item.classList.remove('selected')
+        : item
+    );
+    paginationListLinks[0].classList.add('selected');
+    paginationBackArrow.setAttribute('disabled', '');
+    paginationForwardArrow.removeAttribute('disabled', '');
+  })
+  .catch(error => {});
