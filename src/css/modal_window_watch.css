@@ -134,7 +134,13 @@ iframe {
 @media screen and (min-width: 1280px) {
   .hystmodal__window {
     width: 700px;
-    height: 400px;
+    height: 400px;  
+  }
+  .hystmodal__close {
+    top: calc(50% - 200px);
+    right: calc(50% - 360px);
+    width: 10.5px;
+    height: 10.5px;
   }
 
   .errorImg {
