@@ -18,6 +18,7 @@ async function fechMovieVideo(movie_id) {
 }
 try {
   div.hystmodal__window.classList.add('is-hidden');
+  iframeEl.classList.add('is-hidden');
 } catch (error) {}
 
 iframeEl.classList.add('is-hidden');
