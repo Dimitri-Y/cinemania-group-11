@@ -34,7 +34,7 @@ fetch(
       //   hideDefaulHero();
       const markup = createFilmCardMarkup(randomFilm);
       const id_movie = randomFilm.id;
-      renderVideoLink(id_movie);
+      document.addEventListener('DOMContentLoaded', renderVideoLink(id_movie));
       refs.blockMain.innerHTML = markup;
     }
   })
