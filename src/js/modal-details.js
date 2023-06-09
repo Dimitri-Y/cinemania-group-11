@@ -46,7 +46,7 @@ if (refs.weeklyGal === null && refs.libraryGal === null) {
 } else {
   refs.libraryGal.addEventListener('click', onModalRender);
 }
-let ElId;
+let ElId = 0;
 // ? -- Функція появи модалок ;
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;
