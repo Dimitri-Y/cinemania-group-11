@@ -31,7 +31,7 @@ iframe {
 .hystmodal__close {
   position: absolute;
   z-index: 100;
-  top: 175px;
+  top: calc(50% - 140px);
   right: calc(50% - 150px);
   display: block;
   width: 7px;
@@ -101,7 +101,7 @@ iframe {
   }
 
   .hystmodal__close {
-    top: 115px;
+    top: calc(50% - 200px);
     right: calc(50% - 320px);
     width: 10.5px;
     height: 10.5px;
