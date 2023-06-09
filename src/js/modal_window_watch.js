@@ -13,10 +13,10 @@ async function fechMovieVideo(movie_id) {
     const { data } = await axios.get(
       `${VIDEO_URL}/${movie_id}/videos?api_key=${KEY}&language=en-US`
     );
+    iframeVideo.classList.add('is-hidden');
     return data;
   } catch (error) {}
 }
-iframeVideo.classList.add('is-hidden');
 export async function renderVideoLink(movie_id) {
   try {
     // iframeEl.style.display = 'block';

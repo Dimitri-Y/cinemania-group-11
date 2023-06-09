@@ -12,7 +12,6 @@ const refs = {
   filmHero: document.querySelector('.hero'),
 };
 const ratings = document.querySelectorAll('.rating');
-console.log(ratings);
 
 fetch(`${TREND_DF_URL}?api_key=${KEY}`)
   // .then(response => response.json())
