@@ -2,14 +2,13 @@ import { fetchMovieTrend } from './api';
 import { renderCards } from './movie_card';
 import { movieListContainer } from './catalog';
 import { initRatings } from './star_rating';
-import { fetchMovieSearch } from './search-form';
+import { fetchMovieSearch, total_pages } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
 import { valueYear } from './search-form';
-import { total_pages } from './search-form';
 
 let page = 1;
-
+console.log(total_pages);
 const refs = {
   paginationListLinks: document.querySelectorAll('.pagination-list__link'),
   paginationBackArrow: document.querySelector('.pagination__back'),

@@ -12,10 +12,9 @@ button.arrow {
   background-color: transparent;
 }
 
-.hidden{
+.pagination.hidden {
   display: none;
 }
-
 
 .container.pagination {
   padding-top: 20px;
@@ -27,7 +26,7 @@ button.arrow {
 }
 
 .pagination-list .hidden {
-display: none;
+  display: none;
 }
 
 .pagination-list__link.more {
@@ -49,7 +48,6 @@ button[disabled] {
   background-repeat: no-repeat;
   background-position: center;
 }
-
 
 .pagination__back {
   margin-right: 4px;
