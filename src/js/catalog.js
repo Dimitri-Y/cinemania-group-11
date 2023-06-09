@@ -18,8 +18,13 @@ fetchMovieTrend(page)
     paginationListLinks[1].textContent = '02';
     paginationListLinks[2].textContent = '03';
     paginationListLinks[3].textContent = '...';
-    paginationListLinks[paginationListLinks.length - 1].textContent =
-      data.total_pages.toString();
+
+    data.total_pages > 500
+      ? (paginationListLinks[paginationListLinks.length - 1].textContent =
+          '500')
+      : (paginationListLinks[paginationListLinks.length - 1].textContent =
+          data.total_pages.toString());
+
     paginationListLinks.forEach(item =>
       item.classList.contains('selected')
         ? item.classList.remove('selected')
