@@ -21,7 +21,6 @@ try {
   iframeEl.classList.add('is-hidden');
 } catch (error) {}
 
-iframeEl.classList.add('is-hidden');
 export async function renderVideoLink(movie_id) {
   try {
     // iframeEl.style.display = 'block';
