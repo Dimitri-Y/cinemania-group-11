@@ -1,0 +1,37 @@
+.button-scroll {
+  position: sticky;
+  right: 30px;
+  bottom: 30px;
+  left: 90%;
+  border: none;
+  fill: #f87719;
+  /* background-color: inherit; */
+  background-color: #ff0000;
+  cursor: pointer;
+}
+
+.button-scroll__icon {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  stroke-width: 0;
+  /* stroke: #f87719; */
+  fill: #f87719;
+}
+
+@media screen and (min-width: 768px) {
+  .button-scroll__icon {
+    height: 35px;
+    width: 35px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .button-scroll__icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.scroll-hidden {
+  display: none;
+}
