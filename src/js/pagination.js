@@ -5,6 +5,8 @@ import { initRatings } from './star_rating';
 import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
+import { valueYear } from './search-form';
+import { total_pages } from './search-form';
 
 let page = 1;
 
@@ -120,13 +122,11 @@ function onClickBack(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear, total_pages)
       .then(data => {
+        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
@@ -225,13 +225,11 @@ function onClickForward(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear, total_pages)
       .then(data => {
+        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
@@ -294,13 +292,11 @@ function onClickList(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
+        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
