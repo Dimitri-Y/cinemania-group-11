@@ -46,9 +46,10 @@ if (refs.weeklyGal === null && refs.libraryGal === null) {
 } else {
   refs.libraryGal.addEventListener('click', onModalRender);
 }
+let Elid;
 // ? -- Функція появи модалок ;
 function onModalRender(evt) {
-  ElId = evt.target.dataset.id;
+  Elid = evt.target.dataset.id;
   fetchDetailsMovie(ElId).then(response => renderAboutModal(response));
   if (evt.target.classList.contains('js-open-modal')) {
     refs.modalDet.classList.add('active');
