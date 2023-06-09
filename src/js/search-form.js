@@ -13,7 +13,7 @@ const searhYearEl = document.querySelector('.catalog__search-year');
 const yearListEl = document.querySelector('.catalog__dropdown-list');
 export let valueYear = '';
 export let value = '';
-export let total_pages = '';
+export let total_pages = 1;
 let page = 1;
 const paginationListLinks = document.querySelectorAll('.pagination-list__link');
 const paginationBackArrow = document.querySelector('.pagination__back');
@@ -138,9 +138,10 @@ export function updatePaginationMarkupIfLessThanSixPages(total_pages) {
   for (let i = 0; i < paginationListLinks.length; i += 1) {
     if (
       Number(paginationListLinks[i].textContent.slice(1)) > total_pages ||
-      Number(paginationListLinks[i].textContent.slice(1)) > total_pages &&
-        paginationListLinks[i] === paginationListLinks[paginationListLinks.length - 1])
-     {
+      (Number(paginationListLinks[i].textContent.slice(1)) > total_pages &&
+        paginationListLinks[i] ===
+          paginationListLinks[paginationListLinks.length - 1])
+    ) {
       paginationListLinks[i].classList.add('hidden');
       console.log('LessSix');
     }
