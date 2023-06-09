@@ -6,7 +6,7 @@ import '../css/modal_window_watch.css';
 const iframeVideo = document.getElementById('iframe_container');
 const iframeEl = document.getElementById('iframe');
 const iframeVideoError = document.getElementById('errorWatchVideo');
-
+const div_hystmodal__window = document.getElementById('div_hystmodal__window');
 // ======fetch=====
 async function fechMovieVideo(movie_id) {
   try {
@@ -17,7 +17,7 @@ async function fechMovieVideo(movie_id) {
   } catch (error) {}
 }
 try {
-  iframeVideo.classList.add('is-hidden');
+  div.hystmodal__window.classList.add('is-hidden');
 } catch (error) {}
 export async function renderVideoLink(movie_id) {
   try {
