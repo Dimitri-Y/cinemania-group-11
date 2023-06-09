@@ -1,9 +1,12 @@
 @import url(./dict-modal/hystmodal.min.css);
 
 /* <!--------------- MOBILE MENU -----------------> */
+.hystmodal__wrap{
+  position: relative;
+}
 
 .hystmodal__window {
-  position: relative;
+  position: absolute;
   width: 280px;
   height: 289px;
   background: #111111;
@@ -28,17 +31,17 @@ iframe {
 .hystmodal__close {
   position: absolute;
   z-index: 100;
-  top: 24px;
-  right: 24px;
+  top: 175px;
+  right: calc(50% - 150px);
   display: block;
   width: 7px;
   height: 7px;
   background-color: transparent;
-  background-position: 50%;
+  /* background-position: 50%; */
   background-repeat: no-repeat;
   background-image: url('../images/icon-x.svg');
   stroke: #ffffff;
-  background-size: 100% 100%;
+  /* background-size: 100% 100%; */
   border: none;
   font-size: 0;
   cursor: pointer;
@@ -98,8 +101,8 @@ iframe {
   }
 
   .hystmodal__close {
-    top: 40px;
-    right: 40px;
+    top: 115px;
+    right: calc(50% - 320px);
     width: 10.5px;
     height: 10.5px;
   }
