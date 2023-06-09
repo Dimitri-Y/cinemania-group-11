@@ -11,6 +11,14 @@ const clearBtn = document.querySelector('.catalog__btn-cross');
 const messageEl = document.querySelector('.js-catalog__message--search');
 const searhYearEl = document.querySelector('.catalog__search-year');
 const yearListEl = document.querySelector('.catalog__dropdown-list');
+export let valueYear = '';
+export let value = '';
+export let total_pages = 1;
+let page = 1;
+const paginationListLinks = document.querySelectorAll('.pagination-list__link');
+const paginationBackArrow = document.querySelector('.pagination__back');
+const paginationForwardArrow = document.querySelector('.pagination__forward');
+const pagination = document.querySelector('.pagination');
 
 document
   .querySelectorAll('.catalog__dropdown-item')
@@ -22,13 +30,6 @@ document
     });
   });
 
-export let valueYear = '';
-export let value = '';
-let page = 1;
-const paginationListLinks = document.querySelectorAll('.pagination-list__link');
-const paginationBackArrow = document.querySelector('.pagination__back');
-const paginationForwardArrow = document.querySelector('.pagination__forward');
-const pagination = document.querySelector('.pagination');
 try {
   searchFormEl.addEventListener('submit', searchFilms);
   clearBtn.addEventListener('click', resetForm);
@@ -52,46 +53,28 @@ export function searchFilms(event) {
           messageEl.classList.remove('ishidden');
           pagination.classList.add('hidden');
         } else {
+          total_pages = data.total_pages;
           pagination.classList.remove('hidden');
           messageEl.classList.add('ishidden');
-
-          renderCards(data, movieListContainer);
-          initRatings(data);
-
-          if (data.total_pages === 1) {
-            pagination.classList.add('hidden');
-          }
-
-          if (data.total_pages < 6) {
-            paginationListLinks[0].textContent = '01';
-            paginationListLinks[1].textContent = '02';
-            paginationListLinks[2].textContent = '03';
-            paginationListLinks[3].textContent = '04';
-            paginationListLinks[paginationListLinks.length - 1].textContent =
-              data.total_pages.toString();
-
-            paginationForwardArrow.setAttribute('disabled', '');
-            paginationListLinks[3].classList.remove('more');
-          } else {
-            paginationListLinks[0].textContent = '01';
-            paginationListLinks[1].textContent = '02';
-            paginationListLinks[2].textContent = '03';
-            paginationListLinks[3].textContent = '...';
-            paginationListLinks[paginationListLinks.length - 1].textContent =
-              data.total_pages.toString();
-
-            paginationListLinks[3].classList.add('more');
-          }
-
           paginationListLinks.forEach(item =>
             item.classList.contains('selected')
               ? item.classList.remove('selected')
               : item
           );
-          paginationListLinks[0].classList.add('selected');
-          paginationBackArrow.setAttribute('disabled', '');
-          paginationForwardArrow.removeAttribute('disabled', '');
-          paginationListLinks[0].classList.remove('more');
+
+          renderCards(data, movieListContainer);
+          initRatings(data);
+
+          if (total_pages === 1) {
+            pagination.classList.add('hidden');
+            return;
+          }
+
+          if (total_pages < 6) {
+            updatePaginationMarkupIfLessThanSixPages(total_pages);
+          } else {
+            updatePaginationMarkup(total_pages);
+          }
         }
       })
       .catch(error => {});
@@ -124,4 +107,55 @@ export async function fetchMovieSearch(page, value, valueYear) {
 
 function searchYear() {
   yearListEl.classList.toggle('ishidden');
+}
+
+export function updatePaginationMarkup(total_pages) {
+  paginationListLinks[0].textContent = '01';
+  paginationListLinks[1].textContent = '02';
+  paginationListLinks[2].textContent = '03';
+  paginationListLinks[3].textContent = '...';
+  total_pages > 500
+    ? (paginationListLinks[paginationListLinks.length - 1].textContent = '500')
+    : (paginationListLinks[paginationListLinks.length - 1].textContent =
+        total_pages.toString());
+
+  paginationListLinks[0].classList.add('selected');
+  paginationListLinks[0].classList.remove('more');
+  paginationBackArrow.setAttribute('disabled', '');
+  paginationForwardArrow.removeAttribute('disabled', '');
+  paginationListLinks[3].classList.add('more');
+}
+
+export function updatePaginationMarkupIfLessThanSixPages(total_pages) {
+  paginationListLinks[3].classList.remove('more');
+  paginationListLinks[0].textContent = '01';
+  paginationListLinks[1].textContent = '02';
+  paginationListLinks[2].textContent = '03';
+  paginationListLinks[3].textContent = '04';
+  paginationListLinks[paginationListLinks.length - 1].textContent =
+    total_pages.toString();
+
+  for (let i = 0; i < paginationListLinks.length; i += 1) {
+    if (
+      Number(paginationListLinks[i].textContent.slice(1)) > total_pages ||
+      (Number(paginationListLinks[i].textContent.slice(1)) > total_pages &&
+        paginationListLinks[i] ===
+          paginationListLinks[paginationListLinks.length - 1])
+    ) {
+      paginationListLinks[i].classList.add('hidden');
+      console.log('LessSix');
+    }
+  }
+}
+function updatingClassesAndAttributes() {
+  paginationListLinks[0].classList.add('selected');
+  paginationListLinks[0].classList.remove('more');
+  paginationBackArrow.setAttribute('disabled', '');
+  paginationForwardArrow.removeAttribute('disabled', '');
+
+  for (let i = 0; i < paginationListLinks.length; i += 1) {
+    if (paginationListLinks[i].classList.contains('hidden')) {
+      paginationListLinks[i].classList.remove('hidden');
+    }
+  }
 }

@@ -19,7 +19,7 @@ const refs = {
   modalRemoveLibraryBtn: document.querySelector('.modal-about__btn--remove'),
   overlay: document.querySelector('.js-overlay-modal'),
   weeklyGal: document.querySelector('#cards__list'),
-  heroDetailsBtn: document.querySelector('.but2'),
+  // heroDetailsBtn: document.querySelector('.but2'),
   libraryGal: document.querySelector('.library-body__gallery'),
 };
 // ? -- Оголошення ключа сховища ;
@@ -46,6 +46,7 @@ if (refs.weeklyGal === null && refs.libraryGal === null) {
 } else {
   refs.libraryGal.addEventListener('click', onModalRender);
 }
+let ElId = 0;
 // ? -- Функція появи модалок ;
 function onModalRender(evt) {
   ElId = evt.target.dataset.id;

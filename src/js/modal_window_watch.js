@@ -6,7 +6,7 @@ import '../css/modal_window_watch.css';
 const iframeVideo = document.getElementById('iframe_container');
 const iframeEl = document.getElementById('iframe');
 const iframeVideoError = document.getElementById('errorWatchVideo');
-
+const div_hystmodal__window = document.getElementById('div_hystmodal__window');
 // ======fetch=====
 async function fechMovieVideo(movie_id) {
   try {
@@ -16,6 +16,10 @@ async function fechMovieVideo(movie_id) {
     return data;
   } catch (error) {}
 }
+try {
+  div.hystmodal__window.classList.add('is-hidden');
+  iframeEl.classList.add('is-hidden');
+} catch (error) {}
 
 export async function renderVideoLink(movie_id) {
   try {
@@ -41,8 +45,11 @@ const myModal = new HystModal({
   catchFocus: true,
   closeOnEsc: true,
   backscroll: true,
-  beforeOpen: function (modal) {},
+  beforeOpen: function (modal) {
+    iframeEl.classList.remove('is-hidden');
+  },
   afterClose: function (modal) {
+    iframeEl.classList.add('is-hidden');
     let videoframe = modal.openedWindow.querySelector('iframe');
     if (videoframe) {
       videoframe.contentWindow.postMessage(

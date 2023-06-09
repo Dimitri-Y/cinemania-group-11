@@ -5,9 +5,9 @@ import { initRatings } from './star_rating';
 import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
+import { valueYear } from './search-form';
 
 let page = 1;
-
 const refs = {
   paginationListLinks: document.querySelectorAll('.pagination-list__link'),
   paginationBackArrow: document.querySelector('.pagination__back'),
@@ -120,13 +120,10 @@ function onClickBack(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
@@ -225,13 +222,10 @@ function onClickForward(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
@@ -294,13 +288,10 @@ function onClickList(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
         renderCards(data, movieListContainer);
         initRatings(data);
-        refs.paginationListLinks[
-          refs.paginationListLinks.length - 1
-        ].textContent = data.total_pages.toString();
       })
       .catch(error => {});
   } else {
