@@ -19,7 +19,7 @@ const refs = {
   modalRemoveLibraryBtn: document.querySelector('.modal-about__btn--remove'),
   overlay: document.querySelector('.js-overlay-modal'),
   weeklyGal: document.querySelector('#cards__list'),
-  heroDetailsBtn: document.querySelector('.but2'),
+  // heroDetailsBtn: document.querySelector('.but2'),
   libraryGal: document.querySelector('.library-body__gallery'),
 };
 // ? -- Оголошення ключа сховища ;
