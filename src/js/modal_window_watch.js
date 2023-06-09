@@ -16,7 +16,7 @@ async function fechMovieVideo(movie_id) {
     return data;
   } catch (error) {}
 }
-
+iframeVideo.classList.add('is-hidden');
 export async function renderVideoLink(movie_id) {
   try {
     // iframeEl.style.display = 'block';
