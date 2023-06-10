@@ -6,7 +6,6 @@ import { fetchMovieSearch } from './search-form';
 import { searchFormEl } from './search-form';
 import { value } from './search-form';
 import { valueYear } from './search-form';
-import { total_pages } from './search-form';
 
 let page = 1;
 const refs = {
@@ -103,7 +102,7 @@ function onClickBack(event) {
 
       if (prevElement === refs.paginationListLinks[0]) {
         refs.paginationForwardArrow.removeAttribute('disabled', '');
-        refs.paginationBackArrow.setAttribute('disabled', '');
+        event.target.setAttribute('disabled', '');
 
         refs.paginationListLinks[i].classList.remove('selected');
         page = prevElement.textContent;
@@ -148,9 +147,10 @@ function onClickForward(event) {
             .textContent
         )
       ) {
+        refs.paginationListLinks[i + 1].classList.remove('more');
+
         refs.paginationListLinks[0].textContent = '...';
         refs.paginationListLinks[0].classList.add('more');
-        refs.paginationListLinks[i + 1].classList.remove('more');
 
         refs.paginationListLinks[
           refs.paginationListLinks.length - 2
@@ -201,13 +201,12 @@ function onClickForward(event) {
 
       if (
         nextElement ===
-          refs.paginationListLinks[refs.paginationListLinks.length - 1] ||
-        Number(nextElement.textContent) === total_pages
+        refs.paginationListLinks[refs.paginationListLinks.length - 1]
       ) {
         refs.paginationListLinks[i].classList.remove('selected');
         page = nextElement.textContent;
         nextElement.classList.add('selected');
-        refs.paginationForwardArrow.setAttribute('disabled', '');
+        event.target.setAttribute('disabled', '');
         break;
       }
 
@@ -272,17 +271,17 @@ function onClickList(event) {
       event.target ===
         refs.paginationListLinks[refs.paginationListLinks.length - 1]
     ) {
-      page = event.target.textContent;
       refs.paginationBackArrow.removeAttribute('disabled', '');
       refs.paginationForwardArrow.setAttribute('disabled', '');
-
+      page = event.target.textContent;
       event.target.classList.add('selected');
       refs.paginationListLinks[0].classList.add('more');
-      refs.paginationListLinks[i - 1].classList.remove('more');
 
       refs.paginationListLinks[0].textContent = '...';
+
       refs.paginationListLinks[i - 1].textContent =
         Number(refs.paginationListLinks[i].textContent) - 1;
+      refs.paginationListLinks[i - 1].classList.remove('more');
       refs.paginationListLinks[i - 2].textContent =
         Number(refs.paginationListLinks[i].textContent) - 2;
       refs.paginationListLinks[i - 3].textContent =
