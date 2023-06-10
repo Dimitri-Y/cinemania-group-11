@@ -6,15 +6,17 @@ import { initRatings } from './star_rating';
 import { movieListContainer } from './catalog';
 import Notiflix from 'notiflix';
 
+export let valueYear = '';
+export let value = '';
+export let total_pages = 1;
+let page = 1;
+
 export const searchFormEl = document.getElementById('idFormCatalog');
 const clearBtn = document.querySelector('.catalog__btn-cross');
 const messageEl = document.querySelector('.js-catalog__message--search');
 const searhYearEl = document.querySelector('.catalog__search-year');
 const yearListEl = document.querySelector('.catalog__dropdown-list');
-export let valueYear = '';
-export let value = '';
-export let total_pages = 1;
-let page = 1;
+
 const paginationListLinks = document.querySelectorAll('.pagination-list__link');
 const paginationBackArrow = document.querySelector('.pagination__back');
 const paginationForwardArrow = document.querySelector('.pagination__forward');
@@ -119,31 +121,34 @@ export function updatePaginationMarkup(total_pages) {
     : (paginationListLinks[paginationListLinks.length - 1].textContent =
         total_pages.toString());
 
-  paginationListLinks[0].classList.add('selected');
-  paginationListLinks[0].classList.remove('more');
-  paginationBackArrow.setAttribute('disabled', '');
-  paginationForwardArrow.removeAttribute('disabled', '');
+  updatingClassesAndAttributes();
   paginationListLinks[3].classList.add('more');
 }
 
-export function updatePaginationMarkupIfLessThanSixPages(total_pages) {
-  paginationListLinks[3].classList.remove('more');
+function updatePaginationMarkupIfLessThanSixPages(total_pages) {
   paginationListLinks[0].textContent = '01';
   paginationListLinks[1].textContent = '02';
   paginationListLinks[2].textContent = '03';
   paginationListLinks[3].textContent = '04';
   paginationListLinks[paginationListLinks.length - 1].textContent =
     total_pages.toString();
+  updatingClassesAndAttributes();
+  paginationListLinks[3].classList.remove('more');
 
   for (let i = 0; i < paginationListLinks.length; i += 1) {
     if (
       Number(paginationListLinks[i].textContent.slice(1)) > total_pages ||
-      (Number(paginationListLinks[i].textContent.slice(1)) > total_pages &&
-        paginationListLinks[i] ===
-          paginationListLinks[paginationListLinks.length - 1])
+      paginationListLinks[i] ===
+        paginationListLinks[paginationListLinks.length - 1]
     ) {
       paginationListLinks[i].classList.add('hidden');
-      console.log('LessSix');
     }
   }
+}
+
+function updatingClassesAndAttributes() {
+  paginationListLinks[0].classList.add('selected');
+  paginationListLinks[0].classList.remove('more');
+  paginationBackArrow.setAttribute('disabled', '');
+  paginationForwardArrow.removeAttribute('disabled', '');
 }
