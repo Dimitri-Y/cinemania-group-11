@@ -98,7 +98,7 @@ function switchBtnCross() {
   clearBtn.classList.toggle('ishidden');
 }
 
-export async function fetchMovieSearch(page, value, valueYear, total_pages) {
+export async function fetchMovieSearch(page, value, valueYear) {
   const PAGE = `&page=${page}`;
   const QUERY = `&query=${value}`;
   const YEAR = `&primary_release_year=${valueYear}`;
@@ -151,4 +151,10 @@ function updatingClassesAndAttributes() {
   paginationListLinks[0].classList.remove('more');
   paginationBackArrow.setAttribute('disabled', '');
   paginationForwardArrow.removeAttribute('disabled', '');
+
+  for (let i = 0; i < paginationListLinks.length; i += 1) {
+    if (paginationListLinks[i].classList.contains('hidden')) {
+      paginationListLinks[i].classList.remove('hidden');
+    }
+  }
 }

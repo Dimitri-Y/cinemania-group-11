@@ -121,9 +121,8 @@ function onClickBack(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value, valueYear, total_pages)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
-        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
       })
@@ -224,9 +223,8 @@ function onClickForward(event) {
   }
   trimZero(page);
   if (searchFormEl.classList.contains('search')) {
-    fetchMovieSearch(page, value, valueYear, total_pages)
+    fetchMovieSearch(page, value, valueYear)
       .then(data => {
-        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
       })
@@ -293,7 +291,6 @@ function onClickList(event) {
   if (searchFormEl.classList.contains('search')) {
     fetchMovieSearch(page, value, valueYear)
       .then(data => {
-        total_pages = data.total_pages;
         renderCards(data, movieListContainer);
         initRatings(data);
       })
