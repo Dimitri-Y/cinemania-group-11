@@ -13,7 +13,7 @@ import './js/pagination';
 import './js/genre';
 import './js/movie_card';
 import './js/star_rating';
-import './js/scrollUp';
 import './js/catalog';
 import './js/search-form';
 import './js/modal-details';
+import './js/scroll-up';

@@ -2,10 +2,8 @@ import { fetchMovieTrend } from './api';
 import { renderCards } from './movie_card';
 import { movieListContainer } from './catalog';
 import { initRatings } from './star_rating';
-import { fetchMovieSearch } from './search-form';
-import { searchFormEl } from './search-form';
-import { value } from './search-form';
-import { valueYear } from './search-form';
+import { fetchMovieSearch, searchFormEl, value, valueYear} from './search-form';
+
 
 let page = 1;
 const refs = {
