@@ -1,4 +1,4 @@
-const throttle = require('lodash.throttle');
+// import throttle from 'lodash.throttle';
 
 const buttonEl = document.querySelector('.button-scroll');
 
