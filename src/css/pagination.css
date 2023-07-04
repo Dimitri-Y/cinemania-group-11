@@ -29,10 +29,6 @@ button.arrow {
   display: none;
 }
 
-.pagination-list__link.hidden .pagination-list__item {
-  margin: 0;
-}
-
 .pagination-list__link.more {
   border: 0;
   width: 16px;
@@ -74,8 +70,6 @@ button[disabled] {
 .pagination-list__item:not(:last-child) {
   margin-right: 8px;
 }
-
-
 
 .pagination-list__link {
   display: flex;
